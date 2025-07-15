@@ -17,6 +17,15 @@ public class Information extends VerticalLayout {
 		col.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
 
 		add(col);
+
+		add(new H3("Information"));
+
+		var col2 = new VerticalLayout();
+
+		col2.add(row(new H5("Ville : "), new Span("59000, Lille")));
+		col2.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
+
+		add(col2);
 	}
 
 	private static HorizontalLayout row(Component... components) {

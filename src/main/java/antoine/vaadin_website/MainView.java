@@ -77,9 +77,8 @@ public class MainView extends VerticalLayout {
 		add(new Hr());
 
 		// mes projets
-		// add(new HorizontalLayout(
-		// new Projects(),
-		// ));
+		add(new HorizontalLayout(new Projects()));
+		// mes projets
 
 		add(new Footer(new H5("footer qsdsqd")));
 	}

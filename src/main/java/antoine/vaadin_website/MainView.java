@@ -1,5 +1,6 @@
 package antoine.vaadin_website;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Footer;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Hr;
@@ -25,19 +26,10 @@ public class MainView extends VerticalLayout {
 		image.setWidth("auto");
 
 		var me = new Me();
-		me.setWidth("60vw");
 		me.setAlignItems(FlexComponent.Alignment.CENTER);
 		me.setJustifyContentMode(JustifyContentMode.EVENLY);
 
-		HorizontalLayout introduction = new HorizontalLayout(
-				me,
-				image);
-		introduction.setWidthFull();
-		introduction.setAlignItems(Alignment.CENTER);
-		introduction.setJustifyContentMode(JustifyContentMode.BETWEEN);
-		introduction.setWrap(true);
-
-		add(introduction);
+		add(responsiveRow(JustifyContentMode.BETWEEN, me, image));
 		// introduction
 
 		add(new Hr());
@@ -51,12 +43,7 @@ public class MainView extends VerticalLayout {
 		information.setAlignItems(Alignment.CENTER);
 		information.setMinWidth("30%");
 
-		HorizontalLayout hbar = new HorizontalLayout(contact, information);
-		hbar.setWidthFull();
-		hbar.addClassNames(
-				LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
-		add(hbar);
+		add(responsiveRow(contact, information));
 		// contact
 
 		add(new Hr());
@@ -87,5 +74,20 @@ public class MainView extends VerticalLayout {
 		add(new Hr());
 
 		add(new Footer(new H5("footer qsdsqd")));
+	}
+
+	HorizontalLayout responsiveRow(Component... components) {
+		HorizontalLayout hbar = new HorizontalLayout(components);
+		hbar.setWidthFull();
+		hbar.addClassNames(
+				LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
+		return hbar;
+	}
+
+	Component responsiveRow(JustifyContentMode justify, Component... components) {
+		var row = responsiveRow(components);
+		row.setJustifyContentMode(justify);
+		return row;
 	}
 }

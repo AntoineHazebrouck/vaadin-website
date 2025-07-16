@@ -1,6 +1,7 @@
 package antoine.vaadin_website;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasText.WhiteSpace;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Span;
@@ -13,8 +14,12 @@ public class Information extends VerticalLayout {
 
 		var col = new VerticalLayout();
 
-		col.add(row(new H5("Ville : "), new Span("59000, Lille")));
-		col.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
+		var cityLabel = new H5("Ville : ");
+		var emailLabel = new H5("Email : ");
+		cityLabel.setWhiteSpace(WhiteSpace.NOWRAP);
+		emailLabel.setWhiteSpace(WhiteSpace.NOWRAP);
+		col.add(row(cityLabel, new Span("59000, Lille")));
+		col.add(row(emailLabel, new Span("antoine.hazebrouck5@gmail.com")));
 
 		add(col);
 

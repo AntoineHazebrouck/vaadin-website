@@ -9,7 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class Information extends VerticalLayout {
 	public Information() {
-		add(new H3("Information"));
+		add(new H3("Informations"));
 
 		var col = new VerticalLayout();
 

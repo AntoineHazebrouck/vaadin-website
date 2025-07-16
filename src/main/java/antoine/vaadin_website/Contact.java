@@ -17,11 +17,12 @@ public class Contact extends VerticalLayout {
 		TextField lastName = new TextField("Nom", "Doe");
 		EmailField email = new EmailField("Email", "john.doe@example.com");
 		TextArea message = new TextArea("Message", "Je vous contacte au sujet de ...");
-		message.setHeight("50vh");
+		message.setHeight("6em");
 
 		FormLayout formLayout = new FormLayout();
 		formLayout.setAutoResponsive(true);
 		formLayout.setExpandFields(true);
+		formLayout.setExpandColumns(true);
 
 		formLayout.addFormRow(firstName, lastName, email);
 
@@ -33,10 +34,10 @@ public class Contact extends VerticalLayout {
 			Notification.show("Done");
 		}));
 
-		var hbar = new HorizontalLayout(formLayout);
-		hbar.setWidthFull();
-		hbar.setJustifyContentMode(JustifyContentMode.CENTER);
+		// var hbar = new HorizontalLayout(formLayout);
+		// hbar.setWidthFull();
+		// hbar.setJustifyContentMode(JustifyContentMode.CENTER);
 		add(new H3("Me contacter"));
-		add(hbar);
+		add(formLayout);
 	}
 }

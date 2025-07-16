@@ -13,17 +13,6 @@ import com.vaadin.flow.router.Route;
 public class MainView extends VerticalLayout {
 
 	public MainView() {
-
-		// UI.getCurrent().getPage().addBrowserWindowResizeListener(event -> {
-		// add(new Text("Width : " + event.getWidth()));
-		// add(new Text("Height : " + event.getHeight()));
-
-		// UI.getCurrent().getPage().retrieveExtendedClientDetails(details -> {
-		// System.out.println("Width " + details.getWindowInnerWidth());
-		// System.out.println("Height " + details.getWindowInnerHeight());
-		// });
-		// });
-
 		setAlignItems(FlexComponent.Alignment.CENTER);
 
 		// introduction
@@ -38,6 +27,7 @@ public class MainView extends VerticalLayout {
 		me.setWidth("60vw");
 		me.setAlignItems(FlexComponent.Alignment.CENTER);
 		me.setJustifyContentMode(JustifyContentMode.EVENLY);
+
 		HorizontalLayout introduction = new HorizontalLayout(
 				me,
 				image);
@@ -54,10 +44,11 @@ public class MainView extends VerticalLayout {
 		// contact
 		var contact = new Contact();
 		contact.setAlignItems(Alignment.CENTER);
+		contact.setMinWidth("70%");
 
 		var information = new Information();
 		information.setAlignItems(Alignment.CENTER);
-		information.setMaxWidth("30vw");
+		information.setMinWidth("30%");
 
 		HorizontalLayout hbar = new HorizontalLayout(contact, information);
 		hbar.setWidthFull();
@@ -74,11 +65,22 @@ public class MainView extends VerticalLayout {
 		add(experiences);
 		// mon parcours
 
+		// skills
+		var skills = new Skills();
+		skills.setAlignItems(Alignment.CENTER);
+		skills.setJustifyContentMode(JustifyContentMode.AROUND);
+		skills.setWrap(true);
+		skills.setWidth("70vw");
+		add(skills);
+		// skills
+
 		add(new Hr());
 
 		// mes projets
 		add(new HorizontalLayout(new Projects()));
 		// mes projets
+
+		add(new Hr());
 
 		add(new Footer(new H5("footer qsdsqd")));
 	}

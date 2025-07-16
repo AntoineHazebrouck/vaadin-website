@@ -1,7 +1,5 @@
 package antoine.vaadin_website;
 
-import java.util.List;
-
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -37,18 +35,6 @@ public class Experiences extends VerticalLayout {
 				.title("Apprenti ingénieur logiciel")
 				.subtitle("Société Générale - La Défense")
 				.dates("2023-2027")
-				.badges(List.of(
-						"Java : Spring Boot",
-						"Hadoop",
-						"Spark",
-						"Hive",
-						"Python",
-						"CI/CD",
-						"Dashboards",
-						"Gherkin",
-						"Typescript/Javascript : Angular",
-						"Finance",
-						"REST APIs"))
 				.build()
 				.toCard();
 

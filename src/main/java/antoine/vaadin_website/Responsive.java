@@ -5,6 +5,7 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,6 +38,12 @@ public class Responsive {
 		if (alignment != null) {
 			layout.setAlignItems(alignment);
 		}
+
+		layout.setWidthFull();
+		layout.addClassNames(
+				LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
+
 
 		return (Component) layout;
 	}

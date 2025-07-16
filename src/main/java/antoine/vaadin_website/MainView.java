@@ -35,11 +35,11 @@ public class MainView extends VerticalLayout {
 		// contact
 		var contact = new Contact();
 		contact.setAlignItems(Alignment.CENTER);
-		contact.setMinWidth("70%");
+		// contact.setMinWidth("65%");
 
 		var information = new Information();
 		information.setAlignItems(Alignment.CENTER);
-		information.setMinWidth("30%");
+		// information.setMinWidth("30%");
 
 		add(Responsive.row(contact, information).build());
 		// contact

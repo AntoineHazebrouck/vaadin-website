@@ -5,6 +5,7 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,10 @@ public class Responsive {
 
 	public static Responsive row(Component... children) {
 		return new Responsive(new HorizontalLayout(children));
+	}
+
+	public static Responsive column(Component... children) {
+		return new Responsive(new VerticalLayout(children));
 	}
 
 	public Responsive justify(JustifyContentMode justify) {
@@ -40,10 +45,21 @@ public class Responsive {
 		}
 
 		layout.setWidthFull();
-		layout.addClassNames(
-				LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
 
+		switch (layout) {
+			case HorizontalLayout then -> {
+				layout.addClassNames(
+						LumoUtility.FlexDirection.COLUMN,
+						LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
+			}
+			case VerticalLayout then -> {
+				layout.addClassNames(
+						LumoUtility.FlexDirection.COLUMN,
+						LumoUtility.FlexDirection.Breakpoint.Medium.COLUMN);
+			}
+			default -> {
+			}
+		}
 
 		return (Component) layout;
 	}

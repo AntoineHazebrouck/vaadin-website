@@ -1,25 +1,25 @@
 package antoine.vaadin_website;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasText.WhiteSpace;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
+import antoine.vaadin_website.utils.Responsive;
 
 public class Information extends VerticalLayout {
 	public Information() {
 		add(new H3("Informations"));
 
-		var col = new VerticalLayout();
-
-		var cityLabel = new H5("Ville : ");
-		var emailLabel = new H5("Email : ");
-		cityLabel.setWhiteSpace(WhiteSpace.NOWRAP);
-		emailLabel.setWhiteSpace(WhiteSpace.NOWRAP);
-		col.add(row(cityLabel, new Span("59000, Lille")));
-		col.add(row(emailLabel, new Span("antoine.hazebrouck5@gmail.com")));
+		var col = Responsive.column(
+				Responsive.row(label("Ville : "), new Span("59000, Lille"))
+						.alignement(Alignment.CENTER)
+						.build(),
+				Responsive.row(label("Email : "), new Span("antoine.hazebrouck5@gmail.com"))
+						.alignement(Alignment.CENTER)
+						.build())
+				.build();
 
 		add(col);
 
@@ -27,15 +27,15 @@ public class Information extends VerticalLayout {
 
 		var col2 = new VerticalLayout();
 
-		col2.add(row(new H5("Ville : "), new Span("59000, Lille")));
-		col2.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
+		// col2.add(row(new H5("Ville : "), new Span("59000, Lille")));
+		// col2.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
 
 		add(col2);
 	}
 
-	private static HorizontalLayout row(Component... components) {
-		HorizontalLayout row = new HorizontalLayout(components);
-		row.setAlignItems(Alignment.CENTER);
-		return row;
+	private static H5 label(String text) {
+		var label = new H5(text);
+		label.setWhiteSpace(WhiteSpace.NOWRAP);
+		return label;
 	}
 }

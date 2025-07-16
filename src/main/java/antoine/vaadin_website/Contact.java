@@ -5,7 +5,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.FormRow;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextArea;
@@ -17,7 +16,7 @@ public class Contact extends VerticalLayout {
 		TextField lastName = new TextField("Nom", "Doe");
 		EmailField email = new EmailField("Email", "john.doe@example.com");
 		TextArea message = new TextArea("Message", "Je vous contacte au sujet de ...");
-		message.setHeight("6em");
+		message.setHeight("10em");
 
 		FormLayout formLayout = new FormLayout();
 		formLayout.setAutoResponsive(true);
@@ -34,9 +33,6 @@ public class Contact extends VerticalLayout {
 			Notification.show("Done");
 		}));
 
-		// var hbar = new HorizontalLayout(formLayout);
-		// hbar.setWidthFull();
-		// hbar.setJustifyContentMode(JustifyContentMode.CENTER);
 		add(new H3("Me contacter"));
 		add(formLayout);
 	}

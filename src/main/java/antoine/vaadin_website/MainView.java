@@ -29,6 +29,7 @@ public class MainView extends VerticalLayout {
 		var me = new Me();
 		me.setAlignItems(FlexComponent.Alignment.CENTER);
 		me.setJustifyContentMode(JustifyContentMode.EVENLY);
+		me.setMinHeight("90vh");
 
 		add(Responsive.row(me, image).justify(JustifyContentMode.BETWEEN).build());
 		// introduction
@@ -38,11 +39,9 @@ public class MainView extends VerticalLayout {
 		// contact
 		var contact = new Contact();
 		contact.setAlignItems(Alignment.CENTER);
-		// contact.setMinWidth("65%");
 
 		var information = new Information();
 		information.setAlignItems(Alignment.CENTER);
-		// information.setMinWidth("30%");
 
 		add(Responsive.row(contact, information).build());
 		// contact
@@ -51,7 +50,6 @@ public class MainView extends VerticalLayout {
 
 		// mon parcours
 		var experiences = new Experiences();
-		// experiences.setWidth("75vw");
 		experiences.setWidthFull();
 		experiences.setAlignItems(FlexComponent.Alignment.CENTER);
 		add(experiences);

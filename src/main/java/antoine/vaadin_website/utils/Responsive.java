@@ -1,4 +1,4 @@
-package antoine.vaadin_website;
+package antoine.vaadin_website.utils;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;

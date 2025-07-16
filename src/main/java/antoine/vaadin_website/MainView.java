@@ -1,13 +1,16 @@
 package antoine.vaadin_website;
 
+import com.vaadin.flow.component.HtmlContainer;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Footer;
-import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+
+import antoine.vaadin_website.utils.Responsive;
 
 @Route
 public class MainView extends VerticalLayout {
@@ -71,7 +74,7 @@ public class MainView extends VerticalLayout {
 
 		add(new Hr());
 
-		add(new Footer(new H5("footer qsdsqd")));
+		add(new Footer(new HtmlContainer("i", new Text("© 2025 Antoine HAZEBROUCK. Tous droits réservés."))));
 	}
 
 }

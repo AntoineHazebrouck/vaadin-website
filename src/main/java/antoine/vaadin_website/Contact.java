@@ -30,7 +30,7 @@ public class Contact extends VerticalLayout {
 		formLayout.add(row2);
 
 		formLayout.addFormRow(new Button("Envoyer", event -> {
-			Notification.show("Done");
+			Notification.show("Not implemented yet");  // TODO
 		}));
 
 		add(new H3("Me contacter"));

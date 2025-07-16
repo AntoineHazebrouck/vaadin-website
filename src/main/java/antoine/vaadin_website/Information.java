@@ -23,12 +23,21 @@ public class Information extends VerticalLayout {
 
 		add(col);
 
-		add(new H3("Information"));
-
-		var col2 = new VerticalLayout();
-
-		// col2.add(row(new H5("Ville : "), new Span("59000, Lille")));
-		// col2.add(row(new H5("Email : "), new Span("antoine.hazebrouck5@gmail.com")));
+		var col2 = Responsive.column(
+				Responsive.row(new H3("Loisirs"), new H3(""))
+						.justify(JustifyContentMode.AROUND)
+						.build(),
+				Responsive.row(label("Musique : "), new Span("guitare, basse, composition"))
+						.alignement(Alignment.CENTER)
+						.build(),
+				Responsive.row(label("Dessin"), new H3(""))
+						.alignement(Alignment.CENTER)
+						.justify(JustifyContentMode.AROUND)
+						.build(),
+				Responsive.row(label("Jeux video : "), new Span("équipe, competitifs, fps"))
+						.alignement(Alignment.CENTER)
+						.build())
+				.build();
 
 		add(col2);
 	}

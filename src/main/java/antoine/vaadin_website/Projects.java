@@ -11,6 +11,7 @@ import java.util.List;
 public class Projects extends VerticalLayout {
 
     public Projects() {
+        
         setWidthFull();
         setAlignItems(Alignment.CENTER);
 
@@ -35,15 +36,26 @@ public class Projects extends VerticalLayout {
             .build()
             .toCard();
 
-        var card2 = new Card();
-        card2.setTitle("Jeu de rythme");
-        card2.add(
-            Responsive.row(
-                badge("Javascript"),
-                badge("Typescript"),
-                badge("Github Actions")
-            ).build()
-        );
+        var card2 = ExperienceCard.builder()
+            .title("Jeu de rythme")
+            .headerSuffix(
+                sourceCodeLink("https://github.com/AntoineHazebrouck/rythm")
+            )
+            .content(
+                List.of(
+                    Responsive.row(
+                        badge("Java : Spring Boot"),
+                        badge("Javascript"),
+                        badge("Typescript")
+                    ).build(),
+                    Responsive.row(
+                        badge("Github Actions"),
+                        badge("Infra/DevOps")
+                    ).build()
+                )
+            )
+            .build()
+            .toCard();
 
         var card3 = new Card();
         card3.setTitle("Alerting par email");

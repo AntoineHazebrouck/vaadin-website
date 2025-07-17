@@ -3,7 +3,9 @@ package antoine.vaadin_website;
 import java.util.List;
 
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import antoine.vaadin_website.utils.Responsive;
@@ -19,7 +21,14 @@ public class Experiences extends VerticalLayout {
 						.minHeight("15em")
 						.title("BUT Informatique")
 						.subtitle("IUT de Lille")
-						.content(List.of())
+						.content(List.of(
+								new Paragraph("J'y ai appris toutes les bases de la réalisation d'applications : "),
+								new UnorderedList(
+										new ListItem("conception : UI/UX, design, recueil des besoins, prototypage"),
+										new ListItem("développement : web, mobile, desktop"),
+										new ListItem("validation : tests automatisés, go du client"),
+										new ListItem("déploiement : mise en production"),
+										new ListItem("gestion de projet : agilité, accompagnement client"))))
 						.dates("2021-2024")
 						.build()
 						.toCard(),
@@ -48,7 +57,7 @@ public class Experiences extends VerticalLayout {
 								new Paragraph(
 										"J'ai notamment, au sein de l'équipe data quality, implementé la consolidation, la coherence et la validation qualitative du bilan du groupe. "),
 								new Paragraph(
-										"J'ai aussi eu l'occasion de mener un projet de calibration du bilan interne dans sa totalité sur un socle agile, priorisant la satisfaction client. ")))
+										"J'ai aussi eu l'occasion de mener dans sa totalité un projet de calibration du bilan interne sur un socle agile, priorisant la satisfaction client. ")))
 						.dates("2023-2027")
 						.build()
 						.toCard())

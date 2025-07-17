@@ -18,6 +18,7 @@ import antoine.vaadin_website.utils.Sections;
 
 @Route
 public class MainView extends VerticalLayout {
+	public static final String appBarOffset = "4em";
 
 	public MainView() {
 		setAlignItems(FlexComponent.Alignment.CENTER);
@@ -28,10 +29,12 @@ public class MainView extends VerticalLayout {
 
 		appBar.addItem(new Anchor("#home", new Text("Accueil")));
 		appBar.addItem(new Anchor("#contact", new Text("Contact")));
+		appBar.addItem(new Anchor("#experiences", new Text("Parcours")));
 
 		var wrap = new HorizontalLayout(appBar);
 		wrap.setJustifyContentMode(JustifyContentMode.CENTER);
 		wrap.setWidthFull();
+		wrap.setHeight(appBarOffset);
 		wrap.getStyle()
 				.setPosition(Position.FIXED)
 				.setTop("0")
@@ -72,6 +75,7 @@ public class MainView extends VerticalLayout {
 		information.setAlignItems(Alignment.CENTER);
 
 		add(Sections.of(Responsive.row(contact, information).build()).id("contact"));
+		// add(Responsive.row(contact, information).build());
 		// contact
 
 		add(new Hr());
@@ -80,17 +84,15 @@ public class MainView extends VerticalLayout {
 		var experiences = new Experiences();
 		experiences.setWidthFull();
 		experiences.setAlignItems(FlexComponent.Alignment.CENTER);
-		add(experiences);
-		// mon parcours
+		add(Sections.of(experiences).id("experiences"));
 
-		// skills
 		var skills = new Skills();
 		skills.setAlignItems(Alignment.CENTER);
 		skills.setJustifyContentMode(JustifyContentMode.AROUND);
 		skills.setWrap(true);
 		skills.setWidth("70vw");
 		add(skills);
-		// skills
+		// mon parcours
 
 		add(new Hr());
 

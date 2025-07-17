@@ -1,9 +1,12 @@
 package antoine.vaadin_website;
 
+import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.utils.Sections;
 import com.vaadin.flow.component.HtmlContainer;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
@@ -13,96 +16,112 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.dom.Style.Position;
 import com.vaadin.flow.router.Route;
 
-import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.utils.Sections;
-
 @Route
 public class MainView extends VerticalLayout {
-	public static final String appBarOffset = "4em";
 
-	public MainView() {
-		setAlignItems(FlexComponent.Alignment.CENTER);
+    public static final String appBarOffset = "4em";
 
-		// appBar
-		var appBar = new MenuBar();
-		// appBar.setWidthFull();
+    public MainView() {
+        setAlignItems(FlexComponent.Alignment.CENTER);
 
-		appBar.addItem(new Anchor("#home", new Text("Accueil")));
-		appBar.addItem(new Anchor("#contact", new Text("Contact")));
-		appBar.addItem(new Anchor("#experiences", new Text("Parcours")));
+        // appBar
+        var appBar = new MenuBar();
+        // appBar.setWidthFull();
 
-		var wrap = new HorizontalLayout(appBar);
-		wrap.setJustifyContentMode(JustifyContentMode.CENTER);
-		wrap.setWidthFull();
-		wrap.setHeight(appBarOffset);
-		wrap.getStyle()
-				.setPosition(Position.FIXED)
-				.setTop("0")
-				.setBackground("white")
-				.setBorderBottom("solid")
-				.setZIndex(Integer.MAX_VALUE)
-				.setPadding("5px");
+        appBar.addItem(new Anchor("#home", new Text("Accueil")));
+        appBar.addItem(new Anchor("#contact", new Text("Contact")));
+        appBar.addItem(new Anchor("#experiences", new Text("Parcours")));
 
-		add(wrap);
-		// appBar
+        var wrap = new HorizontalLayout(appBar);
+        wrap.setJustifyContentMode(JustifyContentMode.CENTER);
+        wrap.setWidthFull();
+        wrap.setHeight(appBarOffset);
+        wrap
+            .getStyle()
+            .setPosition(Position.FIXED)
+            .setTop("0")
+            .setBackground("white")
+            .setBorderBottom("solid")
+            .setZIndex(Integer.MAX_VALUE)
+            .setPadding("5px");
 
-		// introduction
-		var image = new Image(
-				"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg",
-				"Antoine HAZEBROUCK");
-		image.setMaxWidth("100%");
-		image.setMaxHeight("90vh");
-		image.setWidth("auto");
+        add(wrap);
+        // appBar
 
-		var me = new Me();
-		me.setAlignItems(FlexComponent.Alignment.CENTER);
-		me.setJustifyContentMode(JustifyContentMode.EVENLY);
-		me.setMinHeight("90vh");
+        // introduction
+        var image = new Image(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg",
+            "Antoine HAZEBROUCK"
+        );
+        image.setMaxWidth("100%");
+        image.setMaxHeight("90vh");
+        image.setWidth("auto");
 
-		add(Sections.of(Responsive.row(me, image)
-				.justify(JustifyContentMode.BETWEEN)
-				.build())
-				.id("home"));
-		// introduction
+        var me = new Me();
+        me.setAlignItems(FlexComponent.Alignment.CENTER);
+        me.setJustifyContentMode(JustifyContentMode.EVENLY);
+        me.setMinHeight("90vh");
 
-		add(new Hr());
+        add(
+            Sections.of(
+                Responsive.row(me, image)
+                    .justify(JustifyContentMode.BETWEEN)
+                    .build()
+            ).id("home")
+        );
+        // introduction
 
-		// contact
-		var contact = new Contact();
-		contact.setAlignItems(Alignment.CENTER);
+        add(new Hr());
 
-		var information = new Information();
-		information.setAlignItems(Alignment.CENTER);
+        // contact
+        var contact = new Contact();
+        contact.setAlignItems(Alignment.CENTER);
 
-		add(Sections.of(Responsive.row(contact, information).build()).id("contact"));
-		// add(Responsive.row(contact, information).build());
-		// contact
+        var information = new Information();
+        information.setAlignItems(Alignment.CENTER);
 
-		add(new Hr());
+        add(
+            Sections.of(Responsive.row(contact, information).build()).id(
+                "contact"
+            )
+        );
+        // add(Responsive.row(contact, information).build());
+        // contact
 
-		// mon parcours
-		var experiences = new Experiences();
-		experiences.setWidthFull();
-		experiences.setAlignItems(FlexComponent.Alignment.CENTER);
-		add(Sections.of(experiences).id("experiences"));
+        add(new Hr());
 
-		var skills = new Skills();
-		skills.setAlignItems(Alignment.CENTER);
-		skills.setJustifyContentMode(JustifyContentMode.AROUND);
-		skills.setWrap(true);
-		skills.setWidth("70vw");
-		add(skills);
-		// mon parcours
+        // mon parcours
+        var experiences = new Experiences();
+        experiences.setWidthFull();
+        experiences.setAlignItems(FlexComponent.Alignment.CENTER);
+        add(Sections.of(experiences).id("experiences"));
 
-		add(new Hr());
+        var skills = new Skills();
+        skills.setAlignItems(Alignment.CENTER);
+        skills.setJustifyContentMode(JustifyContentMode.AROUND);
+        skills.setWrap(true);
+        skills.setWidth("70vw");
+        add(skills);
+        // mon parcours
 
-		// mes projets
-		add(new HorizontalLayout(new Projects()));
-		// mes projets
+        add(new Hr());
 
-		add(new Hr());
+        // mes projets
+        add(new H3("Mes projets"));
+        add(new Projects());
+        // mes projets
 
-		add(new Footer(new HtmlContainer("i", new Text("© 2025 Antoine HAZEBROUCK. Tous droits réservés."))));
-	}
+        add(new Hr());
 
+        add(
+            new Footer(
+                new HtmlContainer(
+                    "i",
+                    new Text(
+                        "© 2025 Antoine HAZEBROUCK. Tous droits réservés."
+                    )
+                )
+            )
+        );
+    }
 }

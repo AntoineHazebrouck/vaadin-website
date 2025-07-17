@@ -21,7 +21,7 @@ public class Experiences extends VerticalLayout {
 						.minHeight("15em")
 						.title("BUT Informatique")
 						.subtitle("IUT de Lille")
-						.content(List.of(
+						.content(List.of( 
 								new Paragraph("J'y ai appris toutes les bases de la réalisation d'applications : "),
 								new UnorderedList(
 										new ListItem("conception : UI/UX, design, recueil des besoins, prototypage"),

@@ -17,7 +17,7 @@ class ExperienceCard {
 	private final String title;
 	private final String subtitle;
 	private final List<Component> content;
-	private final String dates;
+	private final Component headerSuffix;
 
 	public Card toCard() {
 		var card = new Card();
@@ -25,7 +25,7 @@ class ExperienceCard {
 		card.setSubtitle(new Div(subtitle));
 		card.setWidth(width);
 		card.setMinHeight(minHeight);
-		card.setHeaderSuffix(new Div(dates));
+		card.setHeaderSuffix(new Div(headerSuffix));
 		card.add(content);
 		return card;
 	}

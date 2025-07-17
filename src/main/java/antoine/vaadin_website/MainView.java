@@ -6,7 +6,6 @@ import com.vaadin.flow.component.HtmlContainer;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Footer;
-import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
@@ -31,6 +30,7 @@ public class MainView extends VerticalLayout {
         appBar.addItem(new Anchor("#home", new Text("Accueil")));
         appBar.addItem(new Anchor("#contact", new Text("Contact")));
         appBar.addItem(new Anchor("#experiences", new Text("Parcours")));
+        appBar.addItem(new Anchor("#projects", new Text("Projets")));
 
         var wrap = new HorizontalLayout(appBar);
         wrap.setJustifyContentMode(JustifyContentMode.CENTER);
@@ -107,8 +107,7 @@ public class MainView extends VerticalLayout {
         add(new Hr());
 
         // mes projets
-        add(new H3("Mes projets"));
-        add(new Projects());
+        add(Sections.of(new Projects()).id("projects"));
         // mes projets
 
         add(new Hr());

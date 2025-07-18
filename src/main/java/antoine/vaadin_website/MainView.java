@@ -6,6 +6,7 @@ import com.vaadin.flow.component.HtmlContainer;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
@@ -32,10 +33,10 @@ public class MainView extends VerticalLayout {
         appBar.addItem(new Anchor("#experiences", new Text("Parcours")));
         appBar.addItem(new Anchor("#projects", new Text("Projets")));
 
-        var wrap = new HorizontalLayout(appBar);
+        var wrap = new HorizontalLayout();
         wrap.setJustifyContentMode(JustifyContentMode.CENTER);
         wrap.setWidthFull();
-        wrap.setHeight(appBarOffset);
+        wrap.setMinHeight(appBarOffset);
         wrap
             .getStyle()
             .setPosition(Position.FIXED)
@@ -45,6 +46,20 @@ public class MainView extends VerticalLayout {
             .setZIndex(Integer.MAX_VALUE)
             .setPadding("5px");
 
+        var appBar2 = new MenuBar();
+        var linkToResume = new Anchor(
+            "/ANTOINE_HAZEBROUCK_CV.pdf",
+            new Text("CV")
+        );
+        linkToResume.setTarget("_tab");
+        appBar2.addItem(linkToResume);
+
+        wrap.add(
+            Responsive.row(new H1("AH"), appBar, appBar2)
+                .alignement(Alignment.CENTER)
+                .justify(JustifyContentMode.AROUND)
+                .build()
+        );
         add(wrap);
         // appBar
 

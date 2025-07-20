@@ -103,7 +103,50 @@ public class Projects extends VerticalLayout {
             .build()
             .toCard();
 
+        var card4 = ExperienceCard.builder()
+            .title("Explorateur de données")
+            .headerSuffix(sourceCodeLink("TODO"))
+            .content(
+                List.of(
+                    new Paragraph(
+                        "Application desktop permettant d'explorer un jeu de données visuellement (via deux caractéristiques), et d'y appliquer des algorithmes d'apprentissages."
+                    ),
+                    Responsive.row(
+                        badge("Java"),
+                        badge("JavaFX"),
+                        badge("Junit")
+                    ).build()
+                )
+            )
+            .minWidth(WIDTH)
+            .build()
+            .toCard();
+
+        var card5 = ExperienceCard.builder()
+            .title("Réseau social de petites annonces")
+            .headerSuffix(sourceCodeLink("TODO"))
+            .content(
+                List.of(
+                    new Paragraph(
+                        "Réseau web/mobile exclusif permettant aux utilisateurs de poster/consulter des annonces en tout genres (babysitting, jardinage, ...)."
+                    ),
+                    new Paragraph(
+                        "Travail en équipe de 8 sur une semaine en agilité face au client."
+                    ),
+                    Responsive.row(
+                        badge("Java : Spring Boot"),
+                        badge("REST API"),
+                        badge("Postgres")
+                    ).build(),
+                    Responsive.row(badge("Agilité")).build()
+                )
+            )
+            .minWidth(WIDTH)
+            .build()
+            .toCard();
+
         add(Responsive.row(card1, card2, card3).build());
+        add(Responsive.row(card4, card5, card5).build());
     }
 
     private static Span badge(String text) {

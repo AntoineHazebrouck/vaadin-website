@@ -7,60 +7,68 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class Responsive {
-	private final FlexComponent layout;
 
-	private JustifyContentMode justify;
-	private Alignment alignment;
+    private final FlexComponent layout;
 
-	public static Responsive row(Component... children) {
-		return new Responsive(new HorizontalLayout(children));
-	}
+    private JustifyContentMode justify;
+    private Alignment alignment;
+    private boolean wrap = false;
 
-	public static Responsive column(Component... children) {
-		return new Responsive(new VerticalLayout(children));
-	}
+    public static Responsive row(Component... children) {
+        return new Responsive(new HorizontalLayout(children));
+    }
 
-	public Responsive justify(JustifyContentMode justify) {
-		this.justify = justify;
-		return this;
-	}
+    public static Responsive column(Component... children) {
+        return new Responsive(new VerticalLayout(children));
+    }
 
-	public Responsive alignement(Alignment alignment) {
-		this.alignment = alignment;
-		return this;
-	}
+    public Responsive justify(JustifyContentMode justify) {
+        this.justify = justify;
+        return this;
+    }
 
-	public Component build() {
-		if (justify != null) {
-			layout.setJustifyContentMode(justify);
-		}
+    public Responsive alignement(Alignment alignment) {
+        this.alignment = alignment;
+        return this;
+    }
 
-		if (alignment != null) {
-			layout.setAlignItems(alignment);
-		}
+    public Responsive wrap() {
+        this.wrap = true;
+        return this;
+    }
 
-		layout.setWidthFull();
+    public Component build() {
+        if (justify != null) {
+            layout.setJustifyContentMode(justify);
+        }
 
-		switch (layout) {
-			case HorizontalLayout then -> {
-				layout.addClassNames(
-						LumoUtility.FlexDirection.COLUMN,
-						LumoUtility.FlexDirection.Breakpoint.Medium.ROW);
-			}
-			case VerticalLayout then -> {
-				layout.addClassNames(
-						LumoUtility.FlexDirection.COLUMN,
-						LumoUtility.FlexDirection.Breakpoint.Medium.COLUMN);
-			}
-			default -> {
-			}
-		}
+        if (alignment != null) {
+            layout.setAlignItems(alignment);
+        }
 
-		return (Component) layout;
-	}
+        layout.setWidthFull();
+
+        switch (layout) {
+            case HorizontalLayout then -> {
+                if (wrap) {
+                    then.setWrap(wrap);
+                } else {
+                    layout.addClassNames(
+                        LumoUtility.FlexDirection.COLUMN,
+                        LumoUtility.FlexDirection.Breakpoint.Medium.ROW
+                    );
+                }
+            }
+            case VerticalLayout then -> {
+                layout.addClassNames(LumoUtility.FlexDirection.COLUMN);
+            }
+            default -> {}
+        }
+
+        return (Component) layout;
+    }
 }

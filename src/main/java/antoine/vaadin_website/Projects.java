@@ -1,6 +1,7 @@
 package antoine.vaadin_website;
 
 import antoine.vaadin_website.utils.Responsive;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H3;
@@ -10,6 +11,7 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Projects extends VerticalLayout {
 
@@ -29,13 +31,7 @@ public class Projects extends VerticalLayout {
                 )
             )
             .content(
-                List.of(
-                    Responsive.row(
-                        badge("Java : Spring Boot"),
-                        badge("Vaadin Flow"),
-                        badge("Heroku")
-                    ).build()
-                )
+                List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku"))
             )
             .minWidth(WIDTH)
             .build()
@@ -58,17 +54,15 @@ public class Projects extends VerticalLayout {
                             " permettant d'y importer les musiques originales du jeu."
                         )
                     ),
-                    Responsive.row(
-                        badge("Java : Spring Boot"),
-                        badge("Thymeleaf"),
-                        badge("Javascript")
-                    ).build(),
-                    Responsive.row(
-                        badge("Typescript"),
-                        badge("Github Actions"),
-                        badge("Infra/DevOps")
-                    ).build(),
-                    Responsive.row(badge("H2")).build()
+                    badges(
+                        "Java : Spring Boot",
+                        "Thymeleaf",
+                        "Javascript",
+                        "Typescript",
+                        "Github Actions",
+                        "Infra/DevOps",
+                        "H2"
+                    )
                 )
             )
             .minWidth(WIDTH)
@@ -88,15 +82,12 @@ public class Projects extends VerticalLayout {
                         new ListItem("loyer"),
                         new ListItem("anniversaires")
                     ),
-                    Responsive.row(
-                        badge("Gmail"),
-                        badge("Java : Spring Boot"),
-                        badge("Github Actions")
-                    ).build(),
-                    Responsive.row(
-                        badge("Github Actions"),
-                        badge("Scala")
-                    ).build()
+                    badges(
+                        "Gmail",
+                        "Java : Spring Boot",
+                        "Scala",
+                        "Github Actions"
+                    )
                 )
             )
             .minWidth(WIDTH)
@@ -111,11 +102,7 @@ public class Projects extends VerticalLayout {
                     new Paragraph(
                         "Application desktop permettant d'explorer un jeu de données visuellement (via deux caractéristiques), et d'y appliquer des algorithmes d'apprentissages."
                     ),
-                    Responsive.row(
-                        badge("Java"),
-                        badge("JavaFX"),
-                        badge("Junit")
-                    ).build()
+                    badges("Java", "JavaFX", "Junit")
                 )
             )
             .minWidth(WIDTH)
@@ -133,12 +120,12 @@ public class Projects extends VerticalLayout {
                     new Paragraph(
                         "Travail en équipe de 8 sur une semaine en agilité face au client."
                     ),
-                    Responsive.row(
-                        badge("Java : Spring Boot"),
-                        badge("REST API"),
-                        badge("Postgres")
-                    ).build(),
-                    Responsive.row(badge("Agilité")).build()
+                    badges(
+                        "Java : Spring Boot",
+                        "REST API",
+                        "Postgres",
+                        "Agilité"
+                    )
                 )
             )
             .minWidth(WIDTH)
@@ -147,6 +134,15 @@ public class Projects extends VerticalLayout {
 
         add(Responsive.row(card1, card2, card3).build());
         add(Responsive.row(card4, card5, card5).build());
+    }
+
+    private static Component badges(String... labels) {
+        return Responsive.row(
+            Stream.of(labels).map(Projects::badge).toArray(Component[]::new)
+        )
+            .justify(JustifyContentMode.EVENLY)
+            .wrap()
+            .build();
     }
 
     private static Span badge(String text) {

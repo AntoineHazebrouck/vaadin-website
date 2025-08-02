@@ -9,24 +9,27 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.icon.IconFactory;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 
 @Layout
 public class MainLayout extends AppLayout {
-
-    public static final String appBarOffset = "4em";
 
     public MainLayout() {
         H1 title = new H1("AH");
         title
             .getStyle()
             .set("font-size", "var(--lumo-font-size-l)")
-            .setMargin("5px");
+            .setMarginLeft("4em")
+            .setMarginRight("auto");
 
         var linkToResume = new Anchor(
             "/ANTOINE_HAZEBROUCK_CV.pdf",
@@ -35,37 +38,40 @@ public class MainLayout extends AppLayout {
         linkToResume.setTarget("_tab");
         linkToResume.getElement().getThemeList().add("navbar-link");
 
-        var spacer1 = new Div();
-        var spacer2 = new Div();
-        var spacer3 = new Div();
-
         var nav = (HorizontalLayout) Responsive.row(
-            spacer1,
-            title,
-            spacer2,
-            navbarLink("Accueil", MainView.class),
-            navbarLink("Contact", ContactView.class),
-            navbarLink("Parcours", ExperiencesView.class),
-            navbarLink("Projets", ProjectsView.class),
-            linkToResume,
-            spacer3
+            navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class),
+            navbarLink("Contact", VaadinIcon.CHAT, ContactView.class),
+            navbarLink("Parcours", VaadinIcon.ACADEMY_CAP, ExperiencesView.class),
+            navbarLink("Projets", VaadinIcon.CODE, ProjectsView.class),
+            linkToResume
         )
             .alignement(Alignment.CENTER)
+            .justify(JustifyContentMode.CENTER)
+            .wrap()
             .build();
 
-        nav.setFlexGrow(1, spacer1);
-        nav.setFlexGrow(1, spacer2);
-        nav.setFlexGrow(3, spacer3);
+        nav.getStyle().setMarginLeft("auto").setMarginRight("auto");
 
-        addToNavbar(nav);
+        addToNavbar(title);
+        addToNavbar(true, nav);
     }
 
     private Component navbarLink(
         String text,
+        IconFactory icon,
         Class<? extends Component> target
     ) {
-        RouterLink routerLink = new RouterLink(text, target);
+        var touchscreen = icon.create();
+        touchscreen.getElement().getThemeList().add("only-on-touchscreen");
+
+        var desktop = new Paragraph(text);
+        desktop.getElement().getThemeList().add("only-on-desktop");
+        desktop.getStyle().setMargin("0");
+
+        RouterLink routerLink = new RouterLink(target);
         routerLink.getElement().getThemeList().add("navbar-link");
+        routerLink.add(touchscreen);
+        routerLink.add(desktop);
         return routerLink;
     }
 }

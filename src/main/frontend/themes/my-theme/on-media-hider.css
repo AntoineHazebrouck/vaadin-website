@@ -1,0 +1,13 @@
+[theme="only-on-touchscreen"] {
+	display: none;
+}
+
+@media (max-width: 1024px) {
+	[theme="only-on-desktop"] {
+		display: none;
+	}
+
+	[theme="only-on-touchscreen"] {
+		display: inline-flex;
+	}
+}

@@ -1,5 +1,7 @@
 package antoine.vaadin_website.views;
 
+import antoine.vaadin_website.components.NextPageLink;
+import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.H1;
@@ -11,7 +13,7 @@ import com.vaadin.flow.router.Route;
 
 @Route
 @PageTitle("Antoine HAZEBROUCK")
-public class MainView extends VerticalLayout {
+public class MainView extends Page {
 
     public MainView() {
         var text = new Paragraph();
@@ -39,8 +41,11 @@ public class MainView extends VerticalLayout {
                 new VerticalLayout(new H1("Antoine HAZEBROUCK"), text),
                 image
             )
-            .justify(JustifyContentMode.AROUND)
-            .build()
+                .justify(JustifyContentMode.AROUND)
+                .build()
         );
+        setAlignItems(Alignment.CENTER);
+
+        add(new NextPageLink(ContactView.class));
     }
 }

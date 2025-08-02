@@ -1,9 +1,12 @@
 package antoine.vaadin_website.views;
 
+import antoine.vaadin_website.Constants;
 import antoine.vaadin_website.components.NextPageLink;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Html;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
@@ -28,6 +31,14 @@ public class MainView extends Page {
                 .toString()
         );
 
+        var resumeLink = new Anchor(
+            Constants.Links.RESUME,
+            new Text("Voir mon CV")
+        );
+        resumeLink.setTarget("_tab");
+        resumeLink.getStyle().setMargin("auto");
+        resumeLink.getElement().getThemeList().add("link-to-resume");
+
         var image = new Image(
             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg",
             "Antoine HAZEBROUCK"
@@ -38,7 +49,11 @@ public class MainView extends Page {
 
         add(
             Responsive.row(
-                new VerticalLayout(new H1("Antoine HAZEBROUCK"), text),
+                new VerticalLayout(
+                    new H1("Antoine HAZEBROUCK"),
+                    text,
+                    resumeLink
+                ),
                 image
             )
                 .justify(JustifyContentMode.AROUND)

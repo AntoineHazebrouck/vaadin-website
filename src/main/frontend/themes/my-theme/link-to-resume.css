@@ -1,0 +1,27 @@
+/* Styles for the button-like RouterLink */
+[theme="link-to-resume"] {
+	/* display: inline-flex;
+	align-items: center;
+	justify-content: center; */
+	padding: 8px 16px;
+	border-radius: var(--lumo-border-radius-m);
+	background-color: var(--lumo-primary-color-10pct);
+	color: var(--lumo-primary-text-color);
+	font-weight: 600;
+	cursor: pointer;
+
+
+	gap: 8px;
+
+	transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+[theme="link-to-resume"]:hover {
+	background-color: var(--lumo-primary-color-50pct);
+	text-decoration: none;
+
+}
+
+[theme="link-to-resume"]:active {
+	box-shadow: var(--lumo-box-shadow-s);
+}

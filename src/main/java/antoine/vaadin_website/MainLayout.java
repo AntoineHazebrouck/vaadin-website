@@ -18,7 +18,6 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 
 @Layout
 public class MainLayout extends AppLayout {
@@ -31,17 +30,18 @@ public class MainLayout extends AppLayout {
             .setMarginLeft("4em")
             .setMarginRight("auto");
 
-        var linkToResume = new Anchor(
-            "/ANTOINE_HAZEBROUCK_CV.pdf",
-            new Text("CV")
-        );
+        var linkToResume = new Anchor(Constants.Links.RESUME, new Text("CV"));
         linkToResume.setTarget("_tab");
         linkToResume.getElement().getThemeList().add("navbar-link");
 
         var nav = (HorizontalLayout) Responsive.row(
             navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class),
             navbarLink("Contact", VaadinIcon.CHAT, ContactView.class),
-            navbarLink("Parcours", VaadinIcon.ACADEMY_CAP, ExperiencesView.class),
+            navbarLink(
+                "Parcours",
+                VaadinIcon.ACADEMY_CAP,
+                ExperiencesView.class
+            ),
             navbarLink("Projets", VaadinIcon.CODE, ProjectsView.class),
             linkToResume
         )

@@ -16,6 +16,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
 
@@ -35,15 +37,17 @@ public class MainLayout extends AppLayout {
         linkToResume.getElement().getThemeList().add("navbar-link");
 
         var nav = (HorizontalLayout) Responsive.row(
-            navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class),
-            navbarLink("Contact", VaadinIcon.CHAT, ContactView.class),
-            navbarLink(
-                "Parcours",
-                VaadinIcon.ACADEMY_CAP,
-                ExperiencesView.class
-            ),
-            navbarLink("Projets", VaadinIcon.CODE, ProjectsView.class),
-            linkToResume
+            new Tabs(
+                navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class),
+                navbarLink("Contact", VaadinIcon.CHAT, ContactView.class),
+                navbarLink(
+                    "Parcours",
+                    VaadinIcon.ACADEMY_CAP,
+                    ExperiencesView.class
+                ),
+                navbarLink("Projets", VaadinIcon.CODE, ProjectsView.class),
+                new Tab(linkToResume)
+            )
         )
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.CENTER)
@@ -56,7 +60,7 @@ public class MainLayout extends AppLayout {
         addToNavbar(true, nav);
     }
 
-    private Component navbarLink(
+    private Tab navbarLink(
         String text,
         IconFactory icon,
         Class<? extends Component> target
@@ -69,9 +73,8 @@ public class MainLayout extends AppLayout {
         desktop.getStyle().setMargin("0");
 
         RouterLink routerLink = new RouterLink(target);
-        routerLink.getElement().getThemeList().add("navbar-link");
         routerLink.add(touchscreen);
         routerLink.add(desktop);
-        return routerLink;
+        return new Tab(routerLink);
     }
 }

@@ -1,29 +1,4 @@
-/* navbar */
-vaadin-app-layout a {
-	padding: var(--lumo-space-xs) var(--lumo-space-m);
-	border-radius: var(--lumo-border-radius-m);
-	color: var(--lumo-primary-contrast-color);
-
-}
-
-vaadin-app-layout a:not([highlight]) {
-
-	background-color: var(--lumo-primary-color);
-
-}
-
-vaadin-app-layout a[highlight] {
-	background-color: var(--lumo-primary-color-50pct);
-}
-
-vaadin-app-layout a:hover {
-	background-color: var(--lumo-primary-color-50pct);
-	text-decoration: none;
-
-}
-
-/* navbar */
-
+@import 'navbar.css';
 
 /* html { */
 /* --lumo-primary-color: green; */

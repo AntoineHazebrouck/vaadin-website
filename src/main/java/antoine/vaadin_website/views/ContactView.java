@@ -85,9 +85,16 @@ public class ContactView extends Page {
                 lastname.getValue()
             );
             mailToMe.setText(message.getValue());
-            emails.send(mailToMe);
 
-            Notification.show("Votre message a bien été envoyé !");
+            try {
+                emails.send(mailToMe);
+
+                Notification.show("Votre message a bien été envoyé !");
+            } catch (Exception e) {
+                Notification.show(
+                    "Erreur lors de l'envoi du message ! Veuillez réessayer ou me contacter par email."
+                );
+            }
         });
 
         binder.addStatusChangeListener(event -> {

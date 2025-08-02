@@ -1,5 +1,6 @@
-package antoine.vaadin_website;
+package antoine.vaadin_website.views;
 
+import antoine.vaadin_website.ExperienceCard;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -10,14 +11,18 @@ import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Projects extends VerticalLayout {
+@Route("projets")
+@PageTitle("Projects")
+public class ProjectsView extends VerticalLayout {
 
     private static final String WIDTH = "33%";
 
-    public Projects() {
+    public ProjectsView() {
         setWidthFull();
         setAlignItems(Alignment.CENTER);
 
@@ -138,7 +143,7 @@ public class Projects extends VerticalLayout {
 
     private static Component badges(String... labels) {
         return Responsive.row(
-            Stream.of(labels).map(Projects::badge).toArray(Component[]::new)
+            Stream.of(labels).map(ProjectsView::badge).toArray(Component[]::new)
         )
             .justify(JustifyContentMode.EVENLY)
             .wrap()

@@ -1,4 +1,4 @@
-frontend
+**/frontend/generated
 
 node_modules
 HELP.md

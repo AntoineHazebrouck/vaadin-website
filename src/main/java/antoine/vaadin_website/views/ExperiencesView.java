@@ -1,5 +1,6 @@
-package antoine.vaadin_website;
+package antoine.vaadin_website.views;
 
+import antoine.vaadin_website.ExperienceCard;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.H3;
@@ -7,13 +8,17 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
 import java.util.List;
 
-public class Experiences extends VerticalLayout {
+@Route("parcours")
+@PageTitle("Parcours")
+public class ExperiencesView extends VerticalLayout {
 
     private static final String WIDTH = "100%";
 
-    public Experiences() {
+    public ExperiencesView() {
         var education = Responsive.column(
             new H3("Parcours scolaire"),
             ExperienceCard.builder()

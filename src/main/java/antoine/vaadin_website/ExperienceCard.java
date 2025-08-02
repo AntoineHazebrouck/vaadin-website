@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Builder
 @Data
-class ExperienceCard {
+public class ExperienceCard {
 
     private final String width;
     private final String minWidth;

@@ -15,7 +15,7 @@
 }
 
 [theme="navbar-link"]:hover {
-	background-color: var(--lumo-primary-color-50pct);
+	background-color: var(--lumo-primary-color-10pct);
 	text-decoration: none;
 
 }

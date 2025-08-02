@@ -44,7 +44,7 @@ public class MainView extends Page {
             "Antoine HAZEBROUCK"
         );
         image.setMaxWidth("100%");
-        image.setMaxHeight("80vh");
+        image.setMaxHeight("75vh");
         image.setWidth("auto");
 
         add(

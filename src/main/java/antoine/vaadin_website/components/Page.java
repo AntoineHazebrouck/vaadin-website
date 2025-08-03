@@ -12,7 +12,7 @@ public abstract class Page extends HorizontalLayout {
     protected Page() {
         super();
         getStyle().setMarginLeft("auto").setMarginRight("auto");
-        setAlignItems(Alignment.CENTER);
+        setAlignItems(Alignment.START);
         setJustifyContentMode(JustifyContentMode.CENTER);
         content.setAlignItems(Alignment.CENTER);
         content.setJustifyContentMode(JustifyContentMode.CENTER);

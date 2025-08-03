@@ -28,10 +28,9 @@ public class Information extends VerticalLayout {
 
         add(col);
 
+        add(new H3("Loisirs"));
+
         var col2 = Responsive.column(
-            Responsive.row(new H3("Loisirs"), new H3(""))
-                .justify(JustifyContentMode.AROUND)
-                .build(),
             Responsive.row(
                 label("Musique : "),
                 new Span("guitare, basse, composition")

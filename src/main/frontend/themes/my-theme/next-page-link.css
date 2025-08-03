@@ -1,5 +1,5 @@
 /* Styles for the button-like RouterLink */
-[theme="next-page-link"] {
+[theme~="next-page-link"] {
 	/* display: inline-flex;
 	align-items: center;
 	justify-content: center; */
@@ -17,10 +17,10 @@
 	transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-[theme="next-page-link"]:hover {
-	background-color: var(--lumo-primary-color-50pct);
+[theme~="next-page-link"]:hover {
+	background-color: var(--lumo-primary-color-10pct);
 }
 
-[theme="next-page-link"]:active {
+[theme~="next-page-link"]:active {
 	box-shadow: var(--lumo-box-shadow-s);
 }

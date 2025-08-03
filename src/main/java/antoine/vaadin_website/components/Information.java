@@ -1,4 +1,4 @@
-package antoine.vaadin_website;
+package antoine.vaadin_website.components;
 
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.HasText.WhiteSpace;

@@ -13,5 +13,6 @@ public class PreviousPageLink extends RouterLink {
         icon.setSize("3em");
         add(icon);
         getElement().getThemeList().add("next-page-link");
+        getStyle().setMargin("0.5em");
     }
 }

@@ -9,13 +9,11 @@ public abstract class Page extends HorizontalLayout {
 
     private final VerticalLayout content = new VerticalLayout();
 
-    public Page() {
+    protected Page() {
         super();
         getStyle().setMarginLeft("auto").setMarginRight("auto");
-        setWidth("95%");
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
-        content.setWidth("90%");
         content.setAlignItems(Alignment.CENTER);
         content.setJustifyContentMode(JustifyContentMode.CENTER);
         content.getStyle().setMargin("auto");

@@ -20,6 +20,7 @@ import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Layout
 public class MainLayout extends AppLayout implements AfterNavigationObserver {
@@ -85,6 +86,7 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
     private Tabs tabs() {
         var tabs2 = new Tabs(home, contact, experiences, projects);
         tabs2.setAutoselect(false);
+        tabs2.getThemeNames().add("navbar-tabs");
         return tabs2;
     }
 

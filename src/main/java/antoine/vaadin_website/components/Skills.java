@@ -1,12 +1,12 @@
-package antoine.vaadin_website.views;
+package antoine.vaadin_website.components;
 
 import java.util.List;
 
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
-public class SkillsView extends HorizontalLayout {
-	public SkillsView() {
+public class Skills extends HorizontalLayout {
+	public Skills() {
 		for (String badge : List.of(
 				"Java : Spring Boot",
 				"Hadoop",

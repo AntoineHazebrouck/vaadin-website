@@ -6,9 +6,8 @@ import antoine.vaadin_website.views.ExperiencesView;
 import antoine.vaadin_website.views.MainView;
 import antoine.vaadin_website.views.ProjectsView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.IconFactory;
@@ -18,11 +17,31 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.router.AfterNavigationEvent;
+import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
 
 @Layout
-public class MainLayout extends AppLayout {
+public class MainLayout extends AppLayout implements AfterNavigationObserver {
+
+    private Tab home = navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class);
+    private Tab contact = navbarLink(
+        "Contact",
+        VaadinIcon.CHAT,
+        ContactView.class
+    );
+    private Tab experiences = navbarLink(
+        "Parcours",
+        VaadinIcon.ACADEMY_CAP,
+        ExperiencesView.class
+    );
+    private Tab projects = navbarLink(
+        "Projets",
+        VaadinIcon.CODE,
+        ProjectsView.class
+    );
+    private Tabs tabs = tabs();
 
     public MainLayout() {
         H1 title = new H1("AH");
@@ -32,23 +51,7 @@ public class MainLayout extends AppLayout {
             .setMarginLeft("4em")
             .setMarginRight("auto");
 
-        var linkToResume = new Anchor(Constants.Links.RESUME, new Text("CV"));
-        linkToResume.setTarget("_tab");
-        linkToResume.getElement().getThemeList().add("navbar-link");
-
-        var nav = (HorizontalLayout) Responsive.row(
-            new Tabs(
-                navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class),
-                navbarLink("Contact", VaadinIcon.CHAT, ContactView.class),
-                navbarLink(
-                    "Parcours",
-                    VaadinIcon.ACADEMY_CAP,
-                    ExperiencesView.class
-                ),
-                navbarLink("Projets", VaadinIcon.CODE, ProjectsView.class),
-                new Tab(linkToResume)
-            )
-        )
+        var nav = (HorizontalLayout) Responsive.row(tabs)
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.CENTER)
             .wrap()
@@ -76,5 +79,27 @@ public class MainLayout extends AppLayout {
         routerLink.add(touchscreen);
         routerLink.add(desktop);
         return new Tab(routerLink);
+    }
+
+    private Tabs tabs() {
+        var tabs2 = new Tabs(home, contact, experiences, projects);
+        tabs2.setAutoselect(false);
+        return tabs2;
+    }
+
+    @Override
+    public void afterNavigation(AfterNavigationEvent event) {
+        Tab currentTab =
+            switch (UI.getCurrent().getCurrentView()) {
+                case MainView pass -> home;
+                case ContactView pass -> contact;
+                case ExperiencesView pass -> experiences;
+                case ProjectsView pass -> projects;
+                default -> {
+                    UI.getCurrent().navigate(MainView.class);
+                    yield home;
+                }
+            };
+        tabs.setSelectedTab(currentTab);
     }
 }

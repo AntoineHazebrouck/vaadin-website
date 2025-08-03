@@ -1,6 +1,7 @@
 package antoine.vaadin_website.views;
 
 import antoine.vaadin_website.ExperienceCard;
+import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -10,7 +11,6 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.List;
@@ -18,15 +18,13 @@ import java.util.stream.Stream;
 
 @Route("projets")
 @PageTitle("Projects")
-public class ProjectsView extends VerticalLayout {
+public class ProjectsView extends Page {
 
     private static final String WIDTH = "33%";
 
     public ProjectsView() {
-        setWidthFull();
-        setAlignItems(Alignment.CENTER);
-
-        add(new H3("Mes projets"));
+        // setWidthFull();
+        // setAlignItems(Alignment.CENTER);
 
         var card1 = ExperienceCard.builder()
             .title("Portfolio")
@@ -137,8 +135,9 @@ public class ProjectsView extends VerticalLayout {
             .build()
             .toCard();
 
-        add(Responsive.row(card1, card2, card3).build());
-        add(Responsive.row(card4, card5, card5).build());
+        addContent(new H3("Mes projets"));
+        addContent(Responsive.row(card1, card2, card3).build());
+        addContent(Responsive.row(card4, card5, card5).build());
     }
 
     private static Component badges(String... labels) {
@@ -161,5 +160,15 @@ public class ProjectsView extends VerticalLayout {
         var link = new Anchor(to, "code source");
         link.setTarget("_tab");
         return link;
+    }
+
+    @Override
+    public Class<? extends Component> previous() {
+        return ExperiencesView.class;
+    }
+
+    @Override
+    public Class<? extends Component> next() {
+        return MainView.class;
     }
 }

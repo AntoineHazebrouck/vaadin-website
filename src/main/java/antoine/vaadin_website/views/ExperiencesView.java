@@ -95,7 +95,7 @@ public class ExperiencesView extends Page {
 
         // add(new H3("Mon parcours"));
 
-        add(Responsive.row(education, professional).build());
+        addContent(Responsive.row(education, professional).build());
     }
 
     @Override

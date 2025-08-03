@@ -6,7 +6,7 @@ import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
@@ -23,9 +23,6 @@ public class ProjectsView extends Page {
     private static final String WIDTH = "33%";
 
     public ProjectsView() {
-        // setWidthFull();
-        // setAlignItems(Alignment.CENTER);
-
         var card1 = ExperienceCard.builder()
             .title("Portfolio")
             .headerSuffix(
@@ -74,7 +71,7 @@ public class ProjectsView extends Page {
 
         var card3 = ExperienceCard.builder()
             .title("Alerting par email")
-            .headerSuffix(sourceCodeLink("TODO"))
+            .headerSuffix(disabledSourceCodeLink())
             .content(
                 List.of(
                     new Paragraph(
@@ -99,7 +96,11 @@ public class ProjectsView extends Page {
 
         var card4 = ExperienceCard.builder()
             .title("Explorateur de données")
-            .headerSuffix(sourceCodeLink("TODO"))
+            .headerSuffix(
+                sourceCodeLink(
+                    "https://github.com/AntoineHazebrouck/equipe-J6-master"
+                )
+            )
             .content(
                 List.of(
                     new Paragraph(
@@ -135,7 +136,7 @@ public class ProjectsView extends Page {
             .build()
             .toCard();
 
-        addContent(new H3("Mes projets"));
+        addContent(new H1("Mes projets"));
         addContent(Responsive.row(card1, card2, card3).build());
         addContent(Responsive.row(card4, card5, card5).build());
     }
@@ -159,6 +160,13 @@ public class ProjectsView extends Page {
     private static Anchor sourceCodeLink(String to) {
         var link = new Anchor(to, "code source");
         link.setTarget("_tab");
+        return link;
+    }
+
+    private static Anchor disabledSourceCodeLink() {
+        var link = new Anchor("", "code source");
+        link.setTarget("_tab");
+        link.setEnabled(false);
         return link;
     }
 

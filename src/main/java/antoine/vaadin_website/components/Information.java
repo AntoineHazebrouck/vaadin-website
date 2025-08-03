@@ -38,9 +38,8 @@ public class Information extends VerticalLayout {
                 .alignement(Alignment.CENTER)
                 .wrap()
                 .build(),
-            Responsive.row(label("Dessin"), new H3(""))
+            Responsive.row(label("Dessin"))
                 .alignement(Alignment.CENTER)
-                .justify(JustifyContentMode.AROUND)
                 .wrap()
                 .build(),
             Responsive.row(

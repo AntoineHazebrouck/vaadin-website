@@ -12,7 +12,6 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.IconFactory;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -52,10 +51,11 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
             .setMarginRight("auto");
 
         var nav = (HorizontalLayout) Responsive.row(tabs)
-            .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.CENTER)
             .wrap()
             .build();
+
+        nav.getStyle().setMarginTop("auto");
 
         nav.getStyle().setMarginLeft("auto").setMarginRight("auto");
 
@@ -70,6 +70,7 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
     ) {
         var touchscreen = icon.create();
         touchscreen.getElement().getThemeList().add("only-on-touchscreen");
+        touchscreen.setSize("2em");
 
         var desktop = new Paragraph(text);
         desktop.getElement().getThemeList().add("only-on-desktop");

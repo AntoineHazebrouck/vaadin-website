@@ -60,7 +60,7 @@ public class MainView extends Page {
                 .justify(JustifyContentMode.AROUND)
                 .build()
         );
-        setAlignItems(Alignment.CENTER);
+        // setAlignItems(Alignment.CENTER);
 
         addContent(new Skills());
     }

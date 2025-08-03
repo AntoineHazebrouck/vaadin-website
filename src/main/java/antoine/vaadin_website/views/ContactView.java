@@ -118,6 +118,6 @@ public class ContactView extends Page {
 
     @Override
     public Class<? extends Component> next() {
-        return MainView.class;
+        return ExperiencesView.class;
     }
 }

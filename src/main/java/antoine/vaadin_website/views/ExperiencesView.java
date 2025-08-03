@@ -1,20 +1,21 @@
 package antoine.vaadin_website.views;
 
 import antoine.vaadin_website.ExperienceCard;
+import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.List;
 
 @Route("parcours")
 @PageTitle("Parcours")
-public class ExperiencesView extends VerticalLayout {
+public class ExperiencesView extends Page {
 
     private static final String WIDTH = "100%";
 
@@ -95,5 +96,15 @@ public class ExperiencesView extends VerticalLayout {
         // add(new H3("Mon parcours"));
 
         add(Responsive.row(education, professional).build());
+    }
+
+    @Override
+    public Class<? extends Component> previous() {
+        return ContactView.class;
+    }
+
+    @Override
+    public Class<? extends Component> next() {
+        return ProjectsView.class;
     }
 }

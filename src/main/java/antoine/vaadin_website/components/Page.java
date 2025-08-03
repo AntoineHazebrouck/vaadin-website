@@ -1,14 +1,40 @@
 package antoine.vaadin_website.components;
 
+import antoine.vaadin_website.Constants;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class Page extends VerticalLayout {
+public abstract class Page extends HorizontalLayout {
+
+    private final VerticalLayout content = new VerticalLayout();
 
     public Page() {
         super();
-        setWidth("90%");
+        getStyle().setMarginLeft("auto").setMarginRight("auto");
+        setWidth("95%");
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
-        getStyle().setMargin("auto");
+        content.setWidth("90%");
+        content.setAlignItems(Alignment.CENTER);
+        content.setJustifyContentMode(JustifyContentMode.CENTER);
+        content.getStyle().setMargin("auto");
+
+        PreviousPageLink previous = new PreviousPageLink(previous());
+        previous.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+        NextPageLink next = new NextPageLink(next());
+        next.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+
+        addToStart(previous);
+        addToMiddle(content);
+        addToEnd(next);
+    }
+
+    public abstract Class<? extends Component> previous();
+
+    public abstract Class<? extends Component> next();
+
+    public void addContent(Component... components) {
+        content.add(components);
     }
 }

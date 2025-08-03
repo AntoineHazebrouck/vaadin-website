@@ -22,6 +22,7 @@ public class Skills extends HorizontalLayout {
 			Span pending = new Span(badge);
 			pending.getElement().getThemeList().add("badge");
 
+			setWrap(true);
 			add(pending);
 
 		}

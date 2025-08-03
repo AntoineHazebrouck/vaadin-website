@@ -5,11 +5,11 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoIcon;
 
-public class NextPageLink extends RouterLink {
+public class PreviousPageLink extends RouterLink {
 
-    public NextPageLink(Class<? extends Component> target) {
+    public PreviousPageLink(Class<? extends Component> target) {
         super(target);
-        Icon icon = LumoIcon.ARROW_RIGHT.create();
+        Icon icon = LumoIcon.ARROW_LEFT.create();
         icon.setSize("3em");
         add(icon);
         getElement().getThemeList().add("next-page-link");

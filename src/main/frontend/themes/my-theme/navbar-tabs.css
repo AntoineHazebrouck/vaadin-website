@@ -1,10 +1,10 @@
 @media (pointer: coarse) {
-	[theme="navbar-tabs"] {
+	[theme~="navbar-tabs"] {
 		width: 100%;
 		justify-content: space-evenly;
 	}
 
-	[theme="navbar-tabs"]>vaadin-tab {
+	[theme~="navbar-tabs"]>vaadin-tab {
 		flex-grow: 1;
 	}
 }

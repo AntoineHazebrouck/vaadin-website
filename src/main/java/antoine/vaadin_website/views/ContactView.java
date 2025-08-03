@@ -1,6 +1,7 @@
 package antoine.vaadin_website.views;
 
 import antoine.vaadin_website.components.Page;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.FormRow;
@@ -106,5 +107,15 @@ public class ContactView extends Page {
 
         add(new H1("Me contacter"));
         add(formLayout);
+    }
+
+    @Override
+    public Class<? extends Component> previous() {
+        return MainView.class;
+    }
+
+    @Override
+    public Class<? extends Component> next() {
+        return MainView.class;
     }
 }

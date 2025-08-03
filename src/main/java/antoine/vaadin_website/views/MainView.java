@@ -1,10 +1,10 @@
 package antoine.vaadin_website.views;
 
 import antoine.vaadin_website.Constants;
-import antoine.vaadin_website.components.NextPageLink;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.components.Skills;
 import antoine.vaadin_website.utils.Responsive;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
@@ -48,7 +48,7 @@ public class MainView extends Page {
         image.setMaxHeight("75vh");
         image.setWidth("auto");
 
-        add(
+        addContent(
             Responsive.row(
                 new VerticalLayout(
                     new H1("Antoine HAZEBROUCK"),
@@ -62,7 +62,16 @@ public class MainView extends Page {
         );
         setAlignItems(Alignment.CENTER);
 
-        add(new Skills());
-        add(new NextPageLink(ContactView.class));
+        addContent(new Skills());
+    }
+
+    @Override
+    public Class<? extends Component> previous() {
+        return ProjectsView.class;
+    }
+
+    @Override
+    public Class<? extends Component> next() {
+        return ContactView.class;
     }
 }

@@ -20,7 +20,6 @@ import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Layout
 public class MainLayout extends AppLayout implements AfterNavigationObserver {
@@ -70,11 +69,14 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
         Class<? extends Component> target
     ) {
         var touchscreen = icon.create();
-        touchscreen.getElement().getThemeList().add("only-on-touchscreen");
+        touchscreen
+            .getElement()
+            .getThemeList()
+            .add(Constants.Themes.TOUCHSCREEN_ONLY);
         touchscreen.setSize("2em");
 
         var desktop = new Paragraph(text);
-        desktop.getElement().getThemeList().add("only-on-desktop");
+        desktop.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
         desktop.getStyle().setMargin("0");
 
         RouterLink routerLink = new RouterLink(target);

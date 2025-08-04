@@ -59,7 +59,7 @@ public class Responsive {
                 } else {
                     layout.addClassNames(
                         LumoUtility.FlexDirection.COLUMN,
-                        LumoUtility.FlexDirection.Breakpoint.Large.ROW
+                        LumoUtility.FlexDirection.Breakpoint.XLarge.ROW
                     );
                 }
             }

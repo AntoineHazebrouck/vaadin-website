@@ -2,8 +2,9 @@
 	background-color: var(--lumo-tint-90pct);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1280px) {
 	[theme~="page"] {
+		min-height: 70dvh;
 		border-radius: 0% 0% 30px 30px;
 	}
 }

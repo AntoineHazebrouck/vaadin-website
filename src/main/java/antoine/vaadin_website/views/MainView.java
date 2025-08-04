@@ -42,7 +42,7 @@ public class MainView extends Page {
         resumeLink.getElement().getThemeList().add("link-to-resume");
 
         var image = new Image(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg",
+            "/images/IMG_20250717_210710.webp",
             "Antoine HAZEBROUCK"
         );
         // image.setMaxWidth("100%");

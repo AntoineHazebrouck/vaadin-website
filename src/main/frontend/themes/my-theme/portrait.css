@@ -1,6 +1,6 @@
-/* [theme~="portrait"] {
-	background-color: var(--lumo-tint-90pct);
-} */
+[theme~="portrait"] {
+	border-radius: 5px;
+}
 
 @media (min-width: 1280px) {
 	[theme~="portrait"] {

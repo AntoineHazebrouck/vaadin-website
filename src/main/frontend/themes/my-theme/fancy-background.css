@@ -1,0 +1,9 @@
+[theme~="page"] {
+	background-color: var(--lumo-tint-90pct);
+}
+
+@media (min-width: 800px) {
+	[theme~="page"] {
+		border-radius: 0% 0% 30px 30px;
+	}
+}

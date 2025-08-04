@@ -17,6 +17,7 @@ public abstract class Page extends HorizontalLayout {
         content.setAlignItems(Alignment.CENTER);
         content.setJustifyContentMode(JustifyContentMode.CENTER);
         content.getStyle().setMargin("auto");
+        content.getElement().getThemeList().add("page");
 
         PreviousPageLink previous = new PreviousPageLink(previous());
         previous.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);

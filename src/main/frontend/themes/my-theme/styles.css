@@ -3,8 +3,19 @@
 @import 'on-media-hider.css';
 @import 'link-to-resume.css';
 @import 'navbar-tabs.css';
+@import 'fancy-background.css';
 
-/* html { */
-/* --lumo-primary-color: green; */
-/* --lumo-font-family: 'Roboto'; */
-/* } */
+html {
+	/* --lumo-primary-color: orange; */
+	/* --lumo-secondary-color: orange; */
+	/* --lumo-tertiary-color: orange; */
+	/* --lumo-primary-color-50pct: orange; */
+	/* --lumo-font-family: 'Roboto'; */
+}
+
+html {
+	background-color: #FFFFFF;
+	background-image: url("blob-scene-haikei.svg");
+	background-attachment: fixed;
+	background-size: cover;
+}

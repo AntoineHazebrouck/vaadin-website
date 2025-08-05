@@ -1,32 +1,29 @@
 package antoine.vaadin_website.components;
 
 import antoine.vaadin_website.Constants;
+import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public abstract class Page extends HorizontalLayout {
 
-    private final VerticalLayout content = new VerticalLayout();
+    private final VerticalLayout content = new PageContent();
 
     protected Page() {
         super();
         getStyle().setMarginLeft("auto").setMarginRight("auto");
         setAlignItems(Alignment.START);
         setJustifyContentMode(JustifyContentMode.CENTER);
-        content.setAlignItems(Alignment.CENTER);
-        content.setJustifyContentMode(JustifyContentMode.CENTER);
-        content.getStyle().setMargin("auto");
-        content.getElement().getThemeList().add("page");
 
         PreviousPageLink previous = new PreviousPageLink(previous());
         previous.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
         NextPageLink next = new NextPageLink(next());
         next.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
 
-        addToStart(previous);
-        addToMiddle(content);
-        addToEnd(next);
+        add(previous);
+        add(Responsive.column(content, new MyFooter()).padding("0").build());
+        add(next);
     }
 
     public abstract Class<? extends Component> previous();

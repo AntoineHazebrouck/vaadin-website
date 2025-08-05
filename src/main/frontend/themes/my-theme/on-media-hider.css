@@ -1,13 +1,17 @@
 [theme~="only-on-touchscreen"] {
+	display: inline-flex;
+}
+
+[theme~="only-on-desktop"] {
 	display: none;
 }
 
-@media (max-width: 1280px) {
-	[theme~="only-on-desktop"] {
+@media (min-width: 1024px) {
+	[theme~="only-on-touchscreen"] {
 		display: none;
 	}
 
-	[theme~="only-on-touchscreen"] {
+	[theme~="only-on-desktop"] {
 		display: inline-flex;
 	}
-} 
+}

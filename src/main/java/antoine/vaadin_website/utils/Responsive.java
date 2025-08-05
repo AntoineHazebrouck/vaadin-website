@@ -16,6 +16,7 @@ public class Responsive {
 
     private JustifyContentMode justify;
     private Alignment alignment;
+    private String padding;
     private boolean wrap = false;
 
     public static Responsive row(Component... children) {
@@ -41,6 +42,11 @@ public class Responsive {
         return this;
     }
 
+    public Responsive padding(String padding) {
+        this.padding = padding;
+        return this;
+    }
+
     public Component build() {
         if (justify != null) {
             layout.setJustifyContentMode(justify);
@@ -48,6 +54,10 @@ public class Responsive {
 
         if (alignment != null) {
             layout.setAlignItems(alignment);
+        }
+
+        if (padding != null) {
+            layout.getStyle().setPadding("0");
         }
 
         layout.setWidthFull();
@@ -59,7 +69,7 @@ public class Responsive {
                 } else {
                     layout.addClassNames(
                         LumoUtility.FlexDirection.COLUMN,
-                        LumoUtility.FlexDirection.Breakpoint.XLarge.ROW
+                        LumoUtility.FlexDirection.Breakpoint.Large.ROW
                     );
                 }
             }

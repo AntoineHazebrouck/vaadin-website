@@ -1,6 +1,6 @@
 package antoine.vaadin_website.views;
 
-import antoine.vaadin_website.ExperienceCard;
+import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
@@ -13,17 +13,16 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.util.List;
 import java.util.stream.Stream;
 
 @Route("projets")
-@PageTitle("Projects")
+@PageTitle("Projets")
 public class ProjectsView extends Page {
 
-    private static final String WIDTH = "33%";
-
     public ProjectsView() {
-        var card1 = ExperienceCard.builder()
+        var card1 = CustomCard.builder()
             .title("Portfolio")
             .headerSuffix(
                 sourceCodeLink(
@@ -33,11 +32,10 @@ public class ProjectsView extends Page {
             .content(
                 List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku"))
             )
-            .minWidth(WIDTH)
             .build()
             .toCard();
 
-        var card2 = ExperienceCard.builder()
+        var card2 = CustomCard.builder()
             .title("Jeu de rythme")
             .headerSuffix(
                 sourceCodeLink("https://github.com/AntoineHazebrouck/rythm")
@@ -65,11 +63,10 @@ public class ProjectsView extends Page {
                     )
                 )
             )
-            .minWidth(WIDTH)
             .build()
             .toCard();
 
-        var card3 = ExperienceCard.builder()
+        var card3 = CustomCard.builder()
             .title("Alerting par email")
             .headerSuffix(disabledSourceCodeLink())
             .content(
@@ -90,11 +87,10 @@ public class ProjectsView extends Page {
                     )
                 )
             )
-            .minWidth(WIDTH)
             .build()
             .toCard();
 
-        var card4 = ExperienceCard.builder()
+        var card4 = CustomCard.builder()
             .title("Explorateur de données")
             .headerSuffix(
                 sourceCodeLink(
@@ -109,11 +105,10 @@ public class ProjectsView extends Page {
                     badges("Java", "JavaFX", "Junit")
                 )
             )
-            .minWidth(WIDTH)
             .build()
             .toCard();
 
-        var card5 = ExperienceCard.builder()
+        var card5 = CustomCard.builder()
             .title("Réseau social de petites annonces")
             .headerSuffix(sourceCodeLink("TODO"))
             .content(
@@ -132,13 +127,19 @@ public class ProjectsView extends Page {
                     )
                 )
             )
-            .minWidth(WIDTH)
             .build()
             .toCard();
 
         addContent(new H1("Mes projets"));
-        addContent(Responsive.row(card1, card2, card3).build());
-        addContent(Responsive.row(card4, card5, card5).build());
+        card1.addClassNames(LumoUtility.Flex.ONE);
+        card2.addClassNames(LumoUtility.Flex.ONE);
+        card3.addClassNames(LumoUtility.Flex.ONE);
+        card4.addClassNames(LumoUtility.Flex.ONE);
+        card5.addClassNames(LumoUtility.Flex.ONE);
+
+        addContent(Responsive.row(card1, card2).build());
+        addContent(Responsive.row(card3, card4).build());
+        addContent(Responsive.row(card5).build());
     }
 
     private static Component badges(String... labels) {

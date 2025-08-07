@@ -14,7 +14,6 @@ import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Route
 @PageTitle("Antoine HAZEBROUCK")
@@ -45,10 +44,6 @@ public class MainView extends Page {
             "/images/IMG_20250717_210710.webp",
             "Antoine HAZEBROUCK"
         );
-        // image.setMaxWidth("100%");
-        // image.setMaxHeight("75vh");
-        // image.setHeight("auto");
-        // image.setWidth("auto");
         image.getElement().getThemeList().add("portrait");
 
         addContent(
@@ -63,7 +58,6 @@ public class MainView extends Page {
                 .justify(JustifyContentMode.AROUND)
                 .build()
         );
-        // setAlignItems(Alignment.CENTER);
 
         addContent(new Skills());
     }

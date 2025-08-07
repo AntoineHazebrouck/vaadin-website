@@ -1,6 +1,6 @@
 package antoine.vaadin_website.views;
 
-import antoine.vaadin_website.ExperienceCard;
+import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
@@ -22,7 +22,7 @@ public class ExperiencesView extends Page {
     public ExperiencesView() {
         var education = Responsive.column(
             new H3("Parcours scolaire"),
-            ExperienceCard.builder()
+            CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("15em")
                 .title("BUT Informatique")
@@ -52,7 +52,7 @@ public class ExperiencesView extends Page {
                 .headerSuffix(new Text("2021-2024"))
                 .build()
                 .toCard(),
-            ExperienceCard.builder()
+            CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("15em")
                 .title("Ingénieur informatique (CTI)")
@@ -67,7 +67,7 @@ public class ExperiencesView extends Page {
 
         var professional = Responsive.column(
             new H3("Parcours professionnel"),
-            ExperienceCard.builder()
+            CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("22.5em")
                 .title("Apprenti ingénieur logiciel")
@@ -92,8 +92,6 @@ public class ExperiencesView extends Page {
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.BETWEEN)
             .build();
-
-        // add(new H3("Mon parcours"));
 
         addContent(Responsive.row(education, professional).build());
     }

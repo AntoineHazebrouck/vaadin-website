@@ -1,4 +1,4 @@
-package antoine.vaadin_website;
+package antoine.vaadin_website.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.card.Card;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class ExperienceCard {
+public class CustomCard {
 
     private final String width;
     private final String minWidth;

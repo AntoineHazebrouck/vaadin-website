@@ -23,9 +23,9 @@ import java.util.stream.Stream;
 @Route("projects")
 public class ProjectsView extends Page implements LocaleChangeObserver {
 
-    private H1 title = new H1();
+    H1 title = new H1();
 
-    private CustomCard card1 = CustomCard.builder()
+    CustomCard card1 = CustomCard.builder()
         .headerSuffix(
             new SourceCodeLink(
                 Optional.of(
@@ -36,9 +36,9 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
         .content(List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku")))
         .build();
 
-    private Text card2text1 = new Text("");
-    private Text card2text2 = new Text("");
-    private CustomCard card2 = CustomCard.builder()
+    Text card2text1 = new Text("");
+    Text card2text2 = new Text("");
+    CustomCard card2 = CustomCard.builder()
         .headerSuffix(
             new SourceCodeLink(
                 Optional.of("https://github.com/AntoineHazebrouck/rythm")
@@ -67,11 +67,11 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
         )
         .build();
 
-    private Paragraph card3text = new Paragraph();
-    private ListItem card3listItem1 = new ListItem();
-    private ListItem card3listItem2 = new ListItem();
-    private ListItem card3listItem3 = new ListItem();
-    private CustomCard card3 = CustomCard.builder()
+    Paragraph card3text = new Paragraph();
+    ListItem card3listItem1 = new ListItem();
+    ListItem card3listItem2 = new ListItem();
+    ListItem card3listItem3 = new ListItem();
+    CustomCard card3 = CustomCard.builder()
         .headerSuffix(new SourceCodeLink(Optional.empty()))
         .content(
             List.of(
@@ -86,8 +86,8 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
         )
         .build();
 
-    private Paragraph card4text = new Paragraph();
-    private CustomCard card4 = CustomCard.builder()
+    Paragraph card4text = new Paragraph();
+    CustomCard card4 = CustomCard.builder()
         .headerSuffix(
             new SourceCodeLink(
                 Optional.of(
@@ -98,9 +98,9 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
         .content(List.of(card4text, badges("Java", "JavaFX", "Junit")))
         .build();
 
-    private Paragraph card5text1 = new Paragraph();
-    private Paragraph card5text2 = new Paragraph();
-    private CustomCard card5 = CustomCard.builder()
+    Paragraph card5text1 = new Paragraph();
+    Paragraph card5text2 = new Paragraph();
+    CustomCard card5 = CustomCard.builder()
         .headerSuffix(new SourceCodeLink(Optional.of("TODO")))
         .content(
             List.of(

@@ -3,52 +3,31 @@ package antoine.vaadin_website.views;
 import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.experiences.cards.ButInformatiqueCard;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.UnorderedList;
+import com.vaadin.flow.i18n.LocaleChangeEvent;
+import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import java.util.List;
 
 @Route("experiences")
-public class ExperiencesView extends Page {
+public class ExperiencesView extends Page implements LocaleChangeObserver {
 
-    private static final String WIDTH = "100%";
+    public static final String WIDTH = "100%";
+
+    H3 academicTitle = new H3();
+    H3 professionalTitle = new H3();
 
     public ExperiencesView() {
         var education = Responsive.column(
-            new H3("Parcours scolaire"),
-            CustomCard.builder()
-                .width(WIDTH)
-                .minHeight("15em")
-                .title("BUT Informatique")
-                .subtitle("IUT de Lille")
-                .content(
-                    List.of(
-                        new Paragraph(
-                            "J'y ai appris toutes les bases de la réalisation d'applications : "
-                        ),
-                        new UnorderedList(
-                            new ListItem(
-                                "conception : UI/UX, design, recueil des besoins, prototypage"
-                            ),
-                            new ListItem(
-                                "développement : web, mobile, desktop"
-                            ),
-                            new ListItem(
-                                "validation : tests automatisés, go du client"
-                            ),
-                            new ListItem("déploiement : mise en production"),
-                            new ListItem(
-                                "gestion de projet : agilité, accompagnement client"
-                            )
-                        )
-                    )
-                )
-                .headerSuffix(new Text("2021-2024"))
-                .build(),
+            academicTitle,
+            new ButInformatiqueCard(),
             CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("15em")
@@ -62,7 +41,7 @@ public class ExperiencesView extends Page {
             .build();
 
         var professional = Responsive.column(
-            new H3("Parcours professionnel"),
+            professionalTitle,
             CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("22.5em")
@@ -104,5 +83,13 @@ public class ExperiencesView extends Page {
     @Override
     public String getPageTitle() {
         return getTranslation("experiences.page-title");
+    }
+
+    @Override
+    public void localeChange(LocaleChangeEvent event) {
+        academicTitle.setText(getTranslation("experiences.title.academic"));
+        professionalTitle.setText(
+            getTranslation("experiences.title.professional")
+        );
     }
 }

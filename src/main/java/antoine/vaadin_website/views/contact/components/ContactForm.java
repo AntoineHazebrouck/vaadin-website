@@ -45,10 +45,10 @@ public class ContactForm
         private String message;
     }
 
-    private final TextField firstname = new TextField();
-    private final TextField lastname = new TextField();
-    private final TextField email = new TextField();
-    private final TextArea message = new TextArea();
+    TextField firstname = new TextField();
+    TextField lastname = new TextField();
+    TextField email = new TextField();
+    TextArea message = new TextArea();
 
     @Override
     protected FormLayout initContent() {

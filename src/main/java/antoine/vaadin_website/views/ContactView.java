@@ -16,6 +16,7 @@ import com.vaadin.flow.router.Route;
 
 import antoine.vaadin_website.components.Information;
 import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;

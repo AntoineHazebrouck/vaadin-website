@@ -1,7 +1,7 @@
-package antoine.vaadin_website.views.experiences.cards;
+package antoine.vaadin_website.views.experiences.components.cards;
 
 import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.views.ExperiencesView;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.ListItem;

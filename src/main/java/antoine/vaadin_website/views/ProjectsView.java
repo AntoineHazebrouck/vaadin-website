@@ -4,6 +4,8 @@ import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.components.SourceCodeLink;
 import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;

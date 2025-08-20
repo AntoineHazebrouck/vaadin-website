@@ -2,9 +2,10 @@ package antoine.vaadin_website;
 
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ContactView;
-import antoine.vaadin_website.views.ExperiencesView;
 import antoine.vaadin_website.views.MainView;
 import antoine.vaadin_website.views.ProjectsView;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;

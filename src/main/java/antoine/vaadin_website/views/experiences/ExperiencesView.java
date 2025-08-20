@@ -1,16 +1,16 @@
-package antoine.vaadin_website.views;
+package antoine.vaadin_website.views.experiences;
 
 import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.experiences.cards.ButInformatiqueCard;
-
+import antoine.vaadin_website.views.ContactView;
+import antoine.vaadin_website.views.ProjectsView;
+import antoine.vaadin_website.views.experiences.components.cards.ButInformatiqueCard;
+import antoine.vaadin_website.views.experiences.components.cards.IngenieurInformatiqueCard;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
@@ -28,14 +28,7 @@ public class ExperiencesView extends Page implements LocaleChangeObserver {
         var education = Responsive.column(
             academicTitle,
             new ButInformatiqueCard(),
-            CustomCard.builder()
-                .width(WIDTH)
-                .minHeight("15em")
-                .title("Ingénieur informatique (CTI)")
-                .subtitle("IMT Nord Europe - Lille")
-                .content(List.of())
-                .headerSuffix(new Text("2024-2027"))
-                .build()
+            new IngenieurInformatiqueCard()
         )
             .alignement(Alignment.CENTER)
             .build();

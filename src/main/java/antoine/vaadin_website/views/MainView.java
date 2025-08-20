@@ -1,9 +1,5 @@
 package antoine.vaadin_website.views;
 
-import antoine.vaadin_website.Constants;
-import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.components.Skills;
-import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
@@ -11,8 +7,15 @@ import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+
+import antoine.vaadin_website.Constants;
+import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.Skills;
+import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.contact.ContactView;
 
 @Route
 public class MainView extends Page {
@@ -44,7 +47,7 @@ public class MainView extends Page {
         );
         image.getElement().getThemeList().add("portrait");
 
-        addContent(
+        add(
             Responsive.row(
                 new VerticalLayout(
                     new H1("Antoine HAZEBROUCK"),
@@ -57,7 +60,7 @@ public class MainView extends Page {
                 .build()
         );
 
-        addContent(new Skills());
+        add(new Skills());
     }
 
     @Override

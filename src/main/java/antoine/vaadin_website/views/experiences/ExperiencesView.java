@@ -2,13 +2,15 @@ package antoine.vaadin_website.views.experiences;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.ContactView;
 import antoine.vaadin_website.views.ProjectsView;
+import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.components.cards.ButInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.IngenieurInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.SocgenCard;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
@@ -38,7 +40,7 @@ public class ExperiencesView extends Page implements LocaleChangeObserver {
             .justify(JustifyContentMode.BETWEEN)
             .build();
 
-        addContent(Responsive.row(education, professional).build());
+        add(Responsive.row(education, professional).build());
     }
 
     @Override

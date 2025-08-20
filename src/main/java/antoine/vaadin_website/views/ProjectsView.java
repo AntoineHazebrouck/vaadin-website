@@ -5,7 +5,6 @@ import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.components.SourceCodeLink;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.experiences.ExperiencesView;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
@@ -14,6 +13,7 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
@@ -120,10 +120,10 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
         card4.addClassNames(LumoUtility.Flex.ONE);
         card5.addClassNames(LumoUtility.Flex.ONE);
 
-        addContent(title);
-        addContent(Responsive.row(card1, card2).build());
-        addContent(Responsive.row(card3, card4).build());
-        addContent(Responsive.row(card5).build());
+        add(title);
+        add(Responsive.row(card1, card2).build());
+        add(Responsive.row(card3, card4).build());
+        add(Responsive.row(card5).build());
     }
 
     private static Component badges(String... labels) {

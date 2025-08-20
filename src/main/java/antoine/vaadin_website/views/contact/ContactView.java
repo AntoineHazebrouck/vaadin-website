@@ -1,8 +1,9 @@
-package antoine.vaadin_website.views;
+package antoine.vaadin_website.views.contact;
 
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-
+import antoine.vaadin_website.components.Information;
+import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.views.MainView;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -13,14 +14,12 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.router.Route;
-
-import antoine.vaadin_website.components.Information;
-import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Route("contact")
 public class ContactView extends Page {
@@ -107,9 +106,9 @@ public class ContactView extends Page {
 
         formLayout.addFormRow(send);
 
-        addContent(new H1("Me contacter"));
-        addContent(formLayout);
-        addContent(new Information());
+        add(new H1("Me contacter"));
+        add(formLayout);
+        add(new Information());
     }
 
     @Override

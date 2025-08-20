@@ -1,10 +1,6 @@
 package antoine.vaadin_website;
 
-import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.ContactView;
-import antoine.vaadin_website.views.MainView;
-import antoine.vaadin_website.views.ProjectsView;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
+import java.util.Locale;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
@@ -26,7 +22,12 @@ import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import java.util.Locale;
+
+import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.MainView;
+import antoine.vaadin_website.views.ProjectsView;
+import antoine.vaadin_website.views.contact.ContactView;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
 
 @Layout
 public class MainLayout

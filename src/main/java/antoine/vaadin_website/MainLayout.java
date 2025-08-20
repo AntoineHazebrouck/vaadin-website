@@ -8,21 +8,29 @@ import antoine.vaadin_website.views.ProjectsView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.IconFactory;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.i18n.LocaleChangeEvent;
+import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.lumo.LumoUtility;
+import java.util.Locale;
 
 @Layout
-public class MainLayout extends AppLayout implements AfterNavigationObserver {
+public class MainLayout
+    extends AppLayout
+    implements AfterNavigationObserver, LocaleChangeObserver {
 
     private Tab home = navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class);
     private Tab contact = navbarLink(
@@ -41,6 +49,14 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
         ProjectsView.class
     );
     private Tabs tabs = tabs();
+    private Button toFrench = new Button("FR", event -> {
+        UI.getCurrent().setLocale(Locale.FRENCH);
+        UI.getCurrent().navigate(UI.getCurrent().getCurrentView().getClass());
+    });
+    private Button toEnglish = new Button("EN", event -> {
+        UI.getCurrent().setLocale(Locale.ENGLISH);
+        UI.getCurrent().navigate(UI.getCurrent().getCurrentView().getClass());
+    });
 
     public MainLayout() {
         H1 title = new H1("AH");
@@ -61,6 +77,12 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
 
         addToNavbar(title);
         addToNavbar(true, nav);
+
+        toFrench.addThemeName("to-french-toggle");
+        toEnglish.addThemeName("to-english-toggle");
+        toEnglish.addClassNames(LumoUtility.Margin.End.SMALL);
+
+        addToNavbar(toFrench, toEnglish);
     }
 
     private Tab navbarLink(
@@ -106,5 +128,27 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver {
                 }
             };
         tabs.setSelectedTab(currentTab);
+    }
+
+    @Override
+    public void localeChange(LocaleChangeEvent event) {
+        switch (event.getLocale()) {
+            case Locale locale when locale.equals(Locale.FRENCH) -> {
+                toFrench.setEnabled(false);
+                toEnglish.setEnabled(true);
+                Notification.show("Français activé");
+            }
+            case Locale locale when locale.equals(Locale.ENGLISH) -> {
+                toFrench.setEnabled(true);
+                toEnglish.setEnabled(false);
+                Notification.show("English activated");
+            }
+            default -> {
+                Notification.show(
+                    "Error changing the language, or your language is not available. Defaulting to english."
+                );
+                UI.getCurrent().setLocale(Locale.ENGLISH);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@ package antoine.vaadin_website.views;
 
 import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.SourceCodeLink;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -11,132 +12,113 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.i18n.LocaleChangeEvent;
+import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
-@Route("projets")
-@PageTitle("Projets")
-public class ProjectsView extends Page {
+@Route("projects")
+public class ProjectsView extends Page implements LocaleChangeObserver {
 
-    public ProjectsView() {
-        var card1 = CustomCard.builder()
-            .title("Portfolio")
-            .headerSuffix(
-                sourceCodeLink(
+    private H1 title = new H1();
+
+    private CustomCard card1 = CustomCard.builder()
+        .headerSuffix(
+            new SourceCodeLink(
+                Optional.of(
                     "https://github.com/AntoineHazebrouck/vaadin-website"
                 )
             )
-            .content(
-                List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku"))
-            )
-            .build()
-            .toCard();
+        )
+        .content(List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku")))
+        .build();
 
-        var card2 = CustomCard.builder()
-            .title("Jeu de rythme")
-            .headerSuffix(
-                sourceCodeLink("https://github.com/AntoineHazebrouck/rythm")
+    private Text card2text1 = new Text("");
+    private Text card2text2 = new Text("");
+    private CustomCard card2 = CustomCard.builder()
+        .headerSuffix(
+            new SourceCodeLink(
+                Optional.of("https://github.com/AntoineHazebrouck/rythm")
             )
-            .content(
-                List.of(
-                    new Paragraph(
-                        new Text("Une version web de "),
-                        new Anchor(
-                            "https://osu.ppy.sh/wiki/en/Game_mode/osu%21mania",
-                            "osu!mania"
-                        ),
-                        new Text(
-                            " permettant d'y importer les musiques originales du jeu."
-                        )
+        )
+        .content(
+            List.of(
+                new Paragraph(
+                    card2text1,
+                    new Anchor(
+                        "https://osu.ppy.sh/wiki/en/Game_mode/osu%21mania",
+                        "osu!mania"
                     ),
-                    badges(
-                        "Java : Spring Boot",
-                        "Thymeleaf",
-                        "Javascript",
-                        "Typescript",
-                        "Github Actions",
-                        "Infra/DevOps",
-                        "H2"
-                    )
+                    card2text2
+                ),
+                badges(
+                    "Java : Spring Boot",
+                    "Thymeleaf",
+                    "Javascript",
+                    "Typescript",
+                    "Github Actions",
+                    "Infra/DevOps",
+                    "H2"
                 )
             )
-            .build()
-            .toCard();
+        )
+        .build();
 
-        var card3 = CustomCard.builder()
-            .title("Alerting par email")
-            .headerSuffix(disabledSourceCodeLink())
-            .content(
-                List.of(
-                    new Paragraph(
-                        "Me permet de recevoir des notifications pour des sujets variés : "
-                    ),
-                    new UnorderedList(
-                        new ListItem("idées de recettes"),
-                        new ListItem("loyer"),
-                        new ListItem("anniversaires")
-                    ),
-                    badges(
-                        "Gmail",
-                        "Java : Spring Boot",
-                        "Scala",
-                        "Github Actions"
-                    )
-                )
+    private Paragraph card3text = new Paragraph();
+    private ListItem card3listItem1 = new ListItem();
+    private ListItem card3listItem2 = new ListItem();
+    private ListItem card3listItem3 = new ListItem();
+    private CustomCard card3 = CustomCard.builder()
+        .headerSuffix(new SourceCodeLink(Optional.empty()))
+        .content(
+            List.of(
+                card3text,
+                new UnorderedList(
+                    card3listItem1,
+                    card3listItem2,
+                    card3listItem3
+                ),
+                badges("Gmail", "Java : Spring Boot", "Scala", "Github Actions")
             )
-            .build()
-            .toCard();
+        )
+        .build();
 
-        var card4 = CustomCard.builder()
-            .title("Explorateur de données")
-            .headerSuffix(
-                sourceCodeLink(
+    private Paragraph card4text = new Paragraph();
+    private CustomCard card4 = CustomCard.builder()
+        .headerSuffix(
+            new SourceCodeLink(
+                Optional.of(
                     "https://github.com/AntoineHazebrouck/equipe-J6-master"
                 )
             )
-            .content(
-                List.of(
-                    new Paragraph(
-                        "Application desktop permettant d'explorer un jeu de données visuellement (via deux caractéristiques), et d'y appliquer des algorithmes d'apprentissages."
-                    ),
-                    badges("Java", "JavaFX", "Junit")
-                )
-            )
-            .build()
-            .toCard();
+        )
+        .content(List.of(card4text, badges("Java", "JavaFX", "Junit")))
+        .build();
 
-        var card5 = CustomCard.builder()
-            .title("Réseau social de petites annonces")
-            .headerSuffix(sourceCodeLink("TODO"))
-            .content(
-                List.of(
-                    new Paragraph(
-                        "Réseau web/mobile exclusif permettant aux utilisateurs de poster/consulter des annonces en tout genres (babysitting, jardinage, ...)."
-                    ),
-                    new Paragraph(
-                        "Travail en équipe de 8 sur une semaine en agilité face au client."
-                    ),
-                    badges(
-                        "Java : Spring Boot",
-                        "REST API",
-                        "Postgres",
-                        "Agilité"
-                    )
-                )
+    private Paragraph card5text1 = new Paragraph();
+    private Paragraph card5text2 = new Paragraph();
+    private CustomCard card5 = CustomCard.builder()
+        .headerSuffix(new SourceCodeLink(Optional.of("TODO")))
+        .content(
+            List.of(
+                card5text1,
+                card5text2,
+                badges("Java : Spring Boot", "REST API", "Postgres", "Agilité")
             )
-            .build()
-            .toCard();
+        )
+        .build();
 
-        addContent(new H1("Mes projets"));
+    public ProjectsView() {
         card1.addClassNames(LumoUtility.Flex.ONE);
         card2.addClassNames(LumoUtility.Flex.ONE);
         card3.addClassNames(LumoUtility.Flex.ONE);
         card4.addClassNames(LumoUtility.Flex.ONE);
         card5.addClassNames(LumoUtility.Flex.ONE);
 
+        addContent(title);
         addContent(Responsive.row(card1, card2).build());
         addContent(Responsive.row(card3, card4).build());
         addContent(Responsive.row(card5).build());
@@ -158,19 +140,6 @@ public class ProjectsView extends Page {
         return pending;
     }
 
-    private static Anchor sourceCodeLink(String to) {
-        var link = new Anchor(to, "code source");
-        link.setTarget("_tab");
-        return link;
-    }
-
-    private static Anchor disabledSourceCodeLink() {
-        var link = new Anchor("", "code source");
-        link.setTarget("_tab");
-        link.setEnabled(false);
-        return link;
-    }
-
     @Override
     public Class<? extends Component> previous() {
         return ExperiencesView.class;
@@ -179,5 +148,34 @@ public class ProjectsView extends Page {
     @Override
     public Class<? extends Component> next() {
         return MainView.class;
+    }
+
+    @Override
+    public String getPageTitle() {
+        return getTranslation("projects.page-title");
+    }
+
+    @Override
+    public void localeChange(LocaleChangeEvent event) {
+        title.setText(getTranslation("projects.title"));
+
+        card1.setTitle(getTranslation("projects.card1.title"));
+
+        card2.setTitle(getTranslation("projects.card2.title"));
+        card2text1.setText(getTranslation("projects.card2.text1") + " ");
+        card2text2.setText(" " + getTranslation("projects.card2.text2"));
+
+        card3.setTitle(getTranslation("projects.card3.title"));
+        card3text.setText(getTranslation("projects.card3.text"));
+        card3listItem1.setText(getTranslation("projects.card3.list-item1"));
+        card3listItem2.setText(getTranslation("projects.card3.list-item2"));
+        card3listItem3.setText(getTranslation("projects.card3.list-item3"));
+
+        card4.setTitle(getTranslation("projects.card4.title"));
+        card4text.setText(getTranslation("projects.card4.text"));
+
+        card5.setTitle(getTranslation("projects.card5.title"));
+        card5text1.setText(getTranslation("projects.card5.text1"));
+        card5text2.setText(getTranslation("projects.card5.text2"));
     }
 }

@@ -5,8 +5,9 @@ import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.HasDynamicTitle;
 
-public abstract class Page extends HorizontalLayout {
+public abstract class Page extends HorizontalLayout implements HasDynamicTitle {
 
     private final VerticalLayout content = new PageContent();
 

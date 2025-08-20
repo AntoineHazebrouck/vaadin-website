@@ -1,7 +1,8 @@
 package antoine.vaadin_website.views;
 
-import antoine.vaadin_website.components.Information;
-import antoine.vaadin_website.components.Page;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -11,17 +12,16 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
+import antoine.vaadin_website.components.Information;
+import antoine.vaadin_website.components.Page;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 @Route("contact")
-@PageTitle("Contact")
 public class ContactView extends Page {
 
     @Data
@@ -119,5 +119,10 @@ public class ContactView extends Page {
     @Override
     public Class<? extends Component> next() {
         return ExperiencesView.class;
+    }
+
+    @Override
+    public String getPageTitle() {
+        return getTranslation("contact.page-title");
     }
 }

@@ -9,12 +9,10 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.List;
 
-@Route("parcours")
-@PageTitle("Parcours")
+@Route("experiences")
 public class ExperiencesView extends Page {
 
     private static final String WIDTH = "100%";
@@ -50,8 +48,7 @@ public class ExperiencesView extends Page {
                     )
                 )
                 .headerSuffix(new Text("2021-2024"))
-                .build()
-                .toCard(),
+                .build(),
             CustomCard.builder()
                 .width(WIDTH)
                 .minHeight("15em")
@@ -60,7 +57,6 @@ public class ExperiencesView extends Page {
                 .content(List.of())
                 .headerSuffix(new Text("2024-2027"))
                 .build()
-                .toCard()
         )
             .alignement(Alignment.CENTER)
             .build();
@@ -87,7 +83,6 @@ public class ExperiencesView extends Page {
                 )
                 .headerSuffix(new Text("2023-2027"))
                 .build()
-                .toCard()
         )
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.BETWEEN)
@@ -104,5 +99,10 @@ public class ExperiencesView extends Page {
     @Override
     public Class<? extends Component> next() {
         return ProjectsView.class;
+    }
+
+    @Override
+    public String getPageTitle() {
+        return getTranslation("experiences.page-title");
     }
 }

@@ -5,6 +5,7 @@
 @import 'navbar-tabs.css';
 @import 'page.css';
 @import 'portrait.css';
+@import 'toggle-language-button.css';
 
 html {
 	/* --lumo-primary-color: orange; */

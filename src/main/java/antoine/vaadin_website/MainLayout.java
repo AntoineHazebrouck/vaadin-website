@@ -1,17 +1,15 @@
 package antoine.vaadin_website;
 
+import antoine.vaadin_website.components.NavBarLink;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.ExperiencesView;
 import antoine.vaadin_website.views.main.MainView;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.IconFactory;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -23,7 +21,6 @@ import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Layout;
-import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.util.Locale;
 
@@ -32,28 +29,20 @@ public class MainLayout
     extends AppLayout
     implements AfterNavigationObserver, LocaleChangeObserver {
 
-    private Tab home = navbarLink("Accueil", VaadinIcon.HOME_O, MainView.class);
-    private Tab contact = navbarLink(
-        "Contact",
-        VaadinIcon.CHAT,
-        ContactView.class
-    );
-    private Tab experiences = navbarLink(
-        "Parcours",
+    NavBarLink home = new NavBarLink(VaadinIcon.HOME_O, MainView.class);
+    NavBarLink contact = new NavBarLink(VaadinIcon.CHAT, ContactView.class);
+    NavBarLink experiences = new NavBarLink(
         VaadinIcon.ACADEMY_CAP,
         ExperiencesView.class
     );
-    private Tab projects = navbarLink(
-        "Projets",
-        VaadinIcon.CODE,
-        ProjectsView.class
-    );
-    private Tabs tabs = tabs();
-    private Button toFrench = new Button("FR", event -> {
+    NavBarLink projects = new NavBarLink(VaadinIcon.CODE, ProjectsView.class);
+    Tabs tabs = tabs();
+
+    Button toFrench = new Button("FR", event -> {
         UI.getCurrent().setLocale(Locale.FRENCH);
         UI.getCurrent().navigate(UI.getCurrent().getCurrentView().getClass());
     });
-    private Button toEnglish = new Button("EN", event -> {
+    Button toEnglish = new Button("EN", event -> {
         UI.getCurrent().setLocale(Locale.ENGLISH);
         UI.getCurrent().navigate(UI.getCurrent().getCurrentView().getClass());
     });
@@ -83,28 +72,6 @@ public class MainLayout
         toEnglish.addClassNames(LumoUtility.Margin.End.SMALL);
 
         addToNavbar(toFrench, toEnglish);
-    }
-
-    private Tab navbarLink(
-        String text,
-        IconFactory icon,
-        Class<? extends Component> target
-    ) {
-        var touchscreen = icon.create();
-        touchscreen
-            .getElement()
-            .getThemeList()
-            .add(Constants.Themes.TOUCHSCREEN_ONLY);
-        touchscreen.setSize("2em");
-
-        var desktop = new Paragraph(text);
-        desktop.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
-        desktop.getStyle().setMargin("0");
-
-        RouterLink routerLink = new RouterLink(target);
-        routerLink.add(touchscreen);
-        routerLink.add(desktop);
-        return new Tab(routerLink);
     }
 
     private Tabs tabs() {
@@ -150,5 +117,10 @@ public class MainLayout
                 UI.getCurrent().setLocale(Locale.ENGLISH);
             }
         }
+
+        home.setText(getTranslation("navigation.home"));
+        contact.setText(getTranslation("navigation.contact"));
+        experiences.setText(getTranslation("navigation.experiences"));
+        projects.setText(getTranslation("navigation.projects"));
     }
 }

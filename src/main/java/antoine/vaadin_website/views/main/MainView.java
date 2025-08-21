@@ -1,6 +1,5 @@
 package antoine.vaadin_website.views.main;
 
-import antoine.vaadin_website.Constants;
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.components.Skills;
 import antoine.vaadin_website.utils.Responsive;
@@ -22,16 +21,15 @@ import com.vaadin.flow.router.Route;
 @Route
 public class MainView extends Page implements LocaleChangeObserver {
 
-    Anchor resumeLink = new Anchor(Constants.Links.RESUME);
+    Anchor resumeLink = new Anchor();
+    Text preBold = new Text("");
     Bold bold = new Bold();
     Text postBold = new Text("");
 
     public MainView() {
         bold.getStyle().setFontSize("1.5em");
 
-        var text = new Paragraph();
-        text.add(bold);
-        text.add(postBold);
+        var text = new Paragraph(preBold, bold, postBold);
 
         resumeLink.setTarget("_tab");
         resumeLink.getStyle().setMargin("auto");
@@ -76,7 +74,10 @@ public class MainView extends Page implements LocaleChangeObserver {
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
+        resumeLink.setHref(getTranslation("main.link-to-resume"));
         resumeLink.setText(getTranslation("main.see-resume"));
+
+        preBold.setText(getTranslation("main.pre-text"));
         bold.setText(getTranslation("main.bold-text"));
         postBold.setText(" " + getTranslation("main.post-text"));
     }

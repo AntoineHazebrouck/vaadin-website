@@ -1,5 +1,6 @@
 .portrait {
 	border-radius: var(--lumo-border-radius-m);
+	box-shadow: var(--lumo-box-shadow-xs);
 }
 
 @media (min-width: 1024px) {

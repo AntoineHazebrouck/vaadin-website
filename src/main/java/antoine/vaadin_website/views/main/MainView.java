@@ -5,6 +5,7 @@ import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.main.components.AutoScollBanner;
+import antoine.vaadin_website.views.main.components.BlinkingIcon;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -13,7 +14,11 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -34,7 +39,6 @@ public class MainView extends Page implements LocaleChangeObserver {
         var text = new Paragraph(preBold, bold, postBold);
 
         resumeLink.setTarget("_tab");
-        resumeLink.getStyle().setMargin("auto");
         resumeLink.addClassName("link-to-resume");
 
         var image = new Image(
@@ -48,7 +52,15 @@ public class MainView extends Page implements LocaleChangeObserver {
                 new VerticalLayout(
                     new H1("Antoine HAZEBROUCK"),
                     text,
-                    resumeLink
+                    Responsive.row(
+                        new BlinkingIcon(),
+                        resumeLink,
+                        new Icon(VaadinIcon.ARROW_LEFT)
+                    )
+                    .alignement(Alignment.CENTER)
+                    .justify(JustifyContentMode.CENTER)
+                    .wrap()
+                    .build()
                 ),
                 image
             )

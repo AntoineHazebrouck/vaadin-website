@@ -1,17 +1,17 @@
-[theme~="only-on-touchscreen"] {
+.only-on-touchscreen {
 	display: inline-flex;
 }
 
-[theme~="only-on-desktop"] {
+.only-on-desktop {
 	display: none;
 }
 
 @media (min-width: 1024px) {
-	[theme~="only-on-touchscreen"] {
+	.only-on-touchscreen {
 		display: none;
 	}
 
-	[theme~="only-on-desktop"] {
+	.only-on-desktop {
 		display: inline-flex;
 	}
 }

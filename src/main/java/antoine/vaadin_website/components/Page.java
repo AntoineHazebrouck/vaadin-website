@@ -27,9 +27,9 @@ public abstract class Page
         getContent().setJustifyContentMode(JustifyContentMode.CENTER);
 
         PreviousPageLink previous = new PreviousPageLink(previous());
-        previous.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+        previous.addClassName(Constants.Themes.DESKTOP_ONLY);
         NextPageLink next = new NextPageLink(next());
-        next.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+        next.addClassName(Constants.Themes.DESKTOP_ONLY);
 
         getContent().add(previous);
         getContent()

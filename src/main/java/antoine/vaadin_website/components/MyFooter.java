@@ -8,6 +8,6 @@ public class MyFooter extends Footer {
 
     public MyFooter() {
         add(new Paragraph("© Copyright 2025 Antoine HAZEBROUCK"));
-        getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+        addClassName(Constants.Themes.DESKTOP_ONLY);
     }
 }

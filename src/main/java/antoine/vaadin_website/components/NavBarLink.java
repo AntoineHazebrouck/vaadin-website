@@ -13,13 +13,10 @@ public class NavBarLink extends Tab {
 
     public NavBarLink(IconFactory icon, Class<? extends Component> target) {
         var touchscreen = icon.create();
-        touchscreen
-            .getElement()
-            .getThemeList()
-            .add(Constants.Themes.TOUCHSCREEN_ONLY);
+        touchscreen.addClassName(Constants.Themes.TOUCHSCREEN_ONLY);
         touchscreen.setSize("2em");
 
-        desktop.getElement().getThemeList().add(Constants.Themes.DESKTOP_ONLY);
+        desktop.addClassName(Constants.Themes.DESKTOP_ONLY);
         desktop.getStyle().setMargin("0");
 
         RouterLink routerLink = new RouterLink(target);

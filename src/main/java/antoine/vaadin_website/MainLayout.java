@@ -67,8 +67,8 @@ public class MainLayout
         addToNavbar(title);
         addToNavbar(true, nav);
 
-        toFrench.addThemeName("to-french-toggle");
-        toEnglish.addThemeName("to-english-toggle");
+        toFrench.addClassName("to-french-toggle");
+        toEnglish.addClassName("to-english-toggle");
         toEnglish.addClassNames(LumoUtility.Margin.End.SMALL);
 
         addToNavbar(toFrench, toEnglish);

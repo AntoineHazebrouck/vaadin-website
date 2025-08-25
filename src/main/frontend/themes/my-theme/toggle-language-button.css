@@ -1,9 +1,9 @@
-[theme~="to-french-toggle"] {
+.to-french-toggle {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
 
-[theme~="to-english-toggle"] {
+.to-english-toggle {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }

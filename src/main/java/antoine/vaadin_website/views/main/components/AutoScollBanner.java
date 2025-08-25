@@ -12,22 +12,24 @@ import com.vaadin.flow.dom.Style.WhiteSpace;
 import java.util.List;
 
 @JavaScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js")
-public class AutoplayCarousel extends Composite<Div> {
+public class AutoScollBanner extends Composite<Div> {
 
-    private List<Component> items;
+    private final String className;
+    private final List<Component> items;
 
-    public AutoplayCarousel(Component... items) {
-        this(List.of(items));
+    public AutoScollBanner(String className, Component... items) {
+        this(className, List.of(items));
     }
 
-    public AutoplayCarousel(List<Component> items) {
+    public AutoScollBanner(String className, List<Component> items) {
+        this.className = className;
         this.items = items;
     }
 
     @Override
     protected Div initContent() {
         var container = new Div();
-        container.addClassName("banner-container");
+        container.addClassName(className);
         container
             .getStyle()
             .setWidth("50%")
@@ -38,6 +40,7 @@ public class AutoplayCarousel extends Composite<Div> {
         content.addClassName("banner-content");
         content
             .getStyle()
+            .setWidth("fit-content")
             .setDisplay(Display.FLEX)
             .setWhiteSpace(WhiteSpace.NOWRAP);
 
@@ -58,11 +61,12 @@ public class AutoplayCarousel extends Composite<Div> {
             .executeJs(
                 """
                 setTimeout(() => {
-                    const banner = document.querySelector('.banner-content')
+                    const container = document.querySelector(`.${$0}`)
+                    const banner = document.querySelector(`.${$0} > .banner-content`)
 
                     gsap.to(banner, {
-                        // x: () => scrollDistance,
-                        xPercent: -100,
+                        x: -banner.offsetWidth + container.offsetWidth,
+                        // xPercent: -100,
                         duration: 10,
                         ease: 'power1.inOut',
                         repeat: -1,
@@ -71,7 +75,8 @@ public class AutoplayCarousel extends Composite<Div> {
                     });
 
                 }, 10);
-                """
+                """,
+                className
             );
         return container;
     }

@@ -4,7 +4,7 @@ import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
-import antoine.vaadin_website.views.main.components.AutoplayCarousel;
+import antoine.vaadin_website.views.main.components.AutoScollBanner;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -54,7 +54,8 @@ public class MainView extends Page implements LocaleChangeObserver {
             )
                 .justify(JustifyContentMode.AROUND)
                 .build(),
-            new AutoplayCarousel(
+            new AutoScollBanner(
+                "skills-banner-container",
                 Stream.of(
                     "Java : Spring Boot",
                     "Hadoop",

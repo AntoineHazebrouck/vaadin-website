@@ -71,7 +71,9 @@ public class MainView extends Page implements LocaleChangeObserver {
                 )
                     .map(item -> {
                         Component pending = new Span(item);
-                        pending.getElement().getThemeList().add("badge");
+                        pending
+                            .getStyle()
+                            .setFontSize("var(--lumo-font-size-s)");
                         return pending;
                     })
                     .toList()

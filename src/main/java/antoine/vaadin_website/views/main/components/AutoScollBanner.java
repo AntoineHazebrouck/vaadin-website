@@ -32,9 +32,17 @@ public class AutoScollBanner extends Composite<Div> {
         container.addClassName(className);
         container
             .getStyle()
-            .setWidth("50%")
+            .setWidth("65%")
             .setOverflow(Overflow.HIDDEN)
             .setPosition(Position.RELATIVE);
+
+        container
+            .getStyle()
+            .setBackground("transparent")
+            .set(
+                "background-image",
+                "linear-gradient(to right, transparent 0%, var(--lumo-contrast-10pct) 50%, transparent 100%)"
+            );
 
         var content = new Div();
         content.addClassName("banner-content");
@@ -48,7 +56,10 @@ public class AutoScollBanner extends Composite<Div> {
             .stream()
             .map(item -> {
                 Component wrap = new Div(item);
-                wrap.getStyle().setPaddingLeft("10px").setPaddingRight("10px");
+                wrap
+                    .getStyle()
+                    .setPaddingLeft("var(--lumo-space-m)")
+                    .setPaddingRight("var(--lumo-space-m)");
                 return wrap;
             })
             .toList();

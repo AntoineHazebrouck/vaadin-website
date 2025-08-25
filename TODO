@@ -1,7 +1,7 @@
 - mettre quelques images de mes dessins
 - uploader quelques musiques etc
-- faire un carrousel tournant de tags sur la page principale
 - conserver la locale après le refresh
 - refactor themes to classes
 - mettre GSAP pour des animations
 - page principale telephone, mettre height 100% sur la partie texte
+- mettre des fleches qui clignotent autour voir mon cv

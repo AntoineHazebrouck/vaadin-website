@@ -35,7 +35,7 @@ public class MainView extends Page implements LocaleChangeObserver {
 
         resumeLink.setTarget("_tab");
         resumeLink.getStyle().setMargin("auto");
-        resumeLink.getElement().getThemeList().add("link-to-resume");
+        resumeLink.addClassName("link-to-resume");
 
         var image = new Image(
             "/images/IMG_20250717_210710.webp",

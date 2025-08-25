@@ -1,11 +1,6 @@
-/* Styles for the button-like RouterLink */
-[theme~="next-page-link"] {
-	/* display: inline-flex;
-	align-items: center;
-	justify-content: center; */
+.next-page-link {
 	padding: 8px 16px;
 	border-radius: var(--lumo-border-radius-m);
-	/* background-color: var(--lumo-primary-color); */
 	font-weight: 600;
 	cursor: pointer;
 
@@ -19,10 +14,10 @@
 	background-color: var(--lumo-contrast-30pct);
 }
 
-[theme~="next-page-link"]:hover {
+.next-page-link:hover {
 	background-color: var(--lumo-tint-50pct);
 }
 
-[theme~="next-page-link"]:active {
+.next-page-link:active {
 	box-shadow: var(--lumo-box-shadow-s);
 }

@@ -32,7 +32,8 @@ public class AutoScollBanner extends Composite<Div> {
         container.addClassName(className);
         container
             .getStyle()
-            .setWidth("65%")
+            .setWidth("70%")
+            .setMaxWidth("70vw") // somehow prevents other elements from being pushed to the end
             .setOverflow(Overflow.HIDDEN)
             .setPosition(Position.RELATIVE);
 

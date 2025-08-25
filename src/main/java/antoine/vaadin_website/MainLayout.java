@@ -77,7 +77,7 @@ public class MainLayout
     private Tabs tabs() {
         var tabs2 = new Tabs(home, contact, experiences, projects);
         tabs2.setAutoselect(false);
-        tabs2.getThemeNames().add("navbar-tabs");
+        tabs2.addClassName("navbar-tabs");
         return tabs2;
     }
 

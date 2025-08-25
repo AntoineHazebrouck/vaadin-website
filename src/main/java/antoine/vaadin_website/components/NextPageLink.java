@@ -12,7 +12,7 @@ public class NextPageLink extends RouterLink {
         Icon icon = LumoIcon.ARROW_RIGHT.create();
         icon.setSize("3em");
         add(icon);
-        getElement().getThemeList().add("next-page-link");
+        addClassName("next-page-link");
         getStyle()
             .setMarginLeft("0.5em")
             .setMarginRight("0.5em")

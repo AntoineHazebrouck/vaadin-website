@@ -1,9 +1,9 @@
-[theme~="portrait"] {
-	border-radius: 5px;
+.portrait {
+	border-radius: var(--lumo-border-radius-m);
 }
 
 @media (min-width: 1024px) {
-	[theme~="portrait"] {
+	.portrait {
 		width: 30%;
 		height: auto;
 	}

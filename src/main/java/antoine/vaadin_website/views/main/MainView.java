@@ -41,7 +41,7 @@ public class MainView extends Page implements LocaleChangeObserver {
             "/images/IMG_20250717_210710.webp",
             "Antoine HAZEBROUCK"
         );
-        image.getElement().getThemeList().add("portrait");
+        image.addClassName("portrait");
 
         add(
             Responsive.row(

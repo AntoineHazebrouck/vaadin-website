@@ -1,10 +1,10 @@
 package antoine.vaadin_website.views.main;
 
 import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.components.Skills;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
+import antoine.vaadin_website.views.main.components.AutoplayCarousel;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -12,11 +12,13 @@ import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
+import java.util.stream.Stream;
 
 @Route
 public class MainView extends Page implements LocaleChangeObserver {
@@ -51,10 +53,29 @@ public class MainView extends Page implements LocaleChangeObserver {
                 image
             )
                 .justify(JustifyContentMode.AROUND)
-                .build()
+                .build(),
+            new AutoplayCarousel(
+                Stream.of(
+                    "Java : Spring Boot",
+                    "Hadoop",
+                    "Spark",
+                    "Hive",
+                    "Python",
+                    "CI/CD",
+                    "Dashboards",
+                    "Gherkin",
+                    "Typescript/Javascript : Angular",
+                    "Finance",
+                    "REST APIs"
+                )
+                    .map(item -> {
+                        Component pending = new Span(item);
+                        pending.getElement().getThemeList().add("badge");
+                        return pending;
+                    })
+                    .toList()
+            )
         );
-
-        add(new Skills());
     }
 
     @Override

@@ -8,6 +8,6 @@ public class PageContent extends VerticalLayout {
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         getStyle().setMargin("auto");
-        getElement().getThemeList().add("page");
+        addClassName("page");
     }
 }

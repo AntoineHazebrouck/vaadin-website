@@ -1,10 +1,11 @@
-[theme~="page"] {
+.page {
 	background-color: var(--lumo-tint-90pct);
 }
 
 @media (min-width: 1024px) {
-	[theme~="page"] {
+	.page {
 		min-height: 70dvh;
-		border-radius: 0% 0% 30px 30px;
+		border-radius: 0% 0% var(--lumo-border-radius-l) var(--lumo-border-radius-l);
+		box-shadow: var(--lumo-box-shadow-xl);
 	}
 }

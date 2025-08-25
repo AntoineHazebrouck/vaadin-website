@@ -12,6 +12,8 @@
 
 	color: var(--lumo-shade);
 	background-color: var(--lumo-contrast-30pct);
+
+	box-shadow: var(--lumo-box-shadow-l);
 }
 
 .next-page-link:hover {

@@ -1,11 +1,8 @@
 package antoine.vaadin_website.views;
 
-import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.components.SourceCodeLink;
-import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
-import antoine.vaadin_website.views.main.MainView;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -20,9 +17,13 @@ import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+
+import antoine.vaadin_website.components.CustomCard;
+import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.SourceCodeLink;
+import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
+import antoine.vaadin_website.views.main.MainView;
 
 @Route("projects")
 public class ProjectsView extends Page implements LocaleChangeObserver {
@@ -105,7 +106,7 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
     Paragraph card5text1 = new Paragraph();
     Paragraph card5text2 = new Paragraph();
     CustomCard card5 = CustomCard.builder()
-        .headerSuffix(new SourceCodeLink(Optional.of("TODO")))
+        .headerSuffix(new SourceCodeLink(Optional.empty()))
         .content(
             List.of(
                 card5text1,

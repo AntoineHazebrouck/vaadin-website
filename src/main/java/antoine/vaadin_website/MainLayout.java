@@ -6,7 +6,6 @@ import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.ExperiencesView;
 import antoine.vaadin_website.views.main.MainView;
 import antoine.vaadin_website.views.projects.ProjectsView;
-
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
@@ -21,14 +20,21 @@ import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Layout;
+import com.vaadin.flow.router.PreserveOnRefresh;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.util.Locale;
 
 @Layout
+@PreserveOnRefresh
 public class MainLayout
     extends AppLayout
-    implements AfterNavigationObserver, LocaleChangeObserver {
+    implements
+        AfterNavigationObserver, LocaleChangeObserver, BeforeEnterObserver {
+
+    Locale current;
 
     NavBarLink home = new NavBarLink(VaadinIcon.HOME_O, MainView.class);
     NavBarLink contact = new NavBarLink(VaadinIcon.CHAT, ContactView.class);
@@ -123,5 +129,14 @@ public class MainLayout
         contact.setText(getTranslation("navigation.contact"));
         experiences.setText(getTranslation("navigation.experiences"));
         projects.setText(getTranslation("navigation.projects"));
+
+        current = event.getLocale();
+    }
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (event.isRefreshEvent()) {
+            event.getUI().setLocale(current);
+        }
     }
 }

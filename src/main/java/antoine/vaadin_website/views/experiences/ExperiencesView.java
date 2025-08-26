@@ -2,11 +2,11 @@ package antoine.vaadin_website.views.experiences;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.components.cards.ButInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.IngenieurInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.SocgenCard;
+import antoine.vaadin_website.views.projects.ProjectsView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;

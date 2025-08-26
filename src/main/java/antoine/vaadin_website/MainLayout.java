@@ -2,10 +2,11 @@ package antoine.vaadin_website;
 
 import antoine.vaadin_website.components.NavBarLink;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.ExperiencesView;
 import antoine.vaadin_website.views.main.MainView;
+import antoine.vaadin_website.views.projects.ProjectsView;
+
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;

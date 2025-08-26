@@ -2,11 +2,12 @@ package antoine.vaadin_website.views.main;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.main.components.AutoScollBanner;
 import antoine.vaadin_website.views.main.components.Bold;
 import antoine.vaadin_website.views.main.components.PointingArrows;
+import antoine.vaadin_website.views.projects.ProjectsView;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;

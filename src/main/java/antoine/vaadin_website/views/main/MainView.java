@@ -5,8 +5,8 @@ import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.ProjectsView;
 import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.main.components.AutoScollBanner;
-import antoine.vaadin_website.views.main.components.BlinkingIcon;
 import antoine.vaadin_website.views.main.components.Bold;
+import antoine.vaadin_website.views.main.components.PointingArrows;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
@@ -52,15 +52,7 @@ public class MainView extends Page implements LocaleChangeObserver {
                 new VerticalLayout(
                     new H1("Antoine HAZEBROUCK"),
                     text,
-                    Responsive.row(
-                        new BlinkingIcon(),
-                        resumeLink,
-                        new Icon(VaadinIcon.ARROW_LEFT)
-                    )
-                    .alignement(Alignment.CENTER)
-                    .justify(JustifyContentMode.CENTER)
-                    .wrap()
-                    .build()
+                    new PointingArrows(resumeLink)
                 ),
                 image
             )

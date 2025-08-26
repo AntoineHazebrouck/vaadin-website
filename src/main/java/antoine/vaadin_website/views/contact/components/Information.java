@@ -1,9 +1,11 @@
-package antoine.vaadin_website.components;
+package antoine.vaadin_website.views.contact.components;
 
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasText.WhiteSpace;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Span;
@@ -15,6 +17,8 @@ import com.vaadin.flow.i18n.LocaleChangeObserver;
 public class Information
     extends Composite<VerticalLayout>
     implements LocaleChangeObserver {
+
+    Button listen = listenButton();
 
     H3 informationTitle = new H3();
     H3 hobbiesTitle = new H3();
@@ -45,7 +49,7 @@ public class Information
     ).build();
 
     Component col2 = Responsive.column(
-        Responsive.row(keyMusic, valueMusic)
+        Responsive.row(keyMusic, valueMusic, listen)
             .alignement(Alignment.CENTER)
             .wrap()
             .build(),
@@ -55,6 +59,15 @@ public class Information
             .wrap()
             .build()
     ).build();
+
+    private Button listenButton() {
+        var button = new Button("", event -> {
+            new AudioDialog().open();
+        });
+
+        button.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        return button;
+    }
 
     @Override
     protected VerticalLayout initContent() {
@@ -86,6 +99,8 @@ public class Information
         hobbiesTitle.setText(
             getTranslation("contact.information.hobbies-title")
         );
+
+        listen.setText(getTranslation("contact.information.listen"));
 
         keyCity.setText(
             getTranslation("contact.information.keys.city") + " : "

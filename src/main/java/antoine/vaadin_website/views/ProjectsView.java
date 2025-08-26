@@ -1,9 +1,12 @@
 package antoine.vaadin_website.views;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-
+import antoine.vaadin_website.components.CustomCard;
+import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.SourceCodeLink;
+import antoine.vaadin_website.utils.Responsive;
+import antoine.vaadin_website.views.experiences.ExperiencesView;
+import antoine.vaadin_website.views.main.MainView;
+import antoine.vaadin_website.views.projects.components.VaadinWebsite;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Anchor;
@@ -17,29 +20,16 @@ import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-
-import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.components.SourceCodeLink;
-import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
-import antoine.vaadin_website.views.main.MainView;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Route("projects")
 public class ProjectsView extends Page implements LocaleChangeObserver {
 
     H1 title = new H1();
 
-    CustomCard card1 = CustomCard.builder()
-        .headerSuffix(
-            new SourceCodeLink(
-                Optional.of(
-                    "https://github.com/AntoineHazebrouck/vaadin-website"
-                )
-            )
-        )
-        .content(List.of(badges("Java : Spring Boot", "Vaadin Flow", "Heroku")))
-        .build();
+    Component card1 = new VaadinWebsite();
 
     Text card2text1 = new Text("");
     Text card2text2 = new Text("");
@@ -163,8 +153,6 @@ public class ProjectsView extends Page implements LocaleChangeObserver {
     @Override
     public void localeChange(LocaleChangeEvent event) {
         title.setText(getTranslation("projects.title"));
-
-        card1.setTitle(getTranslation("projects.card1.title"));
 
         card2.setTitle(getTranslation("projects.card2.title"));
         card2text1.setText(getTranslation("projects.card2.text1") + " ");

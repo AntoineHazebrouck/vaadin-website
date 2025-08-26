@@ -1,7 +1,9 @@
 package antoine.vaadin_website.views.contact.components;
 
 import antoine.vaadin_website.utils.Responsive;
+import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasText.WhiteSpace;
 import com.vaadin.flow.component.button.Button;
@@ -18,7 +20,8 @@ public class Information
     extends Composite<VerticalLayout>
     implements LocaleChangeObserver {
 
-    Button listen = listenButton();
+    Button listen = button(event -> new AudioDialog().open());
+    Button see = button(event -> new DrawingsDialog().open());
 
     H3 informationTitle = new H3();
     H3 hobbiesTitle = new H3();
@@ -53,17 +56,18 @@ public class Information
             .alignement(Alignment.CENTER)
             .wrap()
             .build(),
-        Responsive.row(keyDrawing).alignement(Alignment.CENTER).wrap().build(),
+        Responsive.row(keyDrawing, see)
+            .alignement(Alignment.CENTER)
+            .wrap()
+            .build(),
         Responsive.row(keyVideoGames, valueVideoGames)
             .alignement(Alignment.CENTER)
             .wrap()
             .build()
     ).build();
 
-    private Button listenButton() {
-        var button = new Button("", event -> {
-            new AudioDialog().open();
-        });
+    private Button button(ComponentEventListener<ClickEvent<Button>> handler) {
+        var button = new Button("", handler);
 
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
         return button;
@@ -101,6 +105,7 @@ public class Information
         );
 
         listen.setText(getTranslation("contact.information.listen"));
+        see.setText(getTranslation("contact.information.see"));
 
         keyCity.setText(
             getTranslation("contact.information.keys.city") + " : "

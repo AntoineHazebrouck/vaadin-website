@@ -18,6 +18,7 @@ public class Responsive {
     private Alignment alignment;
     private String padding;
     private boolean wrap = false;
+    private boolean spacing = true;
 
     public static Responsive row(Component... children) {
         return new Responsive(new HorizontalLayout(children));
@@ -44,6 +45,11 @@ public class Responsive {
 
     public Responsive padding(String padding) {
         this.padding = padding;
+        return this;
+    }
+
+    public Responsive withoutSpacing() {
+        this.spacing = false;
         return this;
     }
 
@@ -75,6 +81,7 @@ public class Responsive {
             }
             case VerticalLayout then -> {
                 layout.addClassNames(LumoUtility.FlexDirection.COLUMN);
+                ((VerticalLayout) layout).setSpacing(spacing);
             }
             default -> {}
         }

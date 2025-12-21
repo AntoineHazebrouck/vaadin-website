@@ -11,7 +11,9 @@ import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 
@@ -19,8 +21,8 @@ public class AboutMePage
     extends Composite<Page>
     implements LocaleChangeObserver {
 
-    Button listen = button(event -> new AudioDialog().open());
-    Button see = button(event -> new DrawingsDialog().open());
+    private final Button listen = button(event -> new AudioDialog().open());
+    private final Button see = button(event -> new DrawingsDialog().open());
 
     @Override
     protected Page initContent() {
@@ -33,7 +35,52 @@ public class AboutMePage
         Accordion accordion = new Accordion();
         AccordionPanel skills = new AccordionPanel(
             "Skills",
-            Responsive.column(new Span("TODO")).build()
+            Responsive.column(
+                span(
+                    "User interfaces : I can create simple but effective UIs for all needs "
+                ),
+                list(
+                    "single page applications with Angular/React/Vaadin",
+                    "multi page applications with JSP/Thymeleaf",
+                    "desktop apps with Java",
+                    "mobile apps with Flutter"
+                ),
+                span(
+                    "Backends : I master server side computing, especially with Java/Spring Boot"
+                ),
+                list(
+                    "RESTful APIs",
+                    "Sockets",
+                    "Spring Data ORM",
+                    "Spring Security",
+                    "Legacy maintenance",
+                    "Software architecture"
+                ),
+                span(
+                    "Data : I know how to handle (process and store) large datasets"
+                ),
+                list(
+                    "Hadoop/Spark",
+                    "Spring Batch",
+                    "Pandas",
+                    "Relational databases",
+                    "Distributed databases"
+                ),
+                span(
+                    "Testing : I always ensure proper testing to make my applications resilient"
+                ),
+                list(
+                    "Test Driven Development",
+                    "Behavior Driven Development (Gherkin)",
+                    "Unit tests, integration tests, UI tests"
+                ),
+                span(
+                    "DevOps : I can safely ship applications into users' hands"
+                ),
+                list("Jenkins/Github Actions", "Docker", "AWS")
+            )
+                .withoutSpacing()
+                .build()
         );
         AccordionPanel hobbies = new AccordionPanel(
             "Hobbies",
@@ -54,15 +101,31 @@ public class AboutMePage
                 new Span("+33 6 51 73 08 05"),
                 new Span("antoine.hazebrouck5@gmail.com"),
                 new Span("LinkedIn TODO"),
-                new Span("59000, Lille")
+                new Span("59000, Lille"),
+                new Span("French driving license + car")
             ).build()
         );
 
         accordion.add(skills);
         accordion.add(hobbies);
         accordion.add(personnalInformation);
+        // TODO add soft skills
 
         return accordion;
+    }
+
+    private UnorderedList list(String... text) {
+        var list = new UnorderedList();
+        list.getStyle().setMargin("0");
+        for (String string : text) {
+            list.add(new ListItem(string));
+        }
+        return list;
+    }
+
+    private Span span(String text) {
+        var span = new Span(text);
+        return span;
     }
 
     private Button button(ComponentEventListener<ClickEvent<Button>> handler) {

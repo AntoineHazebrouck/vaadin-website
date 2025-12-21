@@ -19,25 +19,25 @@ public class ContactView extends Page implements LocaleChangeObserver {
     H1 title = new H1();
 
     public ContactView(JavaMailSender emails) {
-        add(title);
-        add(new ContactForm(emails));
-        add(new Information());
+        // add(title);
+        // add(new ContactForm(emails));
+        // add(new Information());
     }
 
-    @Override
-    public Class<? extends Component> previous() {
-        return MainView.class;
-    }
+    // @Override
+    // public Class<? extends Component> previous() {
+    //     return MainView.class;
+    // }
 
-    @Override
-    public Class<? extends Component> next() {
-        return ExperiencesView.class;
-    }
+    // @Override
+    // public Class<? extends Component> next() {
+    //     return ExperiencesView.class;
+    // }
 
-    @Override
-    public String getPageTitle() {
-        return getTranslation("contact.page-title");
-    }
+    // @Override
+    // public String getPageTitle() {
+    //     return getTranslation("contact.page-title");
+    // }
 
     @Override
     public void localeChange(LocaleChangeEvent event) {

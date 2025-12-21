@@ -1,107 +1,82 @@
 package antoine.vaadin_website.views.main;
 
-import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.CopyrightFooter;
+import antoine.vaadin_website.components.pages.AboutMePage;
+import antoine.vaadin_website.components.pages.IntroductionPage;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.contact.ContactView;
-import antoine.vaadin_website.views.main.components.AutoScollBanner;
 import antoine.vaadin_website.views.main.components.Bold;
-import antoine.vaadin_website.views.main.components.PointingArrows;
-import antoine.vaadin_website.views.projects.ProjectsView;
-
-import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
+import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
-import java.util.stream.Stream;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Route
-public class MainView extends Page implements LocaleChangeObserver {
+public class MainView
+    extends Composite<VerticalLayout>
+    implements LocaleChangeObserver {
 
-    Anchor resumeLink = new Anchor();
     Text preBold = new Text("");
     Bold bold = new Bold();
     Text postBold = new Text("");
 
     public MainView() {
-        bold.getStyle().setFontSize("1.5em");
+        getContent()
+            .add(
+                Responsive.row(
+                    new IntroductionPage(),
+                    new AboutMePage()
+                ).build()
+            );
+        getContent().add(contactMe());
+        getContent().add(experiences());
+        getContent().add(projects());
+        getContent().add(new CopyrightFooter());
 
-        var text = new Paragraph(preBold, bold, postBold);
-
-        resumeLink.setTarget("_tab");
-        resumeLink.addClassName("link-to-resume");
-
-        var image = new Image(
-            "/images/IMG_20250717_210710.webp",
-            "Antoine HAZEBROUCK"
-        );
-        image.addClassName("portrait");
-
-        add(
-            Responsive.row(
-                new VerticalLayout(
-                    new H1("Antoine HAZEBROUCK"),
-                    text,
-                    new PointingArrows(resumeLink)
-                ),
-                image
-            )
-                .justify(JustifyContentMode.AROUND)
-                .build(),
-            new AutoScollBanner(
-                "skills-banner-container",
-                Stream.of(
-                    "Java : Spring Boot",
-                    "Hadoop",
-                    "Spark",
-                    "Hive",
-                    "Python",
-                    "CI/CD",
-                    "Dashboards",
-                    "Gherkin",
-                    "Typescript/Javascript : Angular",
-                    "Finance",
-                    "REST APIs"
-                )
-                    .map(item -> {
-                        Component pending = new Span(item);
-                        pending
-                            .getStyle()
-                            .setFontSize("var(--lumo-font-size-s)");
-                        return pending;
-                    })
-                    .toList()
-            )
+        addClassNames(
+            LumoUtility.Gap.Row.MEDIUM,
+            LumoUtility.Gap.Column.MEDIUM,
+            LumoUtility.Padding.Top.MEDIUM,
+            LumoUtility.Padding.Right.XLARGE,
+            LumoUtility.Padding.Bottom.MEDIUM,
+            LumoUtility.Padding.Left.XLARGE
         );
     }
 
-    @Override
-    public Class<? extends Component> previous() {
-        return ProjectsView.class;
+    private Card contactMe() {
+        Card card = new Card();
+        card.setTitle("Contact me");
+
+        return card;
     }
 
-    @Override
-    public Class<? extends Component> next() {
-        return ContactView.class;
+    private Card experiences() {
+        Card card = new Card();
+        card.setTitle("Experiences");
+
+        card.add("contact form + email as info");
+        card.setThemeName("outlined");
+        card.getStyle().set("width", "100%");
+
+        return card;
     }
 
-    @Override
-    public String getPageTitle() {
-        return getTranslation("main.page-title");
+    private Card projects() {
+        Card card = new Card();
+        card.setTitle("My projects");
+
+        card.add("contact form + email as info");
+        card.setThemeName("outlined");
+        card.getStyle().set("width", "100%");
+
+        return card;
     }
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
-        resumeLink.setHref(getTranslation("main.link-to-resume"));
-        resumeLink.setText(getTranslation("main.see-resume"));
-
         preBold.setText(getTranslation("main.pre-text"));
         bold.setText(getTranslation("main.bold-text"));
         postBold.setText(" " + getTranslation("main.post-text"));

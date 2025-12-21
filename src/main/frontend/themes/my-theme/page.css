@@ -4,8 +4,9 @@
 
 @media (min-width: 1024px) {
 	.page {
-		min-height: 70dvh;
-		border-radius: 0% 0% var(--lumo-border-radius-l) var(--lumo-border-radius-l);
+		/* min-height: 70dvh; */
+		margin: var(--vaadin-gap-xl);
+		border-radius: var(--lumo-border-radius-l) var(--lumo-border-radius-l) var(--lumo-border-radius-l) var(--lumo-border-radius-l);
 		box-shadow: var(--lumo-box-shadow-xl);
 	}
 }

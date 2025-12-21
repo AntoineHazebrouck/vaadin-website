@@ -1,47 +1,37 @@
 package antoine.vaadin_website.components;
 
-import antoine.vaadin_website.Constants;
-import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.HasDynamicTitle;
+import com.vaadin.flow.component.card.Card;
+import com.vaadin.flow.component.html.Paragraph;
 
-public abstract class Page
-    extends Composite<HorizontalLayout>
-    implements HasDynamicTitle {
+public class Page extends Composite<Card> {
 
-    private final VerticalLayout page = new PageContent();
+    private final Card card = new Card();
 
     @Override
-    protected HorizontalLayout initContent() {
-        return new HorizontalLayout();
+    protected Card initContent() {
+        card.setThemeName("outlined");
+        card.getStyle().set("width", "100%");
+        return card;
     }
 
-    protected Page() {
-        getStyle().setMarginLeft("auto").setMarginRight("auto");
-        getContent().setAlignItems(Alignment.START);
-        getContent().setJustifyContentMode(JustifyContentMode.CENTER);
-
-        PreviousPageLink previous = new PreviousPageLink(previous());
-        previous.addClassName(Constants.Themes.DESKTOP_ONLY);
-        NextPageLink next = new NextPageLink(next());
-        next.addClassName(Constants.Themes.DESKTOP_ONLY);
-
-        getContent().add(previous);
-        getContent()
-            .add(Responsive.column(page, new MyFooter()).padding("0").build());
-        getContent().add(next);
+    public Page title(String title) {
+        card.setTitle(title);
+        return this;
     }
 
-    public abstract Class<? extends Component> previous();
+    public Page body(String text) {
+        return body(new Paragraph(text));
+    }
 
-    public abstract Class<? extends Component> next();
+    public Page body(Component... components) {
+        card.add(components);
+        return this;
+    }
 
-    public void add(Component... components) {
-        page.add(components);
+    public Page footer(Component... components) {
+        card.addToFooter(components);
+        return this;
     }
 }

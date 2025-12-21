@@ -2,12 +2,9 @@ package antoine.vaadin_website.views.experiences;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.contact.ContactView;
 import antoine.vaadin_website.views.experiences.components.cards.ButInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.IngenieurInformatiqueCard;
 import antoine.vaadin_website.views.experiences.components.cards.SocgenCard;
-import antoine.vaadin_website.views.projects.ProjectsView;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -39,24 +36,23 @@ public class ExperiencesView extends Page implements LocaleChangeObserver {
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.BETWEEN)
             .build();
-
-        add(Responsive.row(education, professional).build());
+        // add(Responsive.row(education, professional).build());
     }
 
-    @Override
-    public Class<? extends Component> previous() {
-        return ContactView.class;
-    }
+    // @Override
+    // public Class<? extends Component> previous() {
+    //     return ContactView.class;
+    // }
 
-    @Override
-    public Class<? extends Component> next() {
-        return ProjectsView.class;
-    }
+    // @Override
+    // public Class<? extends Component> next() {
+    //     return ProjectsView.class;
+    // }
 
-    @Override
-    public String getPageTitle() {
-        return getTranslation("experiences.page-title");
-    }
+    // @Override
+    // public String getPageTitle() {
+    //     return getTranslation("experiences.page-title");
+    // }
 
     @Override
     public void localeChange(LocaleChangeEvent event) {

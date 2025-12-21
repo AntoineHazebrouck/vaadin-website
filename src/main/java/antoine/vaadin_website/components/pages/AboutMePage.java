@@ -36,48 +36,48 @@ public class AboutMePage
         AccordionPanel skills = new AccordionPanel(
             "Skills",
             Responsive.column(
-                span(
-                    "User interfaces : I can create simple but effective UIs for all needs "
+                new AccordionPanel(
+                    "User interfaces : Creating simple but effective UIs for all needs",
+                    list(
+                        "single page applications with Angular/React/Vaadin",
+                        "multi page applications with JSP/Thymeleaf",
+                        "desktop apps with Java",
+                        "mobile apps with Flutter"
+                    )
                 ),
-                list(
-                    "single page applications with Angular/React/Vaadin",
-                    "multi page applications with JSP/Thymeleaf",
-                    "desktop apps with Java",
-                    "mobile apps with Flutter"
+                new AccordionPanel(
+                    "Backends : Server side computing with Java/Spring Boot",
+                    list(
+                        "RESTful APIs",
+                        "Sockets",
+                        "Spring Data ORM",
+                        "Spring Security",
+                        "Legacy maintenance",
+                        "Software architecture"
+                    )
                 ),
-                span(
-                    "Backends : I master server side computing, especially with Java/Spring Boot"
+                new AccordionPanel(
+                    "Data : Processing and storing data",
+                    list(
+                        "Hadoop/Spark",
+                        "Spring Batch",
+                        "Pandas",
+                        "Relational databases",
+                        "Distributed databases"
+                    )
                 ),
-                list(
-                    "RESTful APIs",
-                    "Sockets",
-                    "Spring Data ORM",
-                    "Spring Security",
-                    "Legacy maintenance",
-                    "Software architecture"
+                new AccordionPanel(
+                    "Testing : Ensuring proper testing to make my applications resilient",
+                    list(
+                        "Test Driven Development",
+                        "Behavior Driven Development (Gherkin)",
+                        "Unit tests, integration tests, UI tests"
+                    )
                 ),
-                span(
-                    "Data : I know how to handle (process and store) large datasets"
-                ),
-                list(
-                    "Hadoop/Spark",
-                    "Spring Batch",
-                    "Pandas",
-                    "Relational databases",
-                    "Distributed databases"
-                ),
-                span(
-                    "Testing : I always ensure proper testing to make my applications resilient"
-                ),
-                list(
-                    "Test Driven Development",
-                    "Behavior Driven Development (Gherkin)",
-                    "Unit tests, integration tests, UI tests"
-                ),
-                span(
-                    "DevOps : I can safely ship applications into users' hands"
-                ),
-                list("Jenkins/Github Actions", "Docker", "AWS")
+                new AccordionPanel(
+                    "DevOps : Safely shipping applications into users' hands",
+                    list("Jenkins/Github Actions", "Docker", "AWS")
+                )
             )
                 .withoutSpacing()
                 .build()
@@ -121,11 +121,6 @@ public class AboutMePage
             list.add(new ListItem(string));
         }
         return list;
-    }
-
-    private Span span(String text) {
-        var span = new Span(text);
-        return span;
     }
 
     private Button button(ComponentEventListener<ClickEvent<Button>> handler) {

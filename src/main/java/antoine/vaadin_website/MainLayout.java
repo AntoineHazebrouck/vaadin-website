@@ -32,14 +32,23 @@ public class MainLayout
     });
 
     public MainLayout() {
-        H1 title = new H1("Antoine HAZEBROUCK");
-        title
+        var desktopTitle = new H1("Antoine HAZEBROUCK");
+        desktopTitle.addClassName("only-on-desktop");
+        desktopTitle
             .getStyle()
             .set("font-size", "var(--lumo-font-size-xl)")
             .setMarginLeft("4em")
             .setMarginRight("auto");
 
-        addToNavbar(title);
+        var touchscreenTitle = new H1("Antoine HAZEBROUCK");
+        touchscreenTitle.addClassName("only-on-touchscreen");
+        touchscreenTitle
+            .getStyle()
+            .set("font-size", "var(--lumo-font-size-l)")
+            .setMarginLeft("1em")
+            .setMarginRight("auto");
+
+        addToNavbar(desktopTitle, touchscreenTitle);
 
         toFrench.addClassName("to-french-toggle");
         toEnglish.addClassName("to-english-toggle");

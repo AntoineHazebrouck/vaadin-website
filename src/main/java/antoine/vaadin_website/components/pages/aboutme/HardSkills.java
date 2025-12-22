@@ -24,6 +24,7 @@ public class HardSkills
         return new AccordionPanel(
             title,
             Responsive.column(
+                // new skill : Turning user needs into reality
                 new AccordionPanel(
                     userInterfaces,
                     list(

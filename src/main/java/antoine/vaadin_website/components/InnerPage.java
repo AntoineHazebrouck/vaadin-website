@@ -1,5 +1,6 @@
 package antoine.vaadin_website.components;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.html.Div;
@@ -15,6 +16,11 @@ public class InnerPage extends PageSkeleton<InnerPage> {
     @Override
     public InnerPage title(Text title) {
         card.setTitle(new Div(title));
+        return this;
+    }
+
+    public InnerPage headerSuffix(Component component) {
+        card.setHeaderSuffix(new Div(component));
         return this;
     }
 }

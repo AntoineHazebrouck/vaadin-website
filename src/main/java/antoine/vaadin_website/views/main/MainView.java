@@ -3,6 +3,7 @@ package antoine.vaadin_website.views.main;
 import antoine.vaadin_website.components.CopyrightFooter;
 import antoine.vaadin_website.components.pages.aboutme.AboutMePage;
 import antoine.vaadin_website.components.pages.contactme.ContactMePage;
+import antoine.vaadin_website.components.pages.experiences.ExperiencesPage;
 import antoine.vaadin_website.components.pages.introduction.IntroductionPage;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.main.components.Bold;
@@ -35,7 +36,7 @@ public class MainView
                 ).build()
             );
         getContent().add(new ContactMePage()); // TODO make small variations in the colors
-        getContent().add(experiences());
+        getContent().add(new ExperiencesPage());
         getContent().add(projects());
         getContent().add(new CopyrightFooter());
 
@@ -47,17 +48,6 @@ public class MainView
             LumoUtility.Padding.Bottom.MEDIUM,
             LumoUtility.Padding.Left.XLARGE
         );
-    }
-
-    private Card experiences() {
-        Card card = new Card();
-        card.setTitle("Experiences");
-
-        card.add("contact form + email as info");
-        card.setThemeName("outlined");
-        card.getStyle().set("width", "100%");
-
-        return card;
     }
 
     private Card projects() {

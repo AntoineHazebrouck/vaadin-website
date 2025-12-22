@@ -1,4 +1,4 @@
-package antoine.vaadin_website.views.experiences.components.cards;
+package antoine.vaadin_website.components.pages.experiences;
 
 import antoine.vaadin_website.components.CustomCard;
 import antoine.vaadin_website.views.experiences.ExperiencesView;

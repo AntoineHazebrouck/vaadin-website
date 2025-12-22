@@ -12,6 +12,8 @@ public class Page extends Composite<Card> {
 
     @Override
     protected Card initContent() {
+        card.addClassName("page");
+
         card.setThemeName("outlined");
         card.getStyle().set("width", "100%");
         return card;

@@ -18,7 +18,8 @@ public class IntroductionPage
         resumeLink.addClassName("link-to-resume");
 
         var page = new Page()
-            .title("Antoine HAZEBROUCK | Software Engineer") // make the title more apparent, maybe move out of the card and center in above te cards
+            .title("Antoine HAZEBROUCK") // make the title more apparent, maybe move out of the card and center in above te cards
+            .subtitle("Software Engineer")
             .body(
                 "Passionate and dedicated Software Engineer with two years of experience designing, implementing, and optimizating applications, particularly within complex financial systems."
             )

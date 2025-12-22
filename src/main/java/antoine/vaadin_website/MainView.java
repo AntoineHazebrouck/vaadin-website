@@ -27,17 +27,7 @@ public class MainView
 
     @Override
     protected VerticalLayout initContent() {
-        VerticalLayout desktop = (VerticalLayout) Responsive.column(
-            Responsive.row(
-                Responsive.column(new IntroductionPage()).padding("0").build(),
-                Responsive.column(new AboutMePage()).padding("0").build()
-            ).build(),
-            new ContactMePage(),
-            new ExperiencesPage(),
-            new ProjectsPage(),
-            new CopyrightFooter()
-        ).build();
-
+        VerticalLayout desktop = application();
         desktop.addClassNames(
             LumoUtility.Gap.Row.MEDIUM,
             LumoUtility.Gap.Column.MEDIUM,
@@ -48,7 +38,16 @@ public class MainView
         );
         desktop.addClassName("only-on-desktop");
 
-        VerticalLayout touchscreen = (VerticalLayout) Responsive.column(
+        VerticalLayout touchscreen = application();
+        touchscreen.addClassName("only-on-touchscreen");
+
+        return (VerticalLayout) Responsive.column(desktop, touchscreen)
+            .padding("0")
+            .build();
+    }
+
+    private VerticalLayout application() {
+        VerticalLayout desktop = (VerticalLayout) Responsive.column(
             Responsive.row(
                 Responsive.column(new IntroductionPage()).padding("0").build(),
                 Responsive.column(new AboutMePage()).padding("0").build()
@@ -58,11 +57,7 @@ public class MainView
             new ProjectsPage(),
             new CopyrightFooter()
         ).build();
-        touchscreen.addClassName("only-on-touchscreen");
-
-        return (VerticalLayout) Responsive.column(desktop, touchscreen)
-            .padding("0")
-            .build();
+        return desktop;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 
 public class Page extends Composite<Card> {
 
@@ -18,6 +19,11 @@ public class Page extends Composite<Card> {
 
     public Page title(String title) {
         card.setTitle(title);
+        return this;
+    }
+
+    public Page subtitle(String subtitle) {
+        card.setSubtitle(new Span(subtitle));
         return this;
     }
 

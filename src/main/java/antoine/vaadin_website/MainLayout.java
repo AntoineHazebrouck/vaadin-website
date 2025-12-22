@@ -20,7 +20,7 @@ public class MainLayout
     extends AppLayout
     implements LocaleChangeObserver, BeforeEnterObserver {
 
-    Locale current;
+    Locale current = Locale.ENGLISH;
 
     Button toFrench = new Button("FR", event -> {
         UI.getCurrent().setLocale(Locale.FRENCH);
@@ -83,8 +83,6 @@ public class MainLayout
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        if (event.isRefreshEvent()) {
-            event.getUI().setLocale(current);
-        }
+        event.getUI().setLocale(current);
     }
 }

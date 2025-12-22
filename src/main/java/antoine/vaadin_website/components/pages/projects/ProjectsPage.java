@@ -16,6 +16,7 @@ public class ProjectsPage extends Composite<Page> {
         Component card3 = new EmailAlerts();
         Component card4 = new DataClassifier();
         Component card5 = new AdsSocialNetwork();
+        Component card6 = new MegaStorageRemote();
 
         card1.addClassNames(LumoUtility.Flex.ONE);
         card2.addClassNames(LumoUtility.Flex.ONE);
@@ -28,7 +29,8 @@ public class ProjectsPage extends Composite<Page> {
                 Responsive.column(
                     Responsive.row(card1, card2).build(),
                     Responsive.row(card3, card4).build(),
-                    Responsive.row(card5).build()
+                    Responsive.row(card5).build(),
+                    Responsive.row(card6).build()
                 ).build()
             )
             .title(new Text("My projects"));

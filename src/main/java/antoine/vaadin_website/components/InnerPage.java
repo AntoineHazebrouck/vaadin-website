@@ -2,22 +2,19 @@ package antoine.vaadin_website.components;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.card.Card;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H4;
 
-public class Page extends PageSkeleton<Page> {
+public class InnerPage extends PageSkeleton<InnerPage> {
 
     @Override
     protected Card initContent() {
-        card.addClassName("page");
-
-        card.setThemeName("outlined");
         card.getStyle().set("width", "100%");
         return card;
     }
 
     @Override
-    public Page title(Text title) {
-        card.setTitle(new H2(title));
+    public InnerPage title(Text title) {
+        card.setTitle(new H4(title));
         return this;
     }
 }

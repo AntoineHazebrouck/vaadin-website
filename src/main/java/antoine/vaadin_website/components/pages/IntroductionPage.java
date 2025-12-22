@@ -24,8 +24,6 @@ public class IntroductionPage
             )
             .footer(resumeLink);
 
-        page.getStyle().setHeight("15rem");
-
         return page;
     }
 

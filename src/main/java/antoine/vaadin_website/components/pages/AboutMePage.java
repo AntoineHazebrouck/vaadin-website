@@ -33,8 +33,8 @@ public class AboutMePage
 
     private Accordion information() {
         Accordion accordion = new Accordion();
-        AccordionPanel skills = new AccordionPanel(
-            "Skills",
+        AccordionPanel hardSkills = new AccordionPanel(
+            "Hard skills",
             Responsive.column(
                 new AccordionPanel(
                     "User interfaces : Creating simple but effective UIs for all needs",
@@ -82,6 +82,10 @@ public class AboutMePage
                 .withoutSpacing()
                 .build()
         );
+        AccordionPanel softSkills = new AccordionPanel(
+            "Soft skills",
+            Responsive.column(new Span("TODO")).withoutSpacing().build()
+        );
         AccordionPanel hobbies = new AccordionPanel(
             "Hobbies",
             Responsive.column(
@@ -93,7 +97,9 @@ public class AboutMePage
                     .build(),
                 Responsive.row(new Span("Drawing"), see).wrap().build(),
                 new Span("IoT : RaspberryPi")
-            ).build()
+            )
+                .withoutSpacing()
+                .build()
         );
         AccordionPanel personnalInformation = new AccordionPanel(
             "Personal information",
@@ -103,13 +109,15 @@ public class AboutMePage
                 new Span("LinkedIn TODO"),
                 new Span("59000, Lille"),
                 new Span("French driving license + car")
-            ).build()
+            )
+                .withoutSpacing()
+                .build()
         );
 
-        accordion.add(skills);
+        accordion.add(hardSkills);
+        accordion.add(softSkills);
         accordion.add(hobbies);
         accordion.add(personnalInformation);
-        // TODO add soft skills
 
         return accordion;
     }

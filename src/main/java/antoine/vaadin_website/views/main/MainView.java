@@ -27,8 +27,10 @@ public class MainView
         getContent()
             .add(
                 Responsive.row(
-                    new IntroductionPage(),
-                    new AboutMePage()
+                    Responsive.column(new IntroductionPage())
+                        .padding("0")
+                        .build(),
+                    Responsive.column(new AboutMePage()).padding("0").build()
                 ).build()
             );
         getContent().add(contactMe());

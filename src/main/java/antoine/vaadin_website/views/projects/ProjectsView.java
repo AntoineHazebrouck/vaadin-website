@@ -1,12 +1,13 @@
 package antoine.vaadin_website.views.projects;
 
 import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.components.pages.projects.AdsSocialNetwork;
+import antoine.vaadin_website.components.pages.projects.DataClassifier;
+import antoine.vaadin_website.components.pages.projects.EmailAlerts;
+import antoine.vaadin_website.components.pages.projects.Rythm;
+import antoine.vaadin_website.components.pages.projects.VaadinWebsite;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.projects.components.AdsSocialNetwork;
-import antoine.vaadin_website.views.projects.components.DataClassifier;
-import antoine.vaadin_website.views.projects.components.EmailAlerts;
-import antoine.vaadin_website.views.projects.components.Rythm;
-import antoine.vaadin_website.views.projects.components.VaadinWebsite;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.i18n.LocaleChangeEvent;

@@ -5,11 +5,11 @@ import antoine.vaadin_website.components.pages.aboutme.AboutMePage;
 import antoine.vaadin_website.components.pages.contactme.ContactMePage;
 import antoine.vaadin_website.components.pages.experiences.ExperiencesPage;
 import antoine.vaadin_website.components.pages.introduction.IntroductionPage;
+import antoine.vaadin_website.components.pages.projects.ProjectsPage;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -37,7 +37,7 @@ public class MainView
             );
         getContent().add(new ContactMePage()); // TODO make small variations in the colors
         getContent().add(new ExperiencesPage());
-        getContent().add(projects());
+        getContent().add(new ProjectsPage());
         getContent().add(new CopyrightFooter());
 
         addClassNames(
@@ -48,17 +48,6 @@ public class MainView
             LumoUtility.Padding.Bottom.MEDIUM,
             LumoUtility.Padding.Left.XLARGE
         );
-    }
-
-    private Card projects() {
-        Card card = new Card();
-        card.setTitle("My projects");
-
-        card.add("contact form + email as info");
-        card.setThemeName("outlined");
-        card.getStyle().set("width", "100%");
-
-        return card;
     }
 
     @Override

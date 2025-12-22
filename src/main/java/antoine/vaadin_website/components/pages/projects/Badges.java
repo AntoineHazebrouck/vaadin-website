@@ -1,4 +1,4 @@
-package antoine.vaadin_website.views.projects.components;
+package antoine.vaadin_website.components.pages.projects;
 
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Component;

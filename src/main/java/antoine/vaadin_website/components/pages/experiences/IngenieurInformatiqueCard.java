@@ -1,19 +1,20 @@
 package antoine.vaadin_website.components.pages.experiences;
 
-import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
+import java.util.List;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import java.util.List;
+
+import antoine.vaadin_website.components.CustomCard;
 
 public class IngenieurInformatiqueCard
     extends Composite<CustomCard>
     implements LocaleChangeObserver {
 
     CustomCard card = CustomCard.builder()
-        .width(ExperiencesView.WIDTH)
+        .width("100%")
         .minHeight("15em")
         .content(List.of())
         .headerSuffix(new Text("2024-2027"))

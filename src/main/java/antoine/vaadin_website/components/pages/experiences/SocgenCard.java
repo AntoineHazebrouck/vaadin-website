@@ -1,7 +1,6 @@
 package antoine.vaadin_website.components.pages.experiences;
 
 import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Paragraph;
@@ -18,7 +17,7 @@ public class SocgenCard
     Paragraph text3 = new Paragraph();
 
     CustomCard card = CustomCard.builder()
-        .width(ExperiencesView.WIDTH)
+        .width("100%")
         .minHeight("22.5em")
         .content(List.of(text1, text2, text3))
         .headerSuffix(new Text("2023-2027"))

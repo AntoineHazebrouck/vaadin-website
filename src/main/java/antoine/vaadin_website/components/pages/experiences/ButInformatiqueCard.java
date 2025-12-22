@@ -1,7 +1,7 @@
 package antoine.vaadin_website.components.pages.experiences;
 
-import antoine.vaadin_website.components.CustomCard;
-import antoine.vaadin_website.views.experiences.ExperiencesView;
+import java.util.List;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.ListItem;
@@ -9,7 +9,8 @@ import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import java.util.List;
+
+import antoine.vaadin_website.components.CustomCard;
 
 public class ButInformatiqueCard
     extends Composite<CustomCard>
@@ -22,7 +23,7 @@ public class ButInformatiqueCard
     ListItem item5 = new ListItem();
     Paragraph text = new Paragraph();
     CustomCard card = CustomCard.builder()
-        .width(ExperiencesView.WIDTH)
+        .width("100%")
         .minHeight("15em")
         .content(
             List.of(text, new UnorderedList(item1, item2, item3, item4, item5))

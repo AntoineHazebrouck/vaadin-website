@@ -7,6 +7,7 @@ import antoine.vaadin_website.views.contact.components.DrawingsDialog;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -21,19 +22,19 @@ public class Hobbies
     private final Button listen = button(event -> new AudioDialog().open());
     private final Button see = button(event -> new DrawingsDialog().open());
 
+    private final Text title = new Text("");
+    private final Text music = new Text("");
+    private final Text drawing = new Text("");
+    private final Text iot = new Text("");
+
     @Override
     protected AccordionPanel initContent() {
         return new AccordionPanel(
-            "Hobbies",
+            title,
             Responsive.column(
-                Responsive.row(
-                    new Span("Music : guitar, bass, composition"),
-                    listen
-                )
-                    .wrap()
-                    .build(),
-                Responsive.row(new Span("Drawing"), see).wrap().build(),
-                new Span("IoT : RaspberryPi")
+                Responsive.row(new Span(music), listen).wrap().build(),
+                Responsive.row(new Span(drawing), see).wrap().build(),
+                new Span(iot)
             )
                 .withoutSpacing()
                 .build()
@@ -49,7 +50,11 @@ public class Hobbies
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
-        listen.setText(getTranslation("contact.information.listen"));
-        see.setText(getTranslation("contact.information.see"));
+        listen.setText(getTranslation("about.hobbies.listen"));
+        see.setText(getTranslation("about.hobbies.see"));
+        title.setText(getTranslation("about.hobbies.title"));
+        music.setText(getTranslation("about.hobbies.music"));
+        drawing.setText(getTranslation("about.hobbies.drawing"));
+        iot.setText(getTranslation("about.hobbies.iot"));
     }
 }

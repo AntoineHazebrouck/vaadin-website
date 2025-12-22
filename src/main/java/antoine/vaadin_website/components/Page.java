@@ -3,6 +3,7 @@ package antoine.vaadin_website.components;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.card.Card;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 
@@ -20,7 +21,7 @@ public class Page extends Composite<Card> {
     }
 
     public Page title(String title) {
-        card.setTitle(title);
+        card.setTitle(new H2(title));
         return this;
     }
 

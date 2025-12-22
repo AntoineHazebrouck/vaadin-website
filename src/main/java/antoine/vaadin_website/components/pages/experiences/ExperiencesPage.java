@@ -2,7 +2,6 @@ package antoine.vaadin_website.components.pages.experiences;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
@@ -25,6 +24,7 @@ public class ExperiencesPage
             new IngenieurInformatiqueCard()
         )
             .alignement(Alignment.CENTER)
+            .padding("0")
             .build();
 
         var professional = Responsive.column(
@@ -33,10 +33,10 @@ public class ExperiencesPage
         )
             .alignement(Alignment.CENTER)
             .justify(JustifyContentMode.BETWEEN)
+            .padding("0")
             .build();
 
         var page = new Page()
-            .title("Experiences")
             .body(Responsive.row(education, professional).build());
 
         return page;

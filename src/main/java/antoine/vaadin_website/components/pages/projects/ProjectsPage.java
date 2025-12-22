@@ -2,7 +2,6 @@ package antoine.vaadin_website.components.pages.projects;
 
 import antoine.vaadin_website.components.Page;
 import antoine.vaadin_website.utils.Responsive;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.theme.lumo.LumoUtility;
@@ -24,14 +23,14 @@ public class ProjectsPage extends Composite<Page> {
         card5.addClassNames(LumoUtility.Flex.ONE);
 
         var page = new Page()
-            .title("My projects")
             .body(
                 Responsive.column(
                     Responsive.row(card1, card2).build(),
                     Responsive.row(card3, card4).build(),
                     Responsive.row(card5).build()
                 ).build()
-            );
+            )
+            .title("My projects");
 
         return page;
     }

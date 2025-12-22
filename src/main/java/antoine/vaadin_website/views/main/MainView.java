@@ -1,8 +1,8 @@
 package antoine.vaadin_website.views.main;
 
 import antoine.vaadin_website.components.CopyrightFooter;
-import antoine.vaadin_website.components.pages.AboutMePage;
 import antoine.vaadin_website.components.pages.IntroductionPage;
+import antoine.vaadin_website.components.pages.aboutme.AboutMePage;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Composite;

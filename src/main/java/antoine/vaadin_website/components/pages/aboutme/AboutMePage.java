@@ -2,13 +2,14 @@ package antoine.vaadin_website.components.pages.aboutme;
 
 import antoine.vaadin_website.components.Page;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.Accordion;
 
 public class AboutMePage extends Composite<Page> {
 
     @Override
     protected Page initContent() {
-        var page = new Page().title("About me").body(information());
+        var page = new Page().title(new Text("About me")).body(information());
 
         return page;
     }

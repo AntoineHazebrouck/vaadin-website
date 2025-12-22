@@ -13,10 +13,12 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Route
+@PageTitle("Antoine HAZEBROUCK")
 public class MainView
     extends Composite<VerticalLayout>
     implements LocaleChangeObserver {

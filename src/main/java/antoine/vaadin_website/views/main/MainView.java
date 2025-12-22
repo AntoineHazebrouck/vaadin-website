@@ -1,8 +1,9 @@
 package antoine.vaadin_website.views.main;
 
 import antoine.vaadin_website.components.CopyrightFooter;
-import antoine.vaadin_website.components.pages.IntroductionPage;
 import antoine.vaadin_website.components.pages.aboutme.AboutMePage;
+import antoine.vaadin_website.components.pages.contactme.ContactMePage;
+import antoine.vaadin_website.components.pages.introduction.IntroductionPage;
 import antoine.vaadin_website.utils.Responsive;
 import antoine.vaadin_website.views.main.components.Bold;
 import com.vaadin.flow.component.Composite;
@@ -33,7 +34,7 @@ public class MainView
                     Responsive.column(new AboutMePage()).padding("0").build()
                 ).build()
             );
-        getContent().add(contactMe());
+        getContent().add(new ContactMePage()); // TODO make small variations in the colors
         getContent().add(experiences());
         getContent().add(projects());
         getContent().add(new CopyrightFooter());
@@ -46,13 +47,6 @@ public class MainView
             LumoUtility.Padding.Bottom.MEDIUM,
             LumoUtility.Padding.Left.XLARGE
         );
-    }
-
-    private Card contactMe() {
-        Card card = new Card();
-        card.setTitle("Contact me");
-
-        return card;
     }
 
     private Card experiences() {

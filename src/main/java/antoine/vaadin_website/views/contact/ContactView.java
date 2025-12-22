@@ -1,7 +1,7 @@
 package antoine.vaadin_website.views.contact;
 
 import antoine.vaadin_website.components.Page;
-import antoine.vaadin_website.views.contact.components.ContactForm;
+import antoine.vaadin_website.components.pages.contactme.ContactForm;
 import antoine.vaadin_website.views.contact.components.Information;
 import antoine.vaadin_website.views.experiences.ExperiencesView;
 import antoine.vaadin_website.views.main.MainView;

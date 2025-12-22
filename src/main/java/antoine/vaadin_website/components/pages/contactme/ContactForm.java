@@ -1,5 +1,6 @@
-package antoine.vaadin_website.views.contact.components;
+package antoine.vaadin_website.components.pages.contactme;
 
+import antoine.vaadin_website.config.Ioc;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -14,16 +15,14 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
-@RequiredArgsConstructor
 public class ContactForm
     extends Composite<FormLayout>
     implements LocaleChangeObserver {
 
-    private final JavaMailSender emails;
+    private final JavaMailSender emails = Ioc.getBean(JavaMailSender.class);
 
     @Data
     private static class ContactFormInfo {

@@ -1,4 +1,4 @@
-package antoine.vaadin_website.components.pages;
+package antoine.vaadin_website.components.pages.introduction;
 
 import antoine.vaadin_website.components.Page;
 import com.vaadin.flow.component.Composite;

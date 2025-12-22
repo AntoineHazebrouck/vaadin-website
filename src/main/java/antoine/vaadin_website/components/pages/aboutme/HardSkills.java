@@ -3,19 +3,29 @@ package antoine.vaadin_website.components.pages.aboutme;
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.AccordionPanel;
+import com.vaadin.flow.i18n.LocaleChangeEvent;
+import com.vaadin.flow.i18n.LocaleChangeObserver;
 
 public class HardSkills
     extends Composite<AccordionPanel>
-    implements LayoutMixin {
+    implements LayoutMixin, LocaleChangeObserver {
+
+    private final Text title = new Text("");
+    private final Text userInterfaces = new Text("");
+    private final Text backends = new Text("");
+    private final Text data = new Text("");
+    private final Text testing = new Text("");
+    private final Text devOps = new Text("");
 
     @Override
     protected AccordionPanel initContent() {
         return new AccordionPanel(
-            "Hard skills",
+            title,
             Responsive.column(
                 new AccordionPanel(
-                    "User interfaces : Creating simple but effective UIs for all needs",
+                    userInterfaces,
                     list(
                         "single page applications with Angular/React/Vaadin",
                         "multi page applications with JSP/Thymeleaf",
@@ -24,7 +34,7 @@ public class HardSkills
                     )
                 ),
                 new AccordionPanel(
-                    "Backends : Server side computing with Java/Spring Boot",
+                    backends,
                     list(
                         "RESTful APIs",
                         "Sockets",
@@ -35,7 +45,7 @@ public class HardSkills
                     )
                 ),
                 new AccordionPanel(
-                    "Data : Processing and storing data",
+                    data,
                     list(
                         "Hadoop/Spark",
                         "Spring Batch",
@@ -45,7 +55,7 @@ public class HardSkills
                     )
                 ),
                 new AccordionPanel(
-                    "Testing : Ensuring proper testing to make my applications resilient",
+                    testing,
                     list(
                         "Test Driven Development",
                         "Behavior Driven Development (Gherkin)",
@@ -53,12 +63,24 @@ public class HardSkills
                     )
                 ),
                 new AccordionPanel(
-                    "DevOps : Safely shipping applications into users' hands",
+                    devOps,
                     list("Jenkins/Github Actions", "Docker", "AWS")
                 )
             )
                 .withoutSpacing()
                 .build()
         );
+    }
+
+    @Override
+    public void localeChange(LocaleChangeEvent event) {
+        title.setText(getTranslation("about.hard-skills.title"));
+        userInterfaces.setText(
+            getTranslation("about.hard-skills.user-interfaces")
+        );
+        backends.setText(getTranslation("about.hard-skills.backends"));
+        data.setText(getTranslation("about.hard-skills.data"));
+        testing.setText(getTranslation("about.hard-skills.testing"));
+        devOps.setText(getTranslation("about.hard-skills.devops"));
     }
 }

@@ -17,7 +17,7 @@ public class HardSkills
     private final Text title = new Text("");
     private final Paragraph intro = new Paragraph();
 
-    private final Text backends = new Text("");
+    
     private final Text data = new Text("");
     private final Text testing = new Text("");
     private final Text devOps = new Text("");
@@ -28,17 +28,7 @@ public class HardSkills
             intro,
             new GatheringUserNeeds(),
             new UserInterfaces(),
-            new AccordionPanel(
-                backends,
-                list(
-                    "RESTful APIs",
-                    "Sockets",
-                    "Spring Data ORM",
-                    "Spring Security",
-                    "Legacy maintenance",
-                    "Software architecture"
-                )
-            ),
+            new Backends(),
             new AccordionPanel(
                 data,
                 list(
@@ -74,7 +64,7 @@ public class HardSkills
     public void localeChange(LocaleChangeEvent event) {
         title.setText(getTranslation("about.hard-skills.title"));
         intro.setText(getTranslation("about.hard-skills.intro"));
-        backends.setText(getTranslation("about.hard-skills.backends"));
+        // backends handled by Backends component
         data.setText(getTranslation("about.hard-skills.data"));
         testing.setText(getTranslation("about.hard-skills.testing"));
         devOps.setText(getTranslation("about.hard-skills.devops"));

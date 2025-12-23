@@ -17,9 +17,6 @@ public class SoftSkills
     private final Text teamworker = new Text("");
     private final Text autonomous = new Text("");
     private final Text curious = new Text("");
-    private final Text communicative = new Text("");
-    private final Text adaptable = new Text("");
-    private final Text passionate = new Text("");
 
     @Override
     protected AccordionPanel initContent() {
@@ -29,10 +26,7 @@ public class SoftSkills
                 proactive,
                 teamworker,
                 autonomous,
-                curious,
-                communicative,
-                adaptable,
-                passionate
+                curious
             )
         );
     }
@@ -44,10 +38,5 @@ public class SoftSkills
         teamworker.setText(getTranslation("about.soft-skills.teamworker"));
         autonomous.setText(getTranslation("about.soft-skills.autonomous"));
         curious.setText(getTranslation("about.soft-skills.curious"));
-        communicative.setText(
-            getTranslation("about.soft-skills.communicative")
-        );
-        adaptable.setText(getTranslation("about.soft-skills.adaptable"));
-        passionate.setText(getTranslation("about.soft-skills.passionate"));
     }
 }

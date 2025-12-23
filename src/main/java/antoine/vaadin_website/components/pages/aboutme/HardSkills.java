@@ -17,7 +17,6 @@ public class HardSkills
     private final Text title = new Text("");
     private final Paragraph intro = new Paragraph();
 
-    private final Text userInterfaces = new Text("");
     private final Text backends = new Text("");
     private final Text data = new Text("");
     private final Text testing = new Text("");
@@ -28,15 +27,7 @@ public class HardSkills
         Component col = Responsive.column(
             intro,
             new GatheringUserNeeds(),
-            new AccordionPanel(
-                userInterfaces,
-                list(
-                    "single page applications with Angular/React/Vaadin",
-                    "multi page applications with JSP/Thymeleaf",
-                    "desktop apps with Java",
-                    "mobile apps with Flutter"
-                )
-            ),
+            new UserInterfaces(),
             new AccordionPanel(
                 backends,
                 list(
@@ -83,10 +74,6 @@ public class HardSkills
     public void localeChange(LocaleChangeEvent event) {
         title.setText(getTranslation("about.hard-skills.title"));
         intro.setText(getTranslation("about.hard-skills.intro"));
-
-        userInterfaces.setText(
-            getTranslation("about.hard-skills.user-interfaces")
-        );
         backends.setText(getTranslation("about.hard-skills.backends"));
         data.setText(getTranslation("about.hard-skills.data"));
         testing.setText(getTranslation("about.hard-skills.testing"));

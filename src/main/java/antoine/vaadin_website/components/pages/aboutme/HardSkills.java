@@ -17,12 +17,6 @@ public class HardSkills
     private final Text title = new Text("");
     private final Paragraph intro = new Paragraph();
 
-    private final Text gathering = new Text("");
-    private final Text gatheringItem1 = new Text("");
-    private final Text gatheringItem2 = new Text("");
-    private final Text gatheringItem3 = new Text("");
-    private final Text gatheringItem4 = new Text("");
-
     private final Text userInterfaces = new Text("");
     private final Text backends = new Text("");
     private final Text data = new Text("");
@@ -33,15 +27,7 @@ public class HardSkills
     protected AccordionPanel initContent() {
         Component col = Responsive.column(
             intro,
-            new AccordionPanel(
-                gathering,
-                list(
-                    gatheringItem1,
-                    gatheringItem2,
-                    gatheringItem3,
-                    gatheringItem4
-                )
-            ),
+            new GatheringUserNeeds(),
             new AccordionPanel(
                 userInterfaces,
                 list(
@@ -97,20 +83,6 @@ public class HardSkills
     public void localeChange(LocaleChangeEvent event) {
         title.setText(getTranslation("about.hard-skills.title"));
         intro.setText(getTranslation("about.hard-skills.intro"));
-
-        gathering.setText(getTranslation("about.hard-skills.gathering.title"));
-        gatheringItem1.setText(
-            getTranslation("about.hard-skills.gathering.item1")
-        );
-        gatheringItem2.setText(
-            getTranslation("about.hard-skills.gathering.item2")
-        );
-        gatheringItem3.setText(
-            getTranslation("about.hard-skills.gathering.item3")
-        );
-        gatheringItem4.setText(
-            getTranslation("about.hard-skills.gathering.item4")
-        );
 
         userInterfaces.setText(
             getTranslation("about.hard-skills.user-interfaces")

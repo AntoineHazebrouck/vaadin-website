@@ -18,7 +18,6 @@ public class HardSkills
     private final Paragraph intro = new Paragraph();
 
     
-    private final Text data = new Text("");
     private final Text testing = new Text("");
     private final Text devOps = new Text("");
 
@@ -29,16 +28,7 @@ public class HardSkills
             new GatheringUserNeeds(),
             new UserInterfaces(),
             new Backends(),
-            new AccordionPanel(
-                data,
-                list(
-                    "Hadoop/Spark",
-                    "Spring Batch",
-                    "Pandas",
-                    "Relational databases",
-                    "Distributed databases"
-                )
-            ),
+            new DataSkills(),
             new AccordionPanel(
                 testing,
                 list(
@@ -49,7 +39,7 @@ public class HardSkills
             ),
             new AccordionPanel(
                 devOps,
-                list("Jenkins/Github Actions", "Docker", "AWS")
+                list("Jenkins/Github Actions", "Docker", "AWS", "Linux")
             )
         )
             .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
@@ -64,8 +54,6 @@ public class HardSkills
     public void localeChange(LocaleChangeEvent event) {
         title.setText(getTranslation("about.hard-skills.title"));
         intro.setText(getTranslation("about.hard-skills.intro"));
-        // backends handled by Backends component
-        data.setText(getTranslation("about.hard-skills.data"));
         testing.setText(getTranslation("about.hard-skills.testing"));
         devOps.setText(getTranslation("about.hard-skills.devops"));
     }

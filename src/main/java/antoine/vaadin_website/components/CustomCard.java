@@ -7,6 +7,8 @@ import com.vaadin.flow.component.html.Div;
 import java.util.List;
 import lombok.Builder;
 
+// TODO
+@Deprecated(forRemoval = true)
 @Builder
 public class CustomCard extends Composite<Card> {
 

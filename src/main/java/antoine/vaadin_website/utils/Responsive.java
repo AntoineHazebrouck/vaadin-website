@@ -63,7 +63,7 @@ public class Responsive {
         }
 
         if (padding != null) {
-            layout.getStyle().setPadding("0");
+            layout.getStyle().setPadding(padding);
         }
 
         layout.setWidthFull();

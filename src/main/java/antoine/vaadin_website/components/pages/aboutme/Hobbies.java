@@ -36,6 +36,7 @@ public class Hobbies
                 Responsive.row(new Span(drawing), see).wrap().build(),
                 new Span(iot)
             )
+                .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
                 .withoutSpacing()
                 .build()
         );

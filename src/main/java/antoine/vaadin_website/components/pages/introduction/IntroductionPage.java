@@ -1,9 +1,9 @@
 package antoine.vaadin_website.components.pages.introduction;
 
+import antoine.vaadin_website.components.CallbackAnchor;
 import antoine.vaadin_website.components.Page;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 
@@ -13,14 +13,13 @@ public class IntroductionPage
 
     private final Text title = new Text("");
     private final Text subtitle = new Text("");
-    private final Anchor resumeLink = new Anchor(); // TODO email when clicked
     private final Text catchPhrase = new Text("");
+    private final CallbackAnchor resumeLink = new CallbackAnchor(event -> {
+        System.out.println("qsdqsdqsdsqdsqdsqdsqdsqdsqd");
+    }).newTab();
 
     @Override
     protected Page initContent() {
-        resumeLink.setTarget("_tab");
-        resumeLink.addClassName("link-to-resume");
-
         var page = new Page()
             .title(title) // make the title more apparent, maybe move out of the card and center in above te cards
             .subtitle(subtitle)

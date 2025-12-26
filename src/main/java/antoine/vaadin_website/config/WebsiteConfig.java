@@ -1,21 +1,16 @@
 package antoine.vaadin_website.config;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-
+import antoine.vaadin_website.services.EmailServices;
+import antoine.vaadin_website.services.EmailServices.Args;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.server.AppShellSettings;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
 import com.vaadin.flow.theme.Theme;
+import java.util.ArrayList;
+import java.util.Locale;
+import org.springframework.context.annotation.Configuration;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Configuration
 @Theme("my-theme")
 public class WebsiteConfig
@@ -28,8 +23,6 @@ public class WebsiteConfig
 
     @Override
     public void serviceInit(ServiceInitEvent event) {
-        var emails = Ioc.getBean(JavaMailSender.class);
-
         event
             .getSource()
             .addSessionInitListener(sessionEvent -> {
@@ -41,20 +34,19 @@ public class WebsiteConfig
                     .asIterator()
                     .forEachRemaining(locale -> clientLocales.add(locale));
 
-                SimpleMailMessage mailToMe = new SimpleMailMessage();
-                mailToMe.setTo("antoine.haz@gmail.com");
-                mailToMe.setFrom("antoine.haz@gmail.com");
-                mailToMe.setSubject("Website visited");
-                mailToMe.setText(
-                    """
-                    clientIp=%s
-                    clientLocales=%s
-                    """.formatted(clientIp, clientLocales)
+                EmailServices.send(
+                    Args.builder()
+                        .from("antoine.haz@gmail.com")
+                        .subject("website visited")
+                        .text(
+                            """
+                            clientIp=%s
+                            clientLocales=%s
+                            """.formatted(clientIp, clientLocales)
+                        )
+                        .build(),
+                    true
                 );
-
-                emails.send(mailToMe);
-
-                log.info("Email sent to antoine.haz@gmail.com : {}", mailToMe);
             });
     }
 }

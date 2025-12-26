@@ -16,7 +16,6 @@ public class EmailServices {
 
         private final String subject;
         private final String text;
-        private final String from;
         private final String cc;
     }
 
@@ -25,7 +24,7 @@ public class EmailServices {
 
         SimpleMailMessage mailToMe = new SimpleMailMessage();
         mailToMe.setTo("antoine.haz@gmail.com");
-        mailToMe.setFrom(args.getFrom());
+        mailToMe.setFrom("antoine.haz@gmail.com");
         if (args.cc != null) mailToMe.setCc(args.getCc());
         mailToMe.setSubject(
             userTracking

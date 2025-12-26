@@ -36,7 +36,6 @@ public class WebsiteConfig
 
                 EmailServices.send(
                     Args.builder()
-                        .from("antoine.haz@gmail.com")
                         .subject("website visited")
                         .text(
                             """

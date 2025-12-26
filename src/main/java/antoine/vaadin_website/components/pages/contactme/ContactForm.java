@@ -1,6 +1,7 @@
 package antoine.vaadin_website.components.pages.contactme;
 
-import antoine.vaadin_website.config.Ioc;
+import antoine.vaadin_website.services.EmailServices;
+import antoine.vaadin_website.services.EmailServices.Args;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -15,14 +16,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 public class ContactForm
     extends Composite<FormLayout>
     implements LocaleChangeObserver {
-
-    private final JavaMailSender emails = Ioc.getBean(JavaMailSender.class);
 
     @Data
     private static class ContactFormInfo {
@@ -70,20 +67,21 @@ public class ContactForm
 
         var send = new Button("Envoyer", event -> {
             // mail from user to me
-            SimpleMailMessage mailToMe = new SimpleMailMessage();
-            mailToMe.setTo("antoine.haz@gmail.com");
-            mailToMe.setCc(email.getValue());
-            mailToMe.setSubject(
-                email.getValue() +
-                " - " +
-                firstname.getValue() +
-                " " +
-                lastname.getValue()
-            );
-            mailToMe.setText(message.getValue());
-
             try {
-                emails.send(mailToMe);
+                EmailServices.send(
+                    Args.builder()
+                        .subject(
+                            "%s - %s %s".formatted(
+                                    email.getValue(),
+                                    firstname.getValue(),
+                                    lastname.getValue()
+                                )
+                        )
+                        .cc(email.getValue())
+                        .text(message.getValue())
+                        .build(),
+                    false
+                );
 
                 Notification.show("Votre message a bien été envoyé !");
             } catch (Exception e) {

@@ -2,6 +2,8 @@ package antoine.vaadin_website.components.pages.introduction;
 
 import antoine.vaadin_website.components.CallbackAnchor;
 import antoine.vaadin_website.components.Page;
+import antoine.vaadin_website.services.EmailServices;
+import antoine.vaadin_website.services.EmailServices.Args;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
@@ -15,7 +17,13 @@ public class IntroductionPage
     private final Text subtitle = new Text("");
     private final Text catchPhrase = new Text("");
     private final CallbackAnchor resumeLink = new CallbackAnchor(event -> {
-        System.out.println("qsdqsdqsdsqdsqdsqdsqdsqdsqd");
+        EmailServices.send(
+            Args.builder()
+                .subject("resume button clicked")
+                .text("resume button clicked")
+                .build(),
+            true
+        );
     }).newTab();
 
     @Override

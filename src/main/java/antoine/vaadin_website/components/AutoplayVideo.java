@@ -12,7 +12,7 @@ public class AutoplayVideo extends Composite<Component> {
 
     @Override
     protected Component initContent() {
-        return new Html(
+        var video = new Html(
             """
             <video height="360" autoplay muted playsinline loop>
                 <source src="%s" type="video/mp4">
@@ -20,5 +20,15 @@ public class AutoplayVideo extends Composite<Component> {
             </video>
             """.formatted(videoUrl)
         );
+        addAttachListener(event -> {
+            video
+                .getElement()
+                .executeJs(
+                    "this.muted = true; " + // Ensure the JS property is true
+                    "this.playsInline = true; " +
+                    "this.play().catch(err => console.error('Autoplay blocked:', err));"
+                );
+        });
+        return video;
     }
 }

@@ -13,7 +13,7 @@ public class IntroductionPage
 
     private final Text title = new Text("");
     private final Text subtitle = new Text("");
-    private final Anchor resumeLink = new Anchor();
+    private final Anchor resumeLink = new Anchor(); // TODO email when clicked
     private final Text catchPhrase = new Text("");
 
     @Override

@@ -20,11 +20,6 @@ public class VaadinWebsite
 
     @Override
     protected InnerPage initContent() {
-        titleText.setText(getTranslation("projects.vaadin_website.title"));
-        p1.setText(getTranslation("projects.vaadin_website.p1"));
-        p2.setText(getTranslation("projects.vaadin_website.p2"));
-        p3.setText(getTranslation("projects.vaadin_website.p3"));
-
         return new InnerPage()
             .title(titleText)
             .headerSuffix(

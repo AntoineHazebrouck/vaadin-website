@@ -13,24 +13,6 @@ public class AdsSocialNetwork
     extends Composite<InnerPage>
     implements LocaleChangeObserver {
 
-    // Paragraph text1 = new Paragraph();
-    // Paragraph text2 = new Paragraph();
-    // CustomCard card5 = CustomCard.builder()
-    //     .headerSuffix(new SourceCodeLink(Optional.empty()))
-    //     .content(
-    //         List.of(
-    //             text1,
-    //             text2,
-    //             new Badges(
-    //                 "Java : Spring Boot",
-    //                 "REST API",
-    //                 "Postgres",
-    //                 "Agilité"
-    //             )
-    //         )
-    //     )
-    //     .build();
-
     private final Text title = new Text("");
     private final Text subtitle = new Text("");
     private final Paragraph p1 = new Paragraph("");

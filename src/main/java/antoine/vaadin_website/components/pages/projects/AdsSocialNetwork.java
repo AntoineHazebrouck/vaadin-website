@@ -1,46 +1,61 @@
 package antoine.vaadin_website.components.pages.projects;
 
-import antoine.vaadin_website.components.CustomCard;
+import antoine.vaadin_website.components.InnerPage;
 import antoine.vaadin_website.components.SourceCodeLink;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import java.util.List;
 import java.util.Optional;
 
 public class AdsSocialNetwork
-    extends Composite<Component>
+    extends Composite<InnerPage>
     implements LocaleChangeObserver {
 
-    Paragraph text1 = new Paragraph();
-    Paragraph text2 = new Paragraph();
-    CustomCard card5 = CustomCard.builder()
-        .headerSuffix(new SourceCodeLink(Optional.empty()))
-        .content(
-            List.of(
-                text1,
-                text2,
-                new Badges(
-                    "Java : Spring Boot",
-                    "REST API",
-                    "Postgres",
-                    "Agilité"
-                )
-            )
-        )
-        .build();
+    // Paragraph text1 = new Paragraph();
+    // Paragraph text2 = new Paragraph();
+    // CustomCard card5 = CustomCard.builder()
+    //     .headerSuffix(new SourceCodeLink(Optional.empty()))
+    //     .content(
+    //         List.of(
+    //             text1,
+    //             text2,
+    //             new Badges(
+    //                 "Java : Spring Boot",
+    //                 "REST API",
+    //                 "Postgres",
+    //                 "Agilité"
+    //             )
+    //         )
+    //     )
+    //     .build();
+
+    private final Text title = new Text("");
+    private final Text subtitle = new Text("");
+    private final Paragraph p1 = new Paragraph("");
+    private final Paragraph p2 = new Paragraph("");
+    private final Paragraph p3 = new Paragraph("");
+    private final Paragraph p4 = new Paragraph("");
+    private final Paragraph p5 = new Paragraph("");
 
     @Override
-    protected Component initContent() {
-        return card5;
+    protected InnerPage initContent() {
+        return new InnerPage()
+            .title(title)
+            .subtitle(subtitle)
+            .headerSuffix(new SourceCodeLink(Optional.empty()))
+            .body(p1, p2, p3, p4, p5);
     }
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
-        card5.setTitle(getTranslation("projects.card5.title"));
-        text1.setText(getTranslation("projects.card5.text1"));
-        text2.setText(getTranslation("projects.card5.text2"));
+        title.setText(getTranslation("projects.services-ads.title"));
+        subtitle.setText(getTranslation("projects.services-ads.subtitle"));
+        p1.setText(getTranslation("projects.services-ads.p1"));
+        p2.setText(getTranslation("projects.services-ads.p2"));
+        p3.setText(getTranslation("projects.services-ads.p3"));
+        p4.setText(getTranslation("projects.services-ads.p4"));
+        p5.setText(getTranslation("projects.services-ads.p5"));
     }
 }

@@ -1,4 +1,4 @@
-package antoine.vaadin_website.views.contact.components;
+package antoine.vaadin_website.components;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Html;

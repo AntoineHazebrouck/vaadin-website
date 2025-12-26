@@ -1,9 +1,10 @@
 package antoine.vaadin_website.components.pages.aboutme;
 
+import antoine.vaadin_website.components.AudioDialog;
+import antoine.vaadin_website.components.DrawingsDialog;
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
-import antoine.vaadin_website.views.contact.components.AudioDialog;
-import antoine.vaadin_website.views.contact.components.DrawingsDialog;
+
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;

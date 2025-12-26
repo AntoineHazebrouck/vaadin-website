@@ -32,6 +32,8 @@ public class MainLayout
     });
 
     public MainLayout() {
+        // TODO send email when someone opened the website
+
         var desktopTitle = new H1("Antoine HAZEBROUCK");
         desktopTitle.addClassName("only-on-desktop");
         desktopTitle

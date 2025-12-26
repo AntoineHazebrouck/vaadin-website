@@ -13,14 +13,13 @@ public class VaadinWebsite
     extends Composite<InnerPage>
     implements LocaleChangeObserver {
 
-    private final com.vaadin.flow.component.Text titleText = new com.vaadin.flow.component.Text("");
-    private final com.vaadin.flow.component.html.Paragraph p1 = new com.vaadin.flow.component.html.Paragraph();
-    private final com.vaadin.flow.component.html.Paragraph p2 = new com.vaadin.flow.component.html.Paragraph();
-    private final com.vaadin.flow.component.html.Paragraph p3 = new com.vaadin.flow.component.html.Paragraph();
+    private final Text titleText = new Text("");
+    private final Paragraph p1 = new Paragraph();
+    private final Paragraph p2 = new Paragraph();
+    private final Paragraph p3 = new Paragraph();
 
     @Override
     protected InnerPage initContent() {
-        // initialize texts from current locale
         titleText.setText(getTranslation("projects.vaadin_website.title"));
         p1.setText(getTranslation("projects.vaadin_website.p1"));
         p2.setText(getTranslation("projects.vaadin_website.p2"));

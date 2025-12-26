@@ -14,12 +14,13 @@ public class AutoplayVideo extends Composite<Component> {
     protected Component initContent() {
         var video = new Html(
             """
-            <video height="360" autoplay muted playsinline loop>
+            <video autoplay muted playsinline loop>
                 <source src="%s" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             """.formatted(videoUrl)
         );
+        video.getStyle().setMaxWidth("100%");
         addAttachListener(event -> {
             video
                 .getElement()

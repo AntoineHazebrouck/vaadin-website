@@ -7,20 +7,13 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import com.vaadin.flow.router.BeforeEnterEvent;
-import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Layout;
-import com.vaadin.flow.router.PreserveOnRefresh;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.util.Locale;
 
 @Layout
-@PreserveOnRefresh
-public class MainLayout
-    extends AppLayout
-    implements LocaleChangeObserver, BeforeEnterObserver {
-
-    Locale current = Locale.ENGLISH;
+// @PreserveOnRefresh // "french switch dialogs" remains after refresh
+public class MainLayout extends AppLayout implements LocaleChangeObserver {
 
     Button toFrench = new Button("FR", event -> {
         UI.getCurrent().setLocale(Locale.FRENCH);
@@ -32,8 +25,6 @@ public class MainLayout
     });
 
     public MainLayout() {
-        // TODO send email when someone opened the website
-
         var desktopTitle = new H1("Antoine HAZEBROUCK");
         desktopTitle.addClassName("only-on-desktop");
         desktopTitle
@@ -61,30 +52,17 @@ public class MainLayout
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
-        switch (event.getLocale()) {
-            case Locale locale when locale.equals(Locale.FRENCH) -> {
+        switch (event.getLocale().getLanguage()) {
+            case "fr" -> {
                 toFrench.setEnabled(false);
                 toEnglish.setEnabled(true);
                 Notification.show("Français activé");
             }
-            case Locale locale when locale.equals(Locale.ENGLISH) -> {
+            case "en" -> {
                 toFrench.setEnabled(true);
                 toEnglish.setEnabled(false);
                 Notification.show("English activated");
             }
-            default -> {
-                Notification.show(
-                    "Error changing the language, or your language is not available. Defaulting to english."
-                );
-                UI.getCurrent().setLocale(Locale.ENGLISH);
-            }
         }
-
-        current = event.getLocale();
-    }
-
-    @Override
-    public void beforeEnter(BeforeEnterEvent event) {
-        event.getUI().setLocale(current);
     }
 }

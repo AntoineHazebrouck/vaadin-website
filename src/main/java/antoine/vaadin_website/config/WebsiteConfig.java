@@ -34,14 +34,17 @@ public class WebsiteConfig
                     .asIterator()
                     .forEachRemaining(locale -> clientLocales.add(locale));
 
+                var referer = sessionEvent.getRequest().getHeader("Referer");
+
                 EmailServices.send(
                     Args.builder()
                         .subject("website visited")
                         .text(
                             """
-                            clientIp=%s
+                            referer=%s
                             clientLocales=%s
-                            """.formatted(clientIp, clientLocales)
+                            clientIp=%s
+                            """.formatted(referer, clientIp, clientLocales)
                         )
                         .build(),
                     true

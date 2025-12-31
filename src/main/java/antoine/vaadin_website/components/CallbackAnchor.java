@@ -14,8 +14,6 @@ public class CallbackAnchor extends Composite<Anchor> {
     protected Anchor initContent() {
         var link = new Anchor();
 
-        link.addClassName("link-to-resume");
-
         link.getElement().addEventListener("click", callback);
 
         return link;

@@ -1,10 +1,12 @@
 package antoine.vaadin_website.components.pages.aboutme;
 
+import antoine.vaadin_website.components.CallbackAnchor;
+import antoine.vaadin_website.services.EmailServices;
+import antoine.vaadin_website.services.EmailServices.Args;
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.accordion.AccordionPanel;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -21,11 +23,18 @@ public class PersonalInformation
 
     @Override
     protected AccordionPanel initContent() {
-        var linkedin = new Anchor(
-            "https://www.linkedin.com/in/antoine-hazebrouck-775533261",
-            "LinkedIn"
-        );
-        linkedin.setTarget("_tab");
+        var linkedin = new CallbackAnchor(event -> {
+            EmailServices.send(
+                Args.builder()
+                    .subject("linkedin button clicked")
+                    .text("linkedin button clicked")
+                    .build(),
+                true
+            );
+        })
+            .newTab()
+            .setHref("https://www.linkedin.com/in/antoine-hazebrouck-775533261")
+            .setText("LinkedIn");
 
         return new AccordionPanel(
             title,

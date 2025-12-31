@@ -28,6 +28,8 @@ public class IntroductionPage
 
     @Override
     protected Page initContent() {
+        resumeLink.addClassName("link-to-resume");
+
         var page = new Page()
             .title(title) // make the title more apparent, maybe move out of the card and center in above te cards
             .subtitle(subtitle)

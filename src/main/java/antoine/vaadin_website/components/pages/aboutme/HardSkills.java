@@ -2,9 +2,9 @@ package antoine.vaadin_website.components.pages.aboutme;
 
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
@@ -17,18 +17,17 @@ public class HardSkills
     private final Text title = new Text("");
     private final Paragraph intro = new Paragraph();
 
-    
     private final Text testing = new Text("");
     private final Text devOps = new Text("");
 
     @Override
     protected AccordionPanel initContent() {
-        Component col = Responsive.column(
-            intro,
-            new GatheringUserNeeds(),
-            new UserInterfaces(),
-            new Backends(),
-            new DataSkills(),
+        var accordion = new Accordion();
+        accordion.add(new GatheringUserNeeds().getContent());
+        accordion.add(new UserInterfaces().getContent());
+        accordion.add(new Backends().getContent());
+        accordion.add(new DataSkills().getContent());
+        accordion.add(
             new AccordionPanel(
                 testing,
                 list(
@@ -36,18 +35,25 @@ public class HardSkills
                     "Behavior Driven Development (Gherkin)",
                     "Unit tests, integration tests, UI tests"
                 )
-            ),
+            )
+        );
+        accordion.add(
             new AccordionPanel(
                 devOps,
                 list("Jenkins/Github Actions", "Docker", "AWS", "Linux")
             )
-        )
-            .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
-            .withoutSpacing()
-            .build();
+        );
+        accordion.getStyle().setPaddingTop(null);
 
-        col.getStyle().setPaddingTop(null);
-        return new AccordionPanel(title, col);
+        accordion.close();
+
+        return new AccordionPanel(
+            title,
+            Responsive.column(intro, accordion)
+                .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
+                .withoutSpacing()
+                .build()
+        );
     }
 
     @Override

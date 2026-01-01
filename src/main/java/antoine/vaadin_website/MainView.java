@@ -8,6 +8,7 @@ import antoine.vaadin_website.components.pages.introduction.IntroductionPage;
 import antoine.vaadin_website.components.pages.projects.ProjectsPage;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -39,11 +40,17 @@ public class MainView extends Composite<VerticalLayout> {
     }
 
     private VerticalLayout application() {
+        var row1 = Responsive.row(
+            Responsive.column(new IntroductionPage()).padding("0").build(),
+            Responsive.column(new AboutMePage()).padding("0").build()
+        )
+            .alignement(Alignment.CENTER)
+            .build();
+
+        row1.getStyle().setMinHeight("100vh");
+
         VerticalLayout desktop = (VerticalLayout) Responsive.column(
-            Responsive.row(
-                Responsive.column(new IntroductionPage()).padding("0").build(),
-                Responsive.column(new AboutMePage()).padding("0").build()
-            ).build(),
+            row1,
             new ContactMePage(),
             new ExperiencesPage(),
             new ProjectsPage(),

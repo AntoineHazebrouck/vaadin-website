@@ -8,7 +8,8 @@ import antoine.vaadin_website.components.pages.introduction.IntroductionPage;
 import antoine.vaadin_website.components.pages.projects.ProjectsPage;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -41,11 +42,15 @@ public class MainView extends Composite<VerticalLayout> {
 
     private VerticalLayout application() {
         var row1 = Responsive.row(
-            Responsive.column(new IntroductionPage()).padding("0").build(),
-            Responsive.column(new AboutMePage()).padding("0").build()
-        )
-            .alignement(Alignment.CENTER)
-            .build();
+            Responsive.column(new IntroductionPage(), new Paragraph(" "))
+                .padding("0")
+                .justify(JustifyContentMode.AROUND)
+                .build(),
+            Responsive.column(new AboutMePage())
+                .padding("0")
+                .justify(JustifyContentMode.CENTER)
+                .build()
+        ).build();
 
         row1.getStyle().setMinHeight("100vh");
 

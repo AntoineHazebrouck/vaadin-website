@@ -1,8 +1,6 @@
 package antoine.vaadin_website.components.pages.aboutme;
 
-import antoine.vaadin_website.components.CallbackAnchor;
-import antoine.vaadin_website.services.EmailServices;
-import antoine.vaadin_website.services.EmailServices.Args;
+import antoine.vaadin_website.components.EmailTrackingAnchor;
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
@@ -23,22 +21,26 @@ public class PersonalInformation
 
     @Override
     protected AccordionPanel initContent() {
-        var linkedin = new CallbackAnchor(event -> {
-            EmailServices.send(
-                Args.builder()
-                    .subject("linkedin button clicked")
-                    .text("linkedin button clicked")
-                    .build(),
-                true
-            );
-        })
+        var linkedin = new EmailTrackingAnchor("linkedin button clicked")
             .newTab()
             .setHref("https://www.linkedin.com/in/antoine-hazebrouck-775533261")
             .setText("LinkedIn");
 
+        var github = new EmailTrackingAnchor("github button clicked")
+            .newTab()
+            .setHref("https://github.com/AntoineHazebrouck")
+            .setText("Github");
+
         return new AccordionPanel(
             title,
-            Responsive.column(phone, email, linkedin, city, drivingLicense)
+            Responsive.column(
+                phone,
+                email,
+                linkedin,
+                github,
+                city,
+                drivingLicense
+            )
                 .withoutSpacing()
                 .build()
         );

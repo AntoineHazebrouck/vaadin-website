@@ -17,7 +17,10 @@ public class Page extends PageSkeleton<Page> {
 
     @Override
     public Page title(Text title) {
-        card.setTitle(new H2(title));
+        var header = new H2(title);
+        header.getStyle().setMarginLeft("auto");
+        header.getStyle().setMarginRight("auto");
+        card.setTitle(header);
         return this;
     }
 }

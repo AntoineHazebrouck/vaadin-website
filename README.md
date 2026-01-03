@@ -1,4 +1,4 @@
-# Portfolio
+# Antoine HAZEBROUCK : Portfolio/Website
 
 ### Run locally
 
@@ -6,8 +6,9 @@ The project emailing requires a google account set up to send emails via an app 
 
 ![alt text](readme/image.png)
 
-set the username property
-set the GOOGLE_PASSWORD environment variable
+set the "username" property
+
+set the "GOOGLE_PASSWORD" environment variable
 
 ```bash
 mvn clean spring-boot:run

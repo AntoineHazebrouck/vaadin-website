@@ -23,7 +23,7 @@ public class PersonalInformation
     protected AccordionPanel initContent() {
         var linkedin = new EmailTrackingAnchor("linkedin button clicked")
             .newTab()
-            .setHref("https://www.linkedin.com/in/antoine-hazebrouck-775533261")
+            .setHref("https://www.linkedin.com/in/antoinehazebrouck")
             .setText("LinkedIn");
 
         var github = new EmailTrackingAnchor("github button clicked")

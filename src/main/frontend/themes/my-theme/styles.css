@@ -2,6 +2,7 @@
 @import 'link-to-resume.css';
 @import 'page.css';
 @import 'toggle-language-button.css';
+@import 'modern-audio-player.css';
 
 html {
 	--lumo-input-field-pointer-focus-visible: 1;

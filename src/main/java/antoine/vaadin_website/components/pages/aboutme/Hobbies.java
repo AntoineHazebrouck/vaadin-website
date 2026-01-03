@@ -1,10 +1,8 @@
 package antoine.vaadin_website.components.pages.aboutme;
 
-import antoine.vaadin_website.components.AudioDialog;
-import antoine.vaadin_website.components.DrawingsDialog;
+import antoine.vaadin_website.components.SongsDialog;
 import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
-
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
@@ -20,8 +18,8 @@ public class Hobbies
     extends Composite<AccordionPanel>
     implements LocaleChangeObserver, LayoutMixin {
 
-    private final Button listen = button(event -> new AudioDialog().open());
-    private final Button see = button(event -> new DrawingsDialog().open());
+    private final Button listen = button(event -> new SongsDialog().open());
+    // private final Button see = button(event -> new DrawingsDialog().open());
 
     private final Text title = new Text("");
     private final Text music = new Text("");
@@ -34,7 +32,7 @@ public class Hobbies
             title,
             Responsive.column(
                 Responsive.row(new Span(music), listen).wrap().build(),
-                Responsive.row(new Span(drawing), see).wrap().build(),
+                Responsive.row(new Span(drawing)).wrap().build(),
                 new Span(iot)
             )
                 .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
@@ -53,7 +51,7 @@ public class Hobbies
     @Override
     public void localeChange(LocaleChangeEvent event) {
         listen.setText(getTranslation("about.hobbies.listen"));
-        see.setText(getTranslation("about.hobbies.see"));
+        // see.setText(getTranslation("about.hobbies.see"));
         title.setText(getTranslation("about.hobbies.title"));
         music.setText(getTranslation("about.hobbies.music"));
         drawing.setText(getTranslation("about.hobbies.drawing"));

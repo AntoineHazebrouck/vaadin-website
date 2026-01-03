@@ -1,0 +1,8 @@
+audio.modern-audio-player {
+	width: 100%;
+	height: 35px;
+	border-radius: 8px;
+	outline: none;
+	/* Filtre pour inverser les couleurs et les faire matcher avec le dark mode */
+	filter: invert(90%) hue-rotate(180deg) brightness(1.2);
+}

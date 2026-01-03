@@ -14,7 +14,7 @@ public class ContactMePage
 
     @Override
     protected Page initContent() {
-        var page = new Page().title(title).body(new ContactForm());
+        var page = new Page().centeredTitle(title).body(new ContactForm());
 
         return page;
     }

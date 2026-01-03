@@ -6,9 +6,15 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.i18n.LocaleChangeEvent;
+import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class ProjectsPage extends Composite<Page> {
+public class ProjectsPage
+    extends Composite<Page>
+    implements LocaleChangeObserver {
+
+    private final Text title = new Text("");
 
     @Override
     protected Page initContent() {
@@ -32,8 +38,13 @@ public class ProjectsPage extends Composite<Page> {
                     Responsive.row(dataClassifier, filler).build()
                 ).build()
             )
-            .title(new Text("My projects"));
+            .centeredTitle(title);
 
         return page;
+    }
+
+    @Override
+    public void localeChange(LocaleChangeEvent event) {
+        title.setText(getTranslation("projects.title"));
     }
 }

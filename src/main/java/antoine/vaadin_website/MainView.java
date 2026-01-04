@@ -21,7 +21,7 @@ public class MainView extends Composite<VerticalLayout> {
 
     @Override
     protected VerticalLayout initContent() {
-        VerticalLayout desktop = application();
+        VerticalLayout desktop = commonLayout();
         desktop.addClassNames(
             LumoUtility.Gap.Row.MEDIUM,
             LumoUtility.Gap.Column.MEDIUM,
@@ -32,7 +32,7 @@ public class MainView extends Composite<VerticalLayout> {
         );
         desktop.addClassName("only-on-desktop");
 
-        VerticalLayout touchscreen = application();
+        VerticalLayout touchscreen = commonLayout();
         touchscreen.addClassName("only-on-touchscreen");
 
         return (VerticalLayout) Responsive.column(desktop, touchscreen)
@@ -40,7 +40,7 @@ public class MainView extends Composite<VerticalLayout> {
             .build();
     }
 
-    private VerticalLayout application() {
+    private VerticalLayout commonLayout() {
         var row1 = Responsive.row(
             Responsive.column(new IntroductionPage(), new Paragraph(" "))
                 .padding("0")
@@ -54,13 +54,13 @@ public class MainView extends Composite<VerticalLayout> {
 
         row1.getStyle().setMinHeight("100vh");
 
-        VerticalLayout desktop = (VerticalLayout) Responsive.column(
+        VerticalLayout commonLayout = (VerticalLayout) Responsive.column(
             row1,
             new ContactMePage(),
             new ExperiencesPage(),
             new ProjectsPage(),
             new CopyrightFooter()
         ).build();
-        return desktop;
+        return commonLayout;
     }
 }

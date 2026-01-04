@@ -2,6 +2,7 @@ package antoine.vaadin_website.components;
 
 import antoine.vaadin_website.services.EmailServices;
 import antoine.vaadin_website.services.EmailServices.Args;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Anchor;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,11 @@ public class EmailTrackingAnchor extends Composite<Anchor> {
 
     public EmailTrackingAnchor newTab() {
         this.getContent().setTarget("_tab");
+        return this;
+    }
+
+    public EmailTrackingAnchor add(Component component) {
+        this.getContent().add(component);
         return this;
     }
 

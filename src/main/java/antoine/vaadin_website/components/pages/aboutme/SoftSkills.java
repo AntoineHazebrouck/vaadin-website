@@ -4,6 +4,7 @@ import antoine.vaadin_website.utils.LayoutMixin;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.AccordionPanel;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 
@@ -21,13 +22,8 @@ public class SoftSkills
     @Override
     protected AccordionPanel initContent() {
         return new AccordionPanel(
-            title,
-            list(
-                proactive,
-                teamworker,
-                autonomous,
-                curious
-            )
+            new H5(title),
+            list(proactive, teamworker, autonomous, curious)
         );
     }
 

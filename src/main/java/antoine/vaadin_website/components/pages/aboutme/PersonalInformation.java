@@ -5,6 +5,7 @@ import antoine.vaadin_website.utils.LayoutMixin;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.accordion.AccordionPanel;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -32,7 +33,7 @@ public class PersonalInformation
             .setText("Github");
 
         return new AccordionPanel(
-            title,
+            new H5(title),
             Responsive.column(
                 phone,
                 email,

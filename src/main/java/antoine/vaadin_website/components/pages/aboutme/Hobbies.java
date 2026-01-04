@@ -10,6 +10,7 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.AccordionPanel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -29,7 +30,7 @@ public class Hobbies
     @Override
     protected AccordionPanel initContent() {
         return new AccordionPanel(
-            title,
+            new H5(title),
             Responsive.column(
                 Responsive.row(new Span(music), listen).wrap().build(),
                 Responsive.row(new Span(drawing)).wrap().build(),

@@ -1,14 +1,16 @@
 package antoine.vaadin_website.components.pages.aboutme;
 
-import antoine.vaadin_website.utils.LayoutMixin;
-import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
+
+import antoine.vaadin_website.utils.LayoutMixin;
+import antoine.vaadin_website.utils.Responsive;
 
 public class HardSkills
     extends Composite<AccordionPanel>
@@ -48,7 +50,7 @@ public class HardSkills
         accordion.close();
 
         return new AccordionPanel(
-            title,
+            new H5(title),
             Responsive.column(intro, accordion)
                 .padding("0 var(--lumo-space-m) 0 var(--lumo-space-m)")
                 .withoutSpacing()

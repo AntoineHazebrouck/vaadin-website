@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-class ResponsiveComponent extends Composite<Div> {
+public class ResponsiveComponent extends Composite<Div> {
 
     private final Supplier<Component> component;
     private final Function<Component, Component> desktop;

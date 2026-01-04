@@ -1,13 +1,16 @@
 package antoine.vaadin_website.components.pages.projects;
 
-import antoine.vaadin_website.components.InnerPage;
-import antoine.vaadin_website.components.SourceCodeLink;
+import java.util.Optional;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import java.util.Optional;
+
+import antoine.vaadin_website.components.InnerPage;
+import antoine.vaadin_website.components.MoreDetails;
+import antoine.vaadin_website.components.SourceCodeLink;
 
 public class AdsSocialNetwork
     extends Composite<InnerPage>
@@ -27,7 +30,7 @@ public class AdsSocialNetwork
             .title(title)
             .subtitle(subtitle)
             .headerSuffix(new SourceCodeLink(Optional.empty()))
-            .body(p1, p2, p3, p4, p5);
+            .body(p1, new MoreDetails(p2, p3, p4, p5));
     }
 
     @Override

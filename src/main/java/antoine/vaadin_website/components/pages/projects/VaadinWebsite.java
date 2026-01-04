@@ -1,19 +1,23 @@
 package antoine.vaadin_website.components.pages.projects;
 
-import antoine.vaadin_website.components.InnerPage;
-import antoine.vaadin_website.components.SourceCodeLink;
+import java.util.Optional;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
-import java.util.Optional;
+
+import antoine.vaadin_website.components.InnerPage;
+import antoine.vaadin_website.components.MoreDetails;
+import antoine.vaadin_website.components.SourceCodeLink;
 
 public class VaadinWebsite
     extends Composite<InnerPage>
     implements LocaleChangeObserver {
 
     private final Text titleText = new Text("");
+    private final Text moreDetails = new Text("");
     private final Paragraph p1 = new Paragraph();
     private final Paragraph p2 = new Paragraph();
     private final Paragraph p3 = new Paragraph();
@@ -29,12 +33,13 @@ public class VaadinWebsite
                     )
                 )
             )
-            .body(p1, p2, p3);
+            .body(p1, new MoreDetails(p2, p3));
     }
 
     @Override
     public void localeChange(LocaleChangeEvent event) {
         titleText.setText(getTranslation("projects.vaadin_website.title"));
+        moreDetails.setText(getTranslation("projects.vaadin_website.title"));
         p1.setText(getTranslation("projects.vaadin_website.p1"));
         p2.setText(getTranslation("projects.vaadin_website.p2"));
         p3.setText(getTranslation("projects.vaadin_website.p3"));

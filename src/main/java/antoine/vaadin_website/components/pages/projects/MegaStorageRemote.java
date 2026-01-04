@@ -1,10 +1,10 @@
 package antoine.vaadin_website.components.pages.projects;
 
 import antoine.vaadin_website.components.InnerPage;
+import antoine.vaadin_website.components.MoreDetails;
 import antoine.vaadin_website.components.SourceCodeLink;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
@@ -35,7 +35,7 @@ public class MegaStorageRemote
                     )
                 )
             )
-            .body(p1, new Details("More details", p2, p3, p4, p5));
+            .body(p1, new MoreDetails(p2, p3, p4, p5));
 
         return card;
     }

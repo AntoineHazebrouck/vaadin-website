@@ -2,6 +2,7 @@ package antoine.vaadin_website.components.pages.projects;
 
 import antoine.vaadin_website.components.AutoplayVideo;
 import antoine.vaadin_website.components.InnerPage;
+import antoine.vaadin_website.components.MoreDetails;
 import antoine.vaadin_website.components.SourceCodeLink;
 import antoine.vaadin_website.utils.Responsive;
 import com.vaadin.flow.component.Composite;
@@ -24,6 +25,9 @@ public class DataClassifier
 
     @Override
     protected InnerPage initContent() {
+        var video = new AutoplayVideo("videos/data-explorer-demo.mp4");
+        video.getStyle().setHeight("30rem");
+
         return new InnerPage()
             .title(title)
             .subtitle(subtitle)
@@ -36,13 +40,8 @@ public class DataClassifier
             )
             .body(
                 p1,
-                p2,
-                p3,
-                Responsive.column(
-                    new AutoplayVideo("videos/data-explorer-demo.mp4")
-                )
-                    .alignement(Alignment.CENTER)
-                    .build()
+                new MoreDetails(p2, p3),
+                Responsive.column(video).alignement(Alignment.CENTER).build()
             );
     }
 

@@ -52,8 +52,8 @@ public class IntroductionPage
             );
 
         var page = new Page()
-            .title(title) // make the title more apparent, maybe move out of the card and center in above te cards
-            .subtitle(subtitle)
+            .bigTitle(title)
+            .bigSubtitle(subtitle)
             .body(catchPhrase)
             .footer(
                 Responsive.row(resumeLink, linkedInLink, githubLink)

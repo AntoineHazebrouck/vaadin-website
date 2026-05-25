@@ -31,7 +31,7 @@ public class MainView extends Composite<VerticalLayout> {
             LumoUtility.Padding.Left.XLARGE
         );
         desktop.addClassName("only-on-desktop");
-        desktop.getStyle().setMaxWidth("1200px");
+        desktop.getStyle().setMaxWidth("99.75rem");
         desktop.getStyle().setMarginLeft("auto");
         desktop.getStyle().setMarginRight("auto");
 
